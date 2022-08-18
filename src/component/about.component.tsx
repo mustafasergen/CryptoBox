@@ -58,11 +58,11 @@ class About extends Component {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
                 <Card.Grid style={{width:'1200px', height:'750px',position:'absolute', left:650, top:200,backgroundColor:'#E6FFFB'}}>
-                <i style={{fontWeight:'bold',fontSize:'35px',position:'absolute', left:520,marginTop:'30px',textAlign:'center',color:'#434343'}}>BİZ KİMİZ?</i>
-                <i style={{fontWeight:'regular',fontSize:'20px',position:'absolute', left:330,marginTop:'100px',textAlign:'center'}}>Biz INTERTECH şirketinde 2022 yılı Ağustos dönemi stajyerlerinden</i>
-                <i style={{fontWeight:'regular',fontSize:'20px',position:'absolute', left:430,marginTop:'130px',textAlign:'center'}}>Takım 2’yiz! Ve sizinle de aynı takımdayız</i>
-                <i style={{fontWeight:'bold',fontSize:'20px',position:'absolute', left:540,marginTop:'170px',color:'#434343'}}>Takım üyeleri:</i>
-                <i style={{fontWeight:'bold',fontSize:'20px',position:'absolute', left:500,marginTop:'210px',textAlign:'center'}}>
+                <h1 style={{fontWeight:'bold',fontSize:'35px',position:'absolute', left:520,marginTop:'30px',textAlign:'center',color:'#434343'}}>BİZ KİMİZ?</h1>
+                <h1 style={{fontWeight:'regular',fontSize:'20px',position:'absolute', left:330,marginTop:'100px',textAlign:'center'}}>Biz INTERTECH şirketinde 2022 yılı Ağustos dönemi stajyerlerinden</h1>
+                <h1 style={{fontWeight:'regular',fontSize:'20px',position:'absolute', left:430,marginTop:'130px',textAlign:'center'}}>Takım 2’yiz! Ve sizinle de aynı takımdayız</h1>
+                <h1 style={{fontWeight:'bold',fontSize:'20px',position:'absolute', left:540,marginTop:'170px',color:'#434343'}}>Takım üyeleri:</h1>
+                <h1 style={{fontWeight:'bold',fontSize:'20px',position:'absolute', left:500,marginTop:'210px',textAlign:'center'}}>
                   Anıl Çetin<br/>
                   Çağdaş Çapuk<br/>
                   Elif Ezgi İzgin<br/>
@@ -72,12 +72,12 @@ class About extends Component {
                   Mustafa Sergen Haysal<br/>
                   Sezgin Kale<br/>
                   Zeynep Özer
-                  </i>
-                  <i style={{fontWeight:'regular',fontSize:'20px',position:'absolute', left:300,marginTop:'520px',textAlign:'center'}}>Product Owner’ımız Bilal Murat Nazlı ve Agile Koç’umuz İpek Akyüz’e<br/>
-                  destekleri için çok teşekkür ederiz.</i>
+                  </h1>
+                  <h1 style={{fontWeight:'regular',fontSize:'20px',position:'absolute', left:300,marginTop:'520px',textAlign:'center'}}>Product Owner’ımız Bilal Murat Nazlı ve Agile Koç’umuz İpek Akyüz’e<br/>
+                  destekleri için çok teşekkür ederiz.</h1>
 
                   <Image style={{position:'absolute', left:30,top:800}}width={200} src="./logo1.png" />
-                  <i style={{fontWeight:'bold',fontSize:'60px',top:850,position:'absolute', left:300,color:'#13C2C2'}}>CryptoBox</i>
+                  <h1 style={{fontWeight:'bold',fontSize:'60px',top:850,position:'absolute', left:300,color:'#13C2C2'}}>CryptoBox</h1>
                   <Image style={{position:'absolute', left:500,top:820}}width={350} src="https://www.intertech.com.tr/wp-content/uploads/2017/12/intertech_web_logo.png" />
                   <Avatar style={{position:'absolute', left:620, top:850,width:70,height:100}}  src= './x.png' />
 
@@ -92,27 +92,26 @@ class About extends Component {
                 backgroundRepeat: 'no-repeat'}}>
 
                 
-                <circle style={{position:'absolute', right:300, top:1400,  display:'flex', width: '800px',
-                 height:'800px', backgroundColor:'#87E8DE', borderRadius:'1400%',borderColor:'orange'}} />
-                 
-                <circle style={{position:'absolute', left:400, top:1400,  display:'flex', width: '800px',
-                 height:'800px', backgroundColor:'#87E8DE', borderRadius:'1400%',borderColor:'orange'}} />
 
-                <i style={{fontWeight:'bold',fontSize:'60px',position:'absolute', right:520,top:1580,textAlign:'center',color:'#FA8C16'}}>Misyonumuz</i>
-                <i style={{fontWeight:'bold',fontSize:'35px',position:'absolute', right:490,top:1700,textAlign:'center',color:'000000',}}>Kullanıcı dostu ve güvenilir<br/>
+                 <Avatar style={{position:'absolute', right:300, top:1400,width:800,height:800}}  src= './circle1.png' />
+                 
+                 <Avatar style={{position:'absolute', left:400, top:1400,width:800,height:800}}  src= './circle1.png' />
+
+                <h1 style={{fontWeight:'bold',fontSize:'60px',position:'absolute', right:520,top:1580,textAlign:'center',color:'#FA8C16'}}>Misyonumuz</h1>
+                <h1 style={{fontWeight:'bold',fontSize:'35px',position:'absolute', right:490,top:1700,textAlign:'center',color:'000000',}}>Kullanıcı dostu ve güvenilir<br/>
                 ürünümüzle<br/>
                 ailelerin çocukları için<br/>
                 birikim yapmalarına <br/>
                 destek olmak.
-                </i>
+                </h1>
 
-                <i style={{fontWeight:'bold',fontSize:'60px',position:'absolute', left:640,top:1580,textAlign:'center',color:'#FA8C16'}}>Vizyonumuz</i>
-                <i style={{fontWeight:'bold',fontSize:'35px',position:'absolute', left:540,top:1700,textAlign:'center',color:'000000',}}>Aileler için<br/>
+                <h1 style={{fontWeight:'bold',fontSize:'60px',position:'absolute', left:640,top:1580,textAlign:'center',color:'#FA8C16'}}>Vizyonumuz</h1>
+                <h1 style={{fontWeight:'bold',fontSize:'35px',position:'absolute', left:540,top:1700,textAlign:'center',color:'000000',}}>Aileler için<br/>
                 Ethereum kripto para birimiyle<br/>
                 ürünler içerisinde <br/>
                 birikim yapmalarına <br/>
                 1 Numara olmak!
-                </i>
+                </h1>
 
 
 

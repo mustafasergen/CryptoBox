@@ -13,6 +13,8 @@ const { Header, Footer, Content } = Layout;
 
 class Login extends Component {
     render() {
+
+      
       window.scrollTo(0, 0)
         return(
         <div>
@@ -71,10 +73,10 @@ class Login extends Component {
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
                 >Disconnect</Button>
-               
-                
 
-                
+                <Link to='/aftersignup'>Login</Link>
+               
+
 
                 </Card.Grid>
 

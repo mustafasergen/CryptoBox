@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 import { ethers } from 'ethers'
 import { MetaMaskInpageProvider } from "@metamask/providers";
+import { useNavigate } from "react-router-dom";
 declare var window: any
 
 
@@ -27,17 +28,35 @@ export default function Signup (){
     
       window.scrollTo(0, 0)
 
-      async function getAccount() {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        const account = accounts[0];
+      const navigate = useNavigate();
+          
       
-        return account;
-      }
-       
+    
+
+
+
+        const [name, setName] = useState("");
+        const [surname, setSurname] = useState("");
+        
+        const handlechangeName = (event: React.ChangeEvent<HTMLInputElement>) =>{
+          setName(event.target.value);
+
+        }
+        const handlechangeSurname = (event: React.ChangeEvent<HTMLInputElement>) =>{
+          setSurname(event.target.value);
+
+        }
+
+        async function getAccount() {
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+          const account = accounts[0];
+        
+          return account;
+        }
         const [accountAddress, setAccountAddress] = useState("");
-      
+
         const connectButtonOnClick = () => {
           console.log(window);
           if (
@@ -48,9 +67,12 @@ export default function Signup (){
               setAccountAddress(response);
             });
           } else {
-            console.log("error");
+            console.log('error');
+            navigate("/Nometa_mask");
           }
         };
+
+
 
 
         return(
@@ -103,15 +125,16 @@ export default function Signup (){
                     <br/>
                     <br/>
                     <br/>
-                    
                     Soyad
                   </h2>
-                <Input style={{position:'absolute', left:320, marginTop:'110px', width:'500px', height:'70px'}} placeholder="İsminizi giriniz" />
-                <Input style={{position:'absolute', left:320, marginTop:'260px', width:'500px', height:'70px'}} placeholder="Soyisminizi giriniz" />
+                <Input onChange={handlechangeName} style={{position:'absolute', left:320, marginTop:'110px', width:'500px', height:'70px'}} placeholder="İsminizi giriniz" />
+                <Input onChange={handlechangeSurname} style={{position:'absolute', left:320, marginTop:'260px', width:'500px', height:'70px'}} placeholder="Soyisminizi giriniz" />
+                {name}
+                {surname}
 
                 
                  
-                <Link to="/after_signup" ><Button style={{position:'absolute', left:370, marginTop:'430px', width:'350px', height:'80px',backgroundColor:'#13C2C2',fontSize:'35px',borderColor:'#13C2C2'}} type="primary"  onClick={connectButtonOnClick}>{!!accountAddress ? accountAddress : "Devam"}</Button></Link>
+                <Link to="/after_signup" ><Button style={{position:'absolute', left:370, marginTop:'390px', width:'350px', height:'80px',backgroundColor:'#13C2C2',fontSize:'35px',borderColor:'#13C2C2'}} type="primary"  onClick={connectButtonOnClick}>{!!accountAddress ? accountAddress : "Devam"}</Button></Link>
                 <h3 style={{position:'absolute', left:350, marginTop:'540px', color:'black',fontSize:'20px'}}>Zaten bir CryptoBox Hesabınız var mı?
                 </h3>
                 <Link to="/login" > <h4 style= {{position:'absolute', right:460, marginTop:'540px',color:'blue',fontSize:'20px'}}>Giriş</h4></Link>

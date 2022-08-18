@@ -6,6 +6,8 @@ import Home from './component/home.component';
 import Login from './component/login.component';
 import Metamask from './component/metamask.component';
 import Signup from './component/signup.component';
+import NoMetaMask from './component/notmetamask.component';
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
           <Route path='signup' element={<Signup/>} />
           <Route path='about' element={<About/>} />
           <Route path='meta_mask' element={<Metamask/>} />
+          <Route path='Nometa_mask' element={<NoMetaMask/>} />
           <Route path='after_signup' element={<AfterSignup/>} />
           <Route path='/' element={<Home/>} />
         </Routes>
