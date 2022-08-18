@@ -6,9 +6,11 @@ import Home from './component/home.component';
 import Login from './component/login.component';
 import Metamask from './component/metamask.component';
 import Signup from './component/signup.component';
+import {ethers} from 'ethers'
 
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className="App">
