@@ -58,17 +58,18 @@ class MetaMask extends Component {
 
 
                 <h2 style={{fontWeight:'regular',fontSize:'25px',position:'absolute', left:280,top:200,textAlign:'center'}}>
-                <i style={{fontWeight:'bold',fontSize:'55px',color:'#FA8C16'}} >MetaMask Nedir ?</i>
-                <i style={{fontWeight:'bold',fontSize:'45px',color:'#434343',wordSpacing: 3}} ><br/><br/>Ethereum Blockchain ile etkileşim<br/> kurmak için kullanılan bir Kripto<br/> Cüzdanıdır.</i>
-                <i style={{fontWeight:'regular',fontSize:'30px',color:'#434343',wordSpacing: 3}} ><br/><br/>Token satın alın, saklayın, gönderin ve<br/> değiştirin</i>
-                <i style={{fontWeight:'regular',fontSize:'33px',color:'#000000',wordSpacing: 3}} ><br/><br/>Bir tarayıcı uzantısı ve bir mobil uygulama<br/>
+                <p style={{fontWeight:'bold',fontSize:'55px',color:'#FA8C16'}} >MetaMask Nedir ?</p>
+                <p style={{fontWeight:'bold',fontSize:'45px',color:'#434343',wordSpacing: 3}} ><br/>Ethereum Blockchain ile etkileşim<br/> kurmak için kullanılan bir Kripto<br/> Cüzdanıdır.</p>
+                <p style={{fontWeight:'regular',fontSize:'36px',color:'#434343',wordSpacing: 3}} >Token satın alın, saklayın, gönderin ve<br/> değiştirin</p>
+                <p style={{fontWeight:'regular',fontSize:'39px',color:'#000000',wordSpacing: 3}} > tarayıcı uzantısı ve bir mobil uygulama<br/>
                 olarak mevcut olan MetaMask, size key<br/>
                 vault, güvenli oturum açma, Token<br/> 
                 cüzdanı ve Token takası ile dijital<br/>
-                 varlıklarınızı yönetmek için ihtiyacınız olan <br/>her şeyi sağlar. 
-                </i></h2>
+                varlıklarınızı yönetmek için ihtiyacınız olan <br/>
+                her şeyi sağlar. 
+                </p></h2>
 
-                <Image style={{position:'absolute', left:700,top:-400}}width={800} src="./örnek1.png" />
+                <Image style={{position:'absolute', left:700,top:-300}}width={800} src="./örnek1.png" />
 
                 </Content>
                 <Content style={{background:"white", 
@@ -78,20 +79,20 @@ class MetaMask extends Component {
                 backgroundRepeat: 'no-repeat'}}>
 
                 <h2 style={{position:'absolute', left:150,top:1400,textAlign:'center'}}>
-                <i style={{fontWeight:'bold',fontSize:'35px',color:'#434343'}} >Blockchain uygulamalarını keşfedin</i>
-                <i style={{fontWeight:'regular',fontSize:'33px',color:'#000000',wordSpacing: 3}} ><br/><br/>MetaMask, blok zinciri tabanlı<br/>
+                <p style={{fontWeight:'bold',fontSize:'39px',color:'#434343'}}>Blockchain uygulamalarını keşfedin</p>
+                <p style={{fontWeight:'regular',fontSize:'37px',color:'#000000',wordSpacing: 3}} >MetaMask, blok zinciri tabanlı<br/>
                 uygulamalara bağlanmanın en basit ama<br/>
                 en güvenli yolunu sağlar. Yeni merkezi<br/>
                 olmayan web'de etkileşim kurarken<br/>
-                kontrol her zaman sizdedir.</i>
-                <i style={{fontWeight:'bold',fontSize:'32px',color:'#434343',wordSpacing: 3}} ><br/><br/>Verilerinize sahip olun</i>
-                <i style={{fontWeight:'regular',fontSize:'33px',color:'#000000',wordSpacing: 3}} ><br/><br/>MetaMask, cihazınızda şifreler ve
+                kontrol her zaman sizdedir.</p>
+                <p style={{fontWeight:'bold',fontSize:'36px',color:'#434343',wordSpacing: 3}} >Verilerinize sahip olun</p>
+                <p style={{fontWeight:'regular',fontSize:'37px',color:'#000000',wordSpacing: 3}} >MetaMask, cihazınızda şifreler ve
                   anahtarlar oluşturur, böylece<br/>
                   hesaplarınıza ve verilerinize yalnızca siz<br/>
                   erişebilirsiniz. Neyi paylaşacağınızı ve<br/>
                   neyi gizli tutacağınızı her zaman siz<br/>
-                  seçersiniz.</i></h2>
-                  <Image style={{position:'absolute', left:800,top:-550}}width={600} src="./örnek2.png" />
+                  seçersiniz.</p></h2>
+                  <Image style={{position:'absolute', left:800,top:-580}}width={600} src="./örnek2.png" />
                   <Image style={{position:'absolute', left:800,top:-50}}width={600} src="./örnek3.png" />
 
 

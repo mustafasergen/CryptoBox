@@ -57,18 +57,18 @@ class Hakkımda extends Component {
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
-                <h2 style={{position:'absolute', left:150,color:"#434343",top:280,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana'}}><text>YATIRIMINIZ<br/>
+                <h2 style={{position:'absolute', left:150,color:"#434343",top:280,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana'}}>YATIRIMINIZ<br/>
                 ÇOCUĞUNUZLA BERABER BÜYÜSÜN!
-                </text></h2>
-                <h2 style={{position:'absolute', left:150,color:"#434343",top:420,fontSize:'25px',fontWeight:'Regular',fontFamily:'Verdana'}}><text>Bebeğinizin size doğru attığı ilk adımlar gibi siz de onun <br/>
+                </h2>
+                <h2 style={{position:'absolute', left:150,color:"#434343",top:420,fontSize:'25px',fontWeight:'Regular',fontFamily:'Verdana'}}>Bebeğinizin size doğru attığı ilk adımlar gibi siz de onun <br/>
                 geleceği için biriktirmeye ilk adımı atın! Çocuğunuz için<br/>
                 açacağınız hesapla onun için kripto para biriktirebilirsiniz.<br/><br/>
                 Eğer
-                </text></h2>
+                </h2>
 
-                <h2 style={{position:'absolute', left:200,color:"#434343",top:700,fontSize:'30px',fontWeight:'Regular',fontFamily:'Verdana'}}><text>MetaMask hesabınız varsa</text></h2>
-                <h2 style={{position:'absolute', left:200,color:"#434343",top:850,fontSize:'30px',fontWeight:'Regular',fontFamily:'Verdana'}}><text>Ethereum Networkünde ise</text></h2>
-                <h2 style={{position:'absolute', left:200,color:"#434343",top:1000,fontSize:'30px',fontWeight:'Regular',fontFamily:'Verdana'}}><text>Bir miktar Ethereum’unuz varsa</text></h2>
+                <h2 style={{position:'absolute', left:200,color:"#434343",top:700,fontSize:'30px',fontWeight:'Regular',fontFamily:'Verdana'}}>MetaMask hesabınız varsa</h2>
+                <h2 style={{position:'absolute', left:200,color:"#434343",top:850,fontSize:'30px',fontWeight:'Regular',fontFamily:'Verdana'}}>Ethereum Networkünde ise</h2>
+                <h2 style={{position:'absolute', left:200,color:"#434343",top:1000,fontSize:'30px',fontWeight:'Regular',fontFamily:'Verdana'}}>Bir miktar Ethereum’unuz varsa</h2>
 
                 <Avatar style={{position:'absolute', left:1400, top:200,width:'850px', height:'850px'}} src= './circle1.png' />
                 <Image style={{position:'absolute', left:800,top:-500}}width={500} src="./anne1.png" />
@@ -95,13 +95,14 @@ class Hakkımda extends Component {
                 backgroundRepeat: 'no-repeat'}}>
 
                 
-                <h2 style={{position:'absolute', left:790,color:"orange",top:1410,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}><text>ÇOCUĞUNUZUN GELECEĞİ İÇİN<br/> ŞİMDİ YATIRIM YAPIN</text></h2><br/>
+                <h2 style={{position:'absolute', left:790,color:"orange",top:1410,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}>ÇOCUĞUNUZUN GELECEĞİ İÇİN<br/> ŞİMDİ YATIRIM YAPIN</h2><br/>
                 <Image style={{position:'absolute', left:-120,top:-680,zIndex:0}}width={1200} src="./computer1.png" />
+                
                 
                 <CheckCircleOutlined style={{position:'absolute', left:910,color:"#87E8DE",top:2400,fontSize:'70px'}} />
                 <br/>
-                <h2 style={{position:'absolute', left:1000,color:"#434343",top:2400,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana',zIndex:1}}><text>Hesap Oluşturun</text></h2><br/>
-                <h2 style={{position:'absolute', left:850,color:"#434343",top:2480,fontSize:'25px',fontFamily:'Verdana',zIndex:1}}><text>Web sitemizden saniyeler içinde hesabını oluştur</text></h2>
+                <h2 style={{position:'absolute', left:1000,color:"#434343",top:2400,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana',zIndex:1}}>Hesap Oluşturun</h2><br/>
+                <h2 style={{position:'absolute', left:850,color:"#434343",top:2480,fontSize:'25px',fontFamily:'Verdana',zIndex:1}}>Web sitemizden saniyeler içinde hesabını oluştur</h2>
 
                 </Content>
                 <Content style={{background:"white", 
@@ -114,9 +115,9 @@ class Hakkımda extends Component {
                 
                 <CheckCircleOutlined style={{position:'absolute', left:800,color:"#87E8DE",top:3550,fontSize:'70px'}} />
                 <br/>
-                <h2 style={{position:'absolute', left:900,color:"#434343",top:3550,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana'}}><text>Yatırım Yapmaya Başlayın</text></h2><br/>
-                <h2 style={{position:'absolute', left:730,color:"#434343",top:3630,fontSize:'25px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}><text>En güvenilir kripto para birimlerinden olan Ethereum ile birikiminiz 
-                <br/>size kazandırmaya başlasın.</text></h2>
+                <h2 style={{position:'absolute', left:900,color:"#434343",top:3550,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana'}}>Yatırım Yapmaya Başlayın</h2><br/>
+                <h2 style={{position:'absolute', left:730,color:"#434343",top:3630,fontSize:'25px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}>En güvenilir kripto para birimlerinden olan Ethereum ile birikiminiz 
+                <br/>size kazandırmaya başlasın.</h2>
 
                 </Content>
                 <Content style={{background:"white", 
@@ -129,9 +130,9 @@ class Hakkımda extends Component {
                 
                 <CheckCircleOutlined style={{position:'absolute', left:900,color:"#87E8DE",top:4730,fontSize:'70px'}} />
                 <br/>
-                <h2 style={{position:'absolute', left:1000,color:"#434343",top:4730,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana'}}><text>Birikiminiz Büyüsün</text></h2><br/>
-                <h2 style={{position:'absolute', left:740,color:"#434343",top:4810,fontSize:'25px',fontFamily:'Verdana', textAlign:'center'}}><text>Aileler için birikim yapmayı kolay ve eğlenceli hale getiren CryptoBox ile<br/>  
-                çocuğunuz için birikim yapın.</text></h2>
+                <h2 style={{position:'absolute', left:1000,color:"#434343",top:4730,fontWeight:'bold',fontSize:'40px',fontFamily:'Verdana'}}>Birikiminiz Büyüsün</h2><br/>
+                <h2 style={{position:'absolute', left:740,color:"#434343",top:4810,fontSize:'25px',fontFamily:'Verdana', textAlign:'center'}}>Aileler için birikim yapmayı kolay ve eğlenceli hale getiren CryptoBox ile<br/>  
+                çocuğunuz için birikim yapın.</h2>
                 </Content>
                 <Content style={{background:"white", 
                 padding:200, 
@@ -139,7 +140,7 @@ class Hakkımda extends Component {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <h2 style={{position:'absolute', left:950,color:"orange",top:5050,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}><text>NEDEN CRYPTOBOX?</text></h2><br/>
+                <h2 style={{position:'absolute', left:950,color:"orange",top:5050,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}>NEDEN CRYPTOBOX?</h2><br/>
 
                 <Image style={{position:'absolute', right:-1400,top:-800,zIndex:0}}width={700} src="./kumbara1.png" />
                 <Image style={{position:'absolute', right:-700,top:-300,zIndex:0}}width={700} src="./kumbara2.png" />
