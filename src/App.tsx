@@ -9,10 +9,8 @@ import Signup from './component/signup.component';
 import NoMetaMask from './component/notmetamask.component';
 import PrivatePage from './component/PrivatePage';
 import PublicPage from './component/PublicPage';
-import AuthProvider from './component/auth/AuthProvider';
+import AuthProvider, { AuthRef, useAuth } from './component/auth/AuthProvider';
 import PrivateRoute from './component/auth/PrivateRoute';
-import { User } from './component/auth/useAuthProvider';
-import useAuth from './component/auth/useAuth';
 
 
 
@@ -24,7 +22,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <AuthProvider>
-          {/* <CheckAuthProvider /> */}
+          <CheckAuthProvider />
           <Routes>
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<Signup />} />
@@ -42,15 +40,9 @@ function App() {
   );
 }
 
-function CheckAuthProvider () {
-  const userstorage = localStorage.getItem('user')
+function CheckAuthProvider() {
   const auth = useAuth();
-  if (userstorage != undefined && userstorage != '') {
-    const user: User = JSON.parse(userstorage);
-    
-    auth?.signIn(user,() => {})
-  }
-  
+  AuthRef.current = auth;
   return <></>
 }
 
