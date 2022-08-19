@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
-import { Card, Typography } from 'antd';
+import { Card} from 'antd';
 import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
+import useAuth from './auth/useAuth';
+import { json } from 'stream/consumers';
 
-const { Title } = Typography;
+
 const { Header, Footer, Content } = Layout;
 
 
 
 
-class Login extends Component {
-    render() {
+export default function Login () {
+    
+
+      const auth = useAuth();
+      const handleLogin = () =>{
+        auth?.signIn({name:'asd', address:'00', role:'parent'},() =>{})
+      }
 
       
       window.scrollTo(0, 0)
@@ -64,17 +71,19 @@ class Login extends Component {
                 continue.
                 </h2>
 
-                <Button style={{position:'absolute', right:340, marginTop:'330px', width:'500px', height:'80px', color:'white',fontWeight:'bold',backgroundImage:"./Metamask.png",
+                <Link to='/privatepage'><Button style={{position:'absolute', right:340, marginTop:'330px', width:'500px', height:'80px', color:'white',fontWeight:'bold',backgroundImage:"./Metamask.png",
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                >Continue</Button>
+                >privatepage</Button></Link>
                                 
-                <Button style={{position:'absolute', right:340, marginTop:'480px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
+                <Link to='/publicpage'><Button style={{position:'absolute', right:340, marginTop:'480px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                >Disconnect</Button>
+                >publicpage</Button></Link>
 
-                <Link to='/aftersignup'>Login</Link>
+                <button onClick={handleLogin}>Login</button>
+
+                <div>User {JSON.stringify(auth?.user)}</div>
                
 
 
@@ -91,7 +100,6 @@ class Login extends Component {
 
         )
         
-    }
+    
 
 }
-export default Login; 
