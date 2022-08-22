@@ -4,6 +4,8 @@ import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 const { Title } = Typography;
 const { Header, Footer, Content } = Layout;
@@ -24,27 +26,28 @@ class Login extends Component {
                 
                 <Button style={{position:'absolute', left:190, top:15, color:'#13C2C2',fontWeight:'bold',fontSize:'35px'}}
                 
-                type="link" danger><Link to="/">CryptoBox</Link></Button>
+                type="link" danger><Link to="/">{ML("CryptoBox")}</Link></Button>
 
                <Button style={{position:'absolute', right:530, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button>   
+                type="link" danger><Link to="/meta_mask">{ML("METAMASK_NEDIR")}</Link></Button>   
 
                <Button style={{position:'absolute', right:780, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
                
-                type="link" danger><Link to="/about">HAKKIMIZDA</Link></Button>       
+                type="link" danger><Link to="/about">{ML("HAKKIMIZDA")}</Link></Button>       
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="">FAQ</Link></Button>                       
+                type="link" danger><Link to="">{ML("FAQ")}</Link></Button>                       
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
-                type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
+                type="primary" ghost><Link to="/login">{ML("OTURUM_AC")}</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/signup">Kayıt ol</Link></Button>
+                type="primary"><Link to="/signup">{ML("KAYIT_OL")}</Link></Button>
+                 <LanguageComponent/>
               </Header>
               <Layout>
               <Content style={{backgroundImage: "url(" + "./blur.png" + ")",
@@ -58,19 +61,19 @@ class Login extends Component {
                 <Card.Grid style={{width:'1200px', height:'750px',position:'absolute', left:570, top:265,backgroundColor:'#E6FFFB'}}>
                 
                 <h2 style={{fontWeight:'bold',fontSize:'30px',position:'absolute', left:360,marginTop:'150px',textAlign:'center'}}>
-                Sign the message in your wallet to<br/>
-                continue.
+                {ML("Sign_the_message_in_your_wallet_to")}<br/>
+                {ML("continue.")}
                 </h2>
 
                 <Button style={{position:'absolute', right:340, marginTop:'330px', width:'500px', height:'80px', color:'white',fontWeight:'bold',backgroundImage:"./Metamask.png",
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                >Continue</Button>
+                >{ML("Continue")}</Button>
                                 
                 <Button style={{position:'absolute', right:340, marginTop:'480px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                >Disconnect</Button>
+                >{ML("Disconnect")}</Button>
                
                 
 
@@ -81,7 +84,7 @@ class Login extends Component {
                 </Content>
 
                 <Footer style={{background:"white", padding:60,}}>
-                  <h2 style={{position:'absolute', right:1000,}}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+                  <h2 style={{position:'absolute', right:1000,}}> {ML("2022_Intertech_Inc_Her_hakkı _saklıdır")}</h2>.
                   </Footer>
               </Layout>
             </Layout>

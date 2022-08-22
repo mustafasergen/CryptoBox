@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
+import { ML } from '../i18n.config';
 
 
 
@@ -26,16 +27,16 @@ class AfterSignup extends Component {
                
                 <Button style={{position:'absolute', left:190, top:15, color:'#13C2C2',fontWeight:'bold',fontSize:'35px'}}
                 
-                type="link" danger><Link to="/">CryptoBox</Link></Button>
+                type="link" danger><Link to="/">{ML("KAYIT_OL")}CryptoBox</Link></Button>
 
                <Button style={{position:'absolute', right:530, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button> 
+                type="link" danger><Link to="/meta_mask">{ML("KAYIT_OL")}METAMASK NEDİR?</Link></Button> 
 
                <Button style={{position:'absolute', right:780, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
                
-                type="link" danger><Link to="/about">HAKKIMIZDA</Link></Button>       
+                type="link" danger><Link to="/about">{ML("KAYIT_OL")}HAKKIMIZDA</Link></Button>       
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
@@ -46,7 +47,7 @@ class AfterSignup extends Component {
                 type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/signup">Kayıt ol</Link></Button>
+                type="primary"><Link to="/signup">{ML("KAYIT_OL")}Kayıt ol</Link></Button>
               </Header>
               <Layout>
                 
@@ -61,7 +62,7 @@ class AfterSignup extends Component {
                 </Content>
 
                 <Footer style={{background:"white", padding:60,boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                  <h2 style={{position:'absolute', right:1000,}}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+                  <h2 style={{position:'absolute', right:1000,}}>{ML("KAYIT_OL")} © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
                   </Footer>
               </Layout>
             </Layout>
