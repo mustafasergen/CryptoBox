@@ -65,6 +65,7 @@ export default function Signup (){
           ) {
             getAccount().then((response) => {
               setAccountAddress(response);
+              navigate("/after_signup");
             });
           } else {
             console.log('error');
@@ -99,7 +100,7 @@ export default function Signup (){
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="">FAQ</Link></Button>                       
+                type="link" danger><Link to="/faq">FAQ</Link></Button>                       
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
@@ -134,7 +135,7 @@ export default function Signup (){
 
                 
                  
-                <Link to="/after_signup" ><Button style={{position:'absolute', left:370, marginTop:'390px', width:'350px', height:'80px',backgroundColor:'#13C2C2',fontSize:'35px',borderColor:'#13C2C2'}} type="primary"  onClick={connectButtonOnClick}>{!!accountAddress ? accountAddress : "Devam"}</Button></Link>
+                <Button style={{position:'absolute', left:370, marginTop:'390px', width:'350px', height:'80px',backgroundColor:'#13C2C2',fontSize:'35px',borderColor:'#13C2C2'}} type="primary"  onClick={connectButtonOnClick}>{!!accountAddress ? accountAddress : "Devam"}</Button>
                 <h3 style={{position:'absolute', left:350, marginTop:'540px', color:'black',fontSize:'20px'}}>Zaten bir CryptoBox Hesabınız var mı?
                 </h3>
                 <Link to="/login" > <h4 style= {{position:'absolute', right:460, marginTop:'540px',color:'blue',fontSize:'20px'}}>Giriş</h4></Link>

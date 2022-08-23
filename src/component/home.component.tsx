@@ -41,7 +41,7 @@ class Hakkımda extends Component {
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="">FAQ</Link></Button>                       
+                type="link" danger><Link to="/faq">FAQ</Link></Button>                       
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
@@ -141,7 +141,26 @@ class Hakkımda extends Component {
                 backgroundRepeat: 'no-repeat'}}>
 
                 <h2 style={{position:'absolute', left:950,color:"orange",top:5050,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}>NEDEN CRYPTOBOX?</h2><br/>
-
+                
+                
+                <h2 style={{position:'absolute', left:350,top:5200,fontFamily:'Verdana',textAlign:'center'}}>
+                <p style={{fontWeight:'Bold',fontSize:'39px',color:'#13C2C2'}}>Finansal Güçlendirme</p>
+                <p style={{fontWeight:'Regular',fontSize:'33px',color:'#434343'}}>CryptoBox, ailelerin ve çocukların çeşitli<br/>
+                  açılardan finansal olarak güçlenmesine katkı<br/>
+                  sağlar. Bir yatırım aracı olan  CryptoBox<br/>
+                  sayesinde aileler finansal bilgilerini<br/>
+                  kullanarak kararlar alırlar ve çocuklarını<br/>
+                  18 yaşında hesap sahibi olmaya hazırlarlar</p>
+                 </h2>
+                 <h2 style={{position:'absolute', left:350,top:5650,fontFamily:'Verdana',textAlign:'center'}}>
+                <p style={{fontWeight:'Bold',fontSize:'39px',color:'#13C2C2'}}>Finansal Özgürlük</p>
+                <p style={{fontWeight:'Regular',fontSize:'33px',color:'#434343'}}>Çocukların yatırımları olduğunu bilerek<br/>
+                  büyümeleri onları bu birikimle neler <br/>
+                  yapabilececekleri konusunda onları hayal <br/>
+                  kurmaya teşvik eder. Bu birikimlerini eğitime, <br/>
+                  ilk girişimlerine ya da dünyayı gezme <br/>
+                  amaçlarıyla kullanabilme fırsatı verir. </p>
+                 </h2>
                 <Image style={{position:'absolute', right:-1400,top:-800,zIndex:0}}width={700} src="./kumbara1.png" />
                 <Image style={{position:'absolute', right:-700,top:-300,zIndex:0}}width={700} src="./kumbara2.png" />
                 </Content>
