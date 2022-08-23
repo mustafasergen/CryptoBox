@@ -39,7 +39,7 @@ class MetaMask extends Component {
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="">FAQ</Link></Button>                       
+                type="link" danger><Link to="/faq">FAQ</Link></Button>                       
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
@@ -110,6 +110,10 @@ class MetaMask extends Component {
                   allow='autoplay; encrypted-media'
                   allowFullScreen
                   title='video'/>
+
+                <Link to={{ pathname: "metamask.io/download/" }} target="_blank"> <h2 style={{position:'absolute', left:840,color:"#FA8C16",top:3000,fontWeight:'bold',fontSize:'35px',fontFamily:'Verdana'}}>
+                  Hemen tarayıcın için MetaMask indir</h2> </Link>
+
 
                 </Content>
 

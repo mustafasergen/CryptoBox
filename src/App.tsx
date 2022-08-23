@@ -1,39 +1,50 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import About from './component/about.component';
-import AfterSignup from './component/aftersignup.component';
 import Home from './component/home.component';
 import Login from './component/login.component';
 import Metamask from './component/metamask.component';
 import Signup from './component/signup.component';
 import NoMetaMask from './component/notmetamask.component';
 import PrivatePage from './component/PrivatePage';
-import PublicPage from './component/PublicPage';
-import AuthProvider from './component/auth/AuthProvider';
+import AuthProvider, { AuthRef, useAuth } from './component/auth/AuthProvider';
 import PrivateRoute from './component/auth/PrivateRoute';
-import { User } from './component/auth/useAuthProvider';
-import useAuth from './component/auth/useAuth';
+import FAQ from './component/FAQ.component';
+import AfterSignupParent from './component/aftersignup.component';
+import Cocuk from './component/cocuklarim';
+import ParaGonderme from './component/paragonderme.component';
+import Paracekme from './component/paracekme.component';
+import ParaYatırma from './component/parayatirma.component';
+import Basari from './component/basari.component';
+import CocukEkle from './component/cocukekle.component';
+
 
 
 
 
 function App() {
-  // TODO: Eğer kullanıcı logel storega bilgilerini user hakkında bilgi varsa signin tetiklencek
+  // TODO: Eğer kullanıcı local storeage bilgilerini user hakkında bilgi varsa signin tetiklencek
 
   return (
     <BrowserRouter>
       <div className="App">
         <AuthProvider>
-          {/* <CheckAuthProvider /> */}
+          <CheckAuthProvider />
           <Routes>
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<Signup />} />
             <Route path='about' element={<About />} />
             <Route path='meta_mask' element={<Metamask />} />
             <Route path='Nometa_mask' element={<NoMetaMask />} />
-            <Route path='after_signup' element={<AfterSignup />} />
+            <Route path='parayatirma' element={<ParaYatırma />} />
+            <Route path='paragonderme' element={<ParaGonderme />} />
+            <Route path='basari' element={<Basari />} />
+            <Route path='paracekme' element={<Paracekme />} />
+            <Route path='cocukekle' element={<CocukEkle />} />
+            <Route path='faq' element={<FAQ />} />
+            <Route path='after_signup' element={<AfterSignupParent />} />
+            <Route path='cocuklarim' element={<Cocuk/>} />
             <Route path='privatepage' element={<PrivateRoute node={<PrivatePage />} />} />
-            <Route path='publicpage' element={<PublicPage />} />
             <Route path='/' element={<Home />} />
           </Routes>
         </AuthProvider>
@@ -42,15 +53,9 @@ function App() {
   );
 }
 
-function CheckAuthProvider () {
-  const userstorage = localStorage.getItem('user')
+function CheckAuthProvider() {
   const auth = useAuth();
-  if (userstorage != undefined && userstorage != '') {
-    const user: User = JSON.parse(userstorage);
-    
-    auth?.signIn(user,() => {})
-  }
-  
+  AuthRef.current = auth;
   return <></>
 }
 

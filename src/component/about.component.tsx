@@ -41,7 +41,7 @@ class About extends Component {
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="">FAQ</Link></Button>                       
+                type="link" danger><Link to="/faq">FAQ</Link></Button>                       
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 

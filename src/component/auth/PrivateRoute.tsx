@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navigate, Route, RouteProps } from 'react-router-dom';
-import useAuth from './useAuth';
-import { useNavigate } from 'react-router-dom';
+import { Auth, AuthRef, User } from './AuthProvider';
 
 
 
@@ -12,11 +11,11 @@ export interface PrivateRouteProps {
 }
 
 function PrivateRoute(props: PrivateRouteProps) {
-    const navigate = useNavigate();
-    const auth = useAuth();
-    
-    if (auth?.user == null) {
-        return<Navigate to={props.redirect || '/'} replace={true} />
+
+    const auth: User | undefined = Auth.getUser();
+
+    if (auth?.role == 'parent') {
+        return <Navigate to={props.redirect || '/'} replace={true} />
     }
     return <>{props.node}</>
 };
