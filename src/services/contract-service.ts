@@ -34,6 +34,7 @@ export class ContractService {
     async addParent(name: string) {
         const response = await this.contract.addParent(name);
         await response.wait();
+    
     }
 
     async getChild(): Promise<Child> {
@@ -59,13 +60,16 @@ export class ContractService {
     }
 
     async getChildren():Promise<Child[]> {
-            const response = await this.contract.getChildren()
-            response.forEach(getChild(element => {
-                this.parseChild(element)
-            }));
-            return response
-        }
-    
+        const response = await this.contract.getChildren()
+
+        response.forEach((element: any) => {
+            // element address of the caller
+            const childObj=element.getChild(); // get addres of the caller of the function
+            this.parseChild(childObj)
+        });
+        return response
+    }
+         
     async getParent():Promise<Parent>{
         const response = await this.contract.getParent()
         return {
