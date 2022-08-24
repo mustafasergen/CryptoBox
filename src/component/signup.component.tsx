@@ -7,6 +7,7 @@ import { Image } from 'antd';
 import { ethers } from 'ethers'
 import { MetaMaskInpageProvider } from "@metamask/providers";
 import { useNavigate } from "react-router-dom";
+import { WalletService } from '../services/wallet-service';
 declare var window: any
 
 
@@ -35,8 +36,8 @@ export default function Signup (){
 
 
 
-        const [name, setName] = useState("");
-        const [surname, setSurname] = useState("");
+        const [yenikullanıcı, setName] = useState("");
+        const [yenisurname, setSurname] = useState("");
         
         const handlechangeName = (event: React.ChangeEvent<HTMLInputElement>) =>{
           setName(event.target.value);
@@ -65,6 +66,15 @@ export default function Signup (){
           ) {
             getAccount().then((response) => {
               setAccountAddress(response);
+              
+        async (yenikullanıcı:string)=>{
+         
+          await WalletService.connect().then(async (result) => {
+            const response = await   
+            WalletService.contract.addParent(yenikullanıcı);
+            console.log('2')
+          });
+        };
               navigate("/after_signup");
             });
           } else {
@@ -72,7 +82,6 @@ export default function Signup (){
             navigate("/Nometa_mask");
           }
         };
-
 
 
 
@@ -130,17 +139,18 @@ export default function Signup (){
                   </h2>
                 <Input onChange={handlechangeName} style={{position:'absolute', left:320, marginTop:'110px', width:'500px', height:'70px'}} placeholder="İsminizi giriniz" />
                 <Input onChange={handlechangeSurname} style={{position:'absolute', left:320, marginTop:'260px', width:'500px', height:'70px'}} placeholder="Soyisminizi giriniz" />
-                {name}
-                {surname}
+                {yenikullanıcı}
+                {yenisurname}
 
                 
                  
-                <Button style={{position:'absolute', left:370, marginTop:'390px', width:'350px', height:'80px',backgroundColor:'#13C2C2',fontSize:'35px',borderColor:'#13C2C2'}} type="primary"  onClick={connectButtonOnClick}>{!!accountAddress ? accountAddress : "Devam"}</Button>
+                <Button style={{position:'absolute', left:370, marginTop:'390px', width:'350px', height:'80px',backgroundColor:'#13C2C2',fontSize:'35px',borderColor:'#13C2C2'}} type="primary"  
+                onClick={ connectButtonOnClick}>Devam</Button>
                 <h3 style={{position:'absolute', left:350, marginTop:'540px', color:'black',fontSize:'20px'}}>Zaten bir CryptoBox Hesabınız var mı?
                 </h3>
                 <Link to="/login" > <h4 style= {{position:'absolute', right:460, marginTop:'540px',color:'blue',fontSize:'20px'}}>Giriş</h4></Link>
 
-
+                
                 </Card.Grid>
 
                 </Content>

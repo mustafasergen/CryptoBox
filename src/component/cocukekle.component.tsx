@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Input } from 'antd';
 import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
+import { WalletService } from '../services/wallet-service';
+
 
 
 
@@ -12,9 +14,18 @@ const { Header, Content } = Layout;
 
 
 
+
+
 export default function CocukEkle() {
+ 
+  useEffect(() => { WalletService.connect()
+                    
+  },[]);
+
 
   window.scrollTo(0, 0)
+
+
 
 
   const [childname, setChildName] = useState("");
@@ -73,7 +84,7 @@ export default function CocukEkle() {
                 <br />
                 Çocuğunuzun Soyadı
                 <br /> <br /> <br />
-                Çocuğunuzun Doğum Tarihi
+                Çocuğunuzun Doğum Tarihid
                 <br /> <br /> <br />
                 Çocuğunuzun Metamask Hesabı
               </h2>
@@ -86,7 +97,7 @@ export default function CocukEkle() {
               {childbday}<br />
               {childmetamask}<br />
 
-
+              
               <Link to="/cocuklarim" ><Button style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Çocuğu Ekle</Button></Link>
 
 
@@ -102,3 +113,5 @@ export default function CocukEkle() {
 
 
 }
+
+
