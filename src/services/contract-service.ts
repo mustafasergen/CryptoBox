@@ -27,8 +27,8 @@ export class ContractService {
         this.contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
     }
 
-    async ageCalc() {
-        const response = await this.contract.ageCalc()
+    async ageCalc(_Address: string) {
+        const response = await this.contract.ageCalc(_Address)
         await response.wait()
     }
 
@@ -51,8 +51,8 @@ export class ContractService {
         const response = await this.contract.getBalance();
         return response;
     }
-    async getAmount(): Promise<number> {
-        const response = await this.contract.getAmount();
+    async getAmount(_Address: string): Promise<number> { //çocuğun birikmiş parasınnı döndürüyor
+        const response = await this.contract.getAmount(_Address);
         return response;
     }
     async getOwner(): Promise<string> {
@@ -79,24 +79,6 @@ export class ContractService {
             Address: response.Address
         } as Parent;
     }
-
-    async withdrawChild(Address: string, amount: number) {
-        const response = await this.contract.withdrawChild(Address, amount)
-        await response.wait()
-    }
-    async withdrawParent(Address: string, amount: number) {
-        const response = await this.contract.withdrawParent(Address, amount)
-        await response.wait()
-    }
-
-
-
-    async fund(Address: string) {
-        const response = await this.contract.fund(Address);
-        await response.wait()
-
-    }
-
     async getRole(): Promise<string> {
         const response = await this.contract.getRole()
         return response
@@ -107,6 +89,23 @@ export class ContractService {
         return response.map((child: any) => {
             return this.parseChild(child)
         })
+    }
+    async getReleaseTime(_Address: string): Promise<number> {
+        const response = await this.contract.getReleaseTime(_Address)
+        return response
+    }
+    async fund(Address: string) {
+        const response = await this.contract.fund(Address);
+        await response.wait()
+
+    }
+    async withdrawChild(Address: string, amount: number) {
+        const response = await this.contract.withdrawChild(Address, amount)
+        await response.wait()
+    }
+    async withdrawParent(Address: string, amount: number) {
+        const response = await this.contract.withdrawParent(Address, amount)
+        await response.wait()
     }
 
 
