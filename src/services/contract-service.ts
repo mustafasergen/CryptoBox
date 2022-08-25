@@ -94,6 +94,15 @@ export class ContractService {
         const response = await this.contract.getReleaseTime(_Address)
         return response
     }
+    async getAllAmounts(): Promise<number[]> {
+        let amounts = []
+        const response = await this.contract.getChildrenList()
+        for (let i = 0; i < response.length; i++) {
+            amounts.push(response[i].amount)
+        }
+        return amounts;
+    }
+
     async fund(Address: string) {
         const response = await this.contract.fund(Address);
         await response.wait()
