@@ -2,7 +2,7 @@ import { ethers } from 'ethers'
 
 import abi from '../assets/InterFi.json';
 
-const CONTRACT_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 export type Parent = {
     name: string;
@@ -34,7 +34,7 @@ export class ContractService {
     async addParent(name: string) {
         const response = await this.contract.addParent(name);
         await response.wait();
-        console.log('okay')
+        console.log('addParent')
     }
 
     async getChild(): Promise<Child> {
@@ -42,8 +42,10 @@ export class ContractService {
         return this.parseChild(response);
     }
 
-    async addChild(Address:string, name: string, releaseTime: number){
-        const response = await this.contract.addChild({Address,releaseTime,name});
+    async addChild(Address:string, releaseTime: number,name: string){
+        console.log('7')
+        const response = await this.contract.addChild(Address,releaseTime,name);
+        console.log('8')
         await response.wait();     
     }
     async getBalance():Promise<number> {
@@ -62,11 +64,11 @@ export class ContractService {
     async getChildren():Promise<Child[]> {
         const response = await this.contract.getChildren()
 
-        response.forEach((element: any) => {
-            // element address of the caller
-            const childObj=element.getChild(); // get addres of the caller of the function
-            this.parseChild(childObj)
-        });
+        // response.forEach((element: any) => {
+        //     // element address of the caller
+        //     const childObj=element.getChild(); // get addres of the caller of the function
+        //     this.parseChild(childObj)
+        // });
         return response
     }
          

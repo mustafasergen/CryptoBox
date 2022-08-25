@@ -32,7 +32,8 @@ export default function CocukEkle() {
       console.log(childmetamask)
       console.log(childbday)
       await WalletService.connect().then(async (result) => {
-        const response = await  WalletService.contract.addChild(childmetamask,childname,childbday);
+        const response = await  WalletService.contract.addChild(childmetamask,childbday,childname);
+        
         console.log('yeni çocuk')
 
         // const parent = await WalletService.contract.getParent();
@@ -40,7 +41,7 @@ export default function CocukEkle() {
       });
     }
     catch (error) {
-     
+      console.log(error)
     }
 
   };

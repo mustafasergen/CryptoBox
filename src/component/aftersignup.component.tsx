@@ -19,6 +19,7 @@ function AfterSignupParent() {
 
 
       const [kullanıcıName, setName] = useState("");
+      const [kullanıcıNameChild, setChildName] = useState("");
 
 
      
@@ -36,6 +37,9 @@ function AfterSignupParent() {
               const parent = await WalletService.contract.getParent();
               setName(parent.name);
               console.log(parent.name)
+              const child = await WalletService.contract.getChildrenList();
+              
+              console.log({child})
 
             }
             
@@ -121,6 +125,7 @@ function AfterSignupParent() {
 
                 <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
                 <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
+                <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıNameChild}</h2>
                 <Avatar style={{position:'absolute', left:1250, top:230,width:'100px',height:'100px'}} src= './coin2.png' />
 
                 <Link to='/paragonderme'><h2 style={{position:'absolute', left:1400,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>

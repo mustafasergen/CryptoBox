@@ -217,6 +217,51 @@
   },
   {
     "inputs": [],
+    "name": "getChildrenList",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "Address",
+            "type": "address"
+          },
+          {
+            "internalType": "address payable",
+            "name": "invester",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "releaseTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isReleasable",
+            "type": "bool"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct InterFi.Child[]",
+        "name": "result",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getOwner",
     "outputs": [
       {
