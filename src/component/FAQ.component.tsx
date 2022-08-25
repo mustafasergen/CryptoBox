@@ -115,7 +115,7 @@ export default function FAQ () {
                 type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/signup">Kayıt ol</Link></Button>
+                type="primary"><Link to="/yenideneme">Kayıt ol</Link></Button>
               </Header>
               <Layout>
               <Content style={{background: 'white',

@@ -52,8 +52,8 @@ export default function Signup() {
   const addParentFunction = async () => {
     try {
       await WalletService.connect().then(async (result) => {
-        // const response = await  WalletService.contract.addParent(yenikullanıcı);
-        // console.log('2')
+        const response = await  WalletService.contract.addParent(yenikullanıcı);
+        console.log('2')
 
         const parent = await WalletService.contract.getParent();
         console.log(parent)
@@ -113,7 +113,7 @@ export default function Signup() {
             
               <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
 
-              <Spin spinning={loading}>
+              {/* <Spin spinning={loading}> */}
 
 
                 <h2 style={{ position: 'absolute', left: 320, marginTop: '50px', color: 'black', fontSize: '30px' }}>
@@ -137,7 +137,7 @@ export default function Signup() {
                 </h3>
                 <Link to="/login" > <h4 style={{ position: 'absolute', right: 460, marginTop: '540px', color: 'blue', fontSize: '20px' }}>Giriş</h4></Link>
 
-                </Spin>
+                {/* </Spin> */}
               </Card.Grid>
             
 

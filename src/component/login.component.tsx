@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import { Card} from 'antd';
+import React, {Component, useEffect, useState} from 'react';
+import { Card, notification, Spin} from 'antd';
 import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Image } from 'antd';
+import { WalletService } from '../services/wallet-service';
 
-import { json } from 'stream/consumers';
-import { useAuth } from './auth/AuthProvider';
+
 
 
 const { Header, Footer, Content } = Layout;
@@ -17,13 +17,42 @@ const { Header, Footer, Content } = Layout;
 export default function Login () {
     
 
-      const auth = useAuth();
-      const handleLogin = () =>{
-        auth?.signIn({name:'asd', address:'00', role:'parent'},() =>{})
-      }
+      
+      type NotificationType = 'info';
+      const openNotificationWithIcon = (type: NotificationType) => {
+          notification[type]({
+            message: 'Notification Title',
+            description:
+              'Önce bu hesap ile kayıt yapınız',
+          });
+        };
+      window.scrollTo(0, 0)
+      
+
+      const navigate = useNavigate();
+
+      const [loading, setLoading] = useState(true);
+      useEffect(() => {
+        WalletService.connect().then(() => {
+          WalletService.contract.getRole().then((role: string) => {
+            
+            if (role == 'Unregistered') {
+              // setTimeout(() => {console.log("this is the first message")}, 10000);
+              openNotificationWithIcon('info');
+ 
+            }else if (role == 'Parent'){
+              console.log('parent')
+              setLoading(false);
+            }
+            
+          })
+    
+        })
+      }, []);
+
+
 
       
-      window.scrollTo(0, 0)
         return(
         <div>
             <Layout>
@@ -54,41 +83,27 @@ export default function Login () {
                 type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/signup">Kayıt ol</Link></Button>
+                type="primary"><Link to="/yenideneme">Kayıt ol</Link></Button>
               </Header>
               <Layout>
               <Content style={{backgroundImage: "url(" + "./blur.png" + ")",
                 padding:600, 
                 backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'}}
-                >
+                backgroundRepeat: 'no-repeat'}}>
 
    
 
                 <Card.Grid style={{width:'1200px', height:'750px',position:'absolute', left:570, top:265,backgroundColor:'#E6FFFB'}}>
+                <Spin spinning={loading}>
                 
-                <h2 style={{fontWeight:'bold',fontSize:'30px',position:'absolute', left:360,marginTop:'150px',textAlign:'center'}}>
-                Sign the message in your wallet to<br/>
-                continue.
-                </h2>
 
-                <Link to='/privatepage'><Button style={{position:'absolute', right:340, marginTop:'330px', width:'500px', height:'80px', color:'white',fontWeight:'bold',backgroundImage:"./Metamask.png",
-                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
-                
-                >privatepage</Button></Link>
                                 
-                <Link to='/publicpage'><Button style={{position:'absolute', right:340, marginTop:'480px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
+                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'280px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                >publicpage</Button></Link>
+                >Giriş Yapın</Button></Link>
 
-                <button onClick={handleLogin}>Login</button>
-
-                <div>User {JSON.stringify(auth?.getUser)}</div>
-                
-               
-
-
+                </Spin>
                 </Card.Grid>
 
                 </Content>

@@ -76,7 +76,6 @@ export class WalletService {
 
     static async connect() {
         if (connect) return;
-        console.log('baglandı')
 
         await this.checkConnection();
         if (connect) return;

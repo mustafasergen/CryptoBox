@@ -4,6 +4,8 @@ import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 import  { BellOutlined, ExportOutlined, SearchOutlined,  SendOutlined,  TeamOutlined,  VerticalAlignBottomOutlined,  VerticalAlignTopOutlined,  WalletOutlined } from '@ant-design/icons';
+import { WalletService } from '../services/wallet-service';
+import { useState } from 'react';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -14,7 +16,33 @@ const { Header, Footer, Sider, Content } = Layout;
 function AfterSignupParent() {
     
       window.scrollTo(0, 0)
-              type MenuItem = Required<MenuProps>['items'][number];
+
+
+      const [yenikullanıcı, setName] = useState("");
+      const addParentName= async () => {
+        try {
+          await WalletService.connect().then(async (result) => {
+            const parent = await WalletService.contract.getParent();
+            
+            console.log(parent)
+    
+        
+          });
+        }
+        catch (error) {
+         
+        }
+    
+      };
+        
+      
+      
+      
+      
+      
+      
+      
+      type MenuItem = Required<MenuProps>['items'][number];
         function getItem(
           label: React.ReactNode,
           key: React.Key,
@@ -73,7 +101,6 @@ function AfterSignupParent() {
                       defaultSelectedKeys={['1']}
                       items={items}
                     />
-                  
                   </Sider>
 
 
@@ -101,7 +128,7 @@ function AfterSignupParent() {
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:719,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:818,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:917,backgroundColor:'#13C2C2'}}></Card.Grid>
-                  
+                <button  style={{position:'absolute', left:1400,top:500}} onClick={addParentName}>bas</button>
                </Content>
                </Layout>
                <Footer style={{background:"white", padding:60,boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>

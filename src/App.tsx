@@ -17,6 +17,7 @@ import Paracekme from './component/paracekme.component';
 import ParaYatırma from './component/parayatirma.component';
 import Basari from './component/basari.component';
 import CocukEkle from './component/cocukekle.component';
+import NewLogin from './component/signupnew';
 
 
 
@@ -44,6 +45,7 @@ function App() {
             <Route path='faq' element={<FAQ />} />
             <Route path='after_signup' element={<AfterSignupParent />} />
             <Route path='cocuklarim' element={<Cocuk/>} />
+            <Route path='yenideneme' element={<NewLogin/>} />
             <Route path='privatepage' element={<PrivateRoute node={<PrivatePage />} />} />
             <Route path='/' element={<Home />} />
           </Routes>

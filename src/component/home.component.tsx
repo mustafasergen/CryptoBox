@@ -48,7 +48,7 @@ class Hakkımda extends Component {
                 type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/signup">Kayıt ol</Link></Button>
+                type="primary"><Link to="/yenideneme">Kayıt ol</Link></Button>
               </Header>
               <Layout>
                 
@@ -82,7 +82,7 @@ class Hakkımda extends Component {
                 <CheckCircleOutlined style={{position:'absolute', left:80,color:"#87E8DE",top:980,fontSize:'90px'}} />
 
 
-                <Link to="/signup"><Button style={{position:'absolute', left:270, top:1100, width:'280', height:'80px', color:'white',fontWeight:'bold',fontSize:'30px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
+                <Link to="/yenideneme"><Button style={{position:'absolute', left:270, top:1100, width:'280', height:'80px', color:'white',fontWeight:'bold',fontSize:'30px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
                 type="primary">Hemen Başlayın</Button></Link>
                 
