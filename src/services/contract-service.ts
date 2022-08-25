@@ -43,7 +43,7 @@ export class ContractService {
     }
 
     async addChild(Address:string, name: string, releaseTime: number){
-        const response = await this.contract.addChild({Address,name,releaseTime});
+        const response = await this.contract.addChild({Address,releaseTime,name});
         await response.wait();     
     }
     async getBalance():Promise<number> {

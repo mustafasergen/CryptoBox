@@ -25,27 +25,31 @@ export default function CocukEkle() {
 
   window.scrollTo(0, 0)
 
-  // const addParentFunction = async () => {
-  //   try {
-  //     await WalletService.connect().then(async (result) => {
-  //       const response = await  WalletService.contract.addChild(childmetamask,childname,childbday);
-  //       console.log('yeni çocuk')
+  const addChildrendFunction = async () => {
+    try {
+      console.log("4")
+      console.log(childname)
+      console.log(childmetamask)
+      console.log(childbday)
+      await WalletService.connect().then(async (result) => {
+        const response = await  WalletService.contract.addChild(childmetamask,childname,childbday);
+        console.log('yeni çocuk')
 
-  //       // const parent = await WalletService.contract.getParent();
-  //       // console.log(parent)
-  //     });
-  //   }
-  //   catch (error) {
+        // const parent = await WalletService.contract.getParent();
+        // console.log(parent)
+      });
+    }
+    catch (error) {
      
-  //   }
+    }
 
-  // };
+  };
 
 
 
 
   const [childname, setChildName] = useState("");
-  const [childsurname, setChildSurname] = useState("");
+  // const [childsurname, setChildSurname] = useState("");
   const [childbday, setChildBday] = useState(0);
   const [childmetamask, setChildMetaMask] = useState("");
 
@@ -53,10 +57,10 @@ export default function CocukEkle() {
     setChildName(event.target.value);
 
   }
-  const handlechangeChildSurname = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChildSurname(event.target.value);
+  // const handlechangeChildSurname = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setChildSurname(event.target.value);
 
-  }
+  // }
   // const handlechangeChildBday = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setChildBday(event.target.value);
 
@@ -68,11 +72,9 @@ export default function CocukEkle() {
  
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date);
     const dates = new Date(dateString).getTime() 
     console.log(dates)
     setChildBday(dates);
-    console.log(childbday)
     
   };
   
@@ -103,6 +105,7 @@ export default function CocukEkle() {
 
               <h2 style={{ position: 'absolute', left: 320, marginTop: '30px', color: 'black', fontSize: '30px' }}>
                 Çocuğunuzun Adı
+                
                 <br />
                 <br />
                 <br />
@@ -112,18 +115,20 @@ export default function CocukEkle() {
                 <br /> <br /> <br />
                 Çocuğunuzun Metamask Hesabı
               </h2>
+
               <Input onChange={handlechangeChildName} style={{ position: 'absolute', left: 320, marginTop: '90px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun İsmi" />
-              <Input onChange={handlechangeChildSurname} style={{ position: 'absolute', left: 320, marginTop: '230px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Soyadı" />
+              {/* <Input onChange={handlechangeChildSurname} style={{ position: 'absolute', left: 320, marginTop: '230px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Soyadı" /> */}
               {/* <Input onChange={handlechangeChildBday} style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Doğum Tarihi" /> */}
               <DatePicker style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} onChange={onChange} placeholder="Çocuğunuzun Doğum Tarihi" ></DatePicker>
               <Input onChange={handlechangeChildMetamask} style={{ position: 'absolute', left: 320, marginTop: '510px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Metamask Adresi" />
               {childname}<br />
-              {childsurname}<br />
+              {/* {childsurname}<br /> */}
               {childbday}<br />
               {childmetamask}<br />
+              
 
               
-              <Link to="/cocuklarim" ><Button style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Çocuğu Ekle</Button></Link>
+              <Button onClick={() => {addChildrendFunction();}} style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Çocuğu Ekle</Button>
 
 
             </Card.Grid>
