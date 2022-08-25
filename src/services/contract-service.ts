@@ -42,8 +42,8 @@ export class ContractService {
         return this.parseChild(response);
     }
 
-    async addChild(child:Child){
-        const response = await this.contract.addChild({...child});
+    async addChild(Address:string, name: string, releaseTime: number){
+        const response = await this.contract.addChild({Address,name,releaseTime});
         await response.wait();     
     }
     async getBalance():Promise<number> {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Input } from 'antd';
+import { Card, DatePicker, DatePickerProps, Input } from 'antd';
 import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
@@ -25,12 +25,28 @@ export default function CocukEkle() {
 
   window.scrollTo(0, 0)
 
+  // const addParentFunction = async () => {
+  //   try {
+  //     await WalletService.connect().then(async (result) => {
+  //       const response = await  WalletService.contract.addChild(childmetamask,childname,childbday);
+  //       console.log('yeni çocuk')
+
+  //       // const parent = await WalletService.contract.getParent();
+  //       // console.log(parent)
+  //     });
+  //   }
+  //   catch (error) {
+     
+  //   }
+
+  // };
+
 
 
 
   const [childname, setChildName] = useState("");
   const [childsurname, setChildSurname] = useState("");
-  const [childbday, setChildBday] = useState("");
+  const [childbday, setChildBday] = useState(0);
   const [childmetamask, setChildMetaMask] = useState("");
 
   const handlechangeChildName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,18 +57,26 @@ export default function CocukEkle() {
     setChildSurname(event.target.value);
 
   }
-  const handlechangeChildBday = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChildBday(event.target.value);
+  // const handlechangeChildBday = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setChildBday(event.target.value);
 
-  }
+  // }
   const handlechangeChildMetamask = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChildMetaMask(event.target.value);
 
   }
+ 
 
-
-
-
+  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+    console.log(date);
+    const dates = new Date(dateString).getTime() 
+    console.log(dates)
+    setChildBday(dates);
+    console.log(childbday)
+    
+  };
+  
+ 
 
   return (
 
@@ -90,7 +114,8 @@ export default function CocukEkle() {
               </h2>
               <Input onChange={handlechangeChildName} style={{ position: 'absolute', left: 320, marginTop: '90px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun İsmi" />
               <Input onChange={handlechangeChildSurname} style={{ position: 'absolute', left: 320, marginTop: '230px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Soyadı" />
-              <Input onChange={handlechangeChildBday} style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Doğum Tarihi" />
+              {/* <Input onChange={handlechangeChildBday} style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Doğum Tarihi" /> */}
+              <DatePicker style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} onChange={onChange} placeholder="Çocuğunuzun Doğum Tarihi" ></DatePicker>
               <Input onChange={handlechangeChildMetamask} style={{ position: 'absolute', left: 320, marginTop: '510px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Metamask Adresi" />
               {childname}<br />
               {childsurname}<br />
