@@ -1,8 +1,9 @@
+import { Address } from 'cluster';
 import { ethers } from 'ethers'
 
 import abi from '../assets/InterFi.json';
 
-const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const CONTRACT_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 
 export type Parent = {
     name: string;
@@ -14,7 +15,7 @@ export type Child = {
     name: string;
     Address: string,
     invester: string;
-    releaseTime: Date;
+    releaseTime: number;
     amount: number;
     isReleasable: boolean;
 }
@@ -34,7 +35,7 @@ export class ContractService {
     async addParent(name: string) {
         const response = await this.contract.addParent(name);
         await response.wait();
-        console.log('addParent')
+        console.log('okay')
     }
 
     async getChild(): Promise<Child> {
@@ -42,70 +43,68 @@ export class ContractService {
         return this.parseChild(response);
     }
 
-    async addChild(Address:string, releaseTime: number,name: string){
-        console.log('7')
-        const response = await this.contract.addChild(Address,releaseTime,name);
-        console.log('8')
-        await response.wait();     
+    async addChild(_Address: string, _releaseTime: number, _name: string) {
+        const response = await this.contract.addChild(_Address, _releaseTime, _name);
+        await response.wait();
     }
-    async getBalance():Promise<number> {
+    async getBalance(): Promise<number> {
         const response = await this.contract.getBalance();
         return response;
     }
-    async getAmount():Promise<number> {
+    async getAmount(): Promise<number> {
         const response = await this.contract.getAmount();
         return response;
     }
-    async getOwner():Promise <string> {
+    async getOwner(): Promise<string> {
         const response = await this.contract.getOwner();
         return response;
     }
 
-    async getChildren():Promise<Child[]> {
+    async getChildren(): Promise<Child[]> {
         const response = await this.contract.getChildren()
 
-        // response.forEach((element: any) => {
-        //     // element address of the caller
-        //     const childObj=element.getChild(); // get addres of the caller of the function
-        //     this.parseChild(childObj)
-        // });
+        response.forEach((element: any) => {
+            // element address of the caller
+            const childObj = element.getChild(); // get addres of the caller of the function
+            this.parseChild(childObj)
+        });
         return response
     }
-         
-    async getParent():Promise<Parent>{
+
+    async getParent(): Promise<Parent> {
         const response = await this.contract.getParent()
         return {
             name: response.name,
-            children:response.children,
+            children: response.children,
             Address: response.Address
         } as Parent;
     }
 
-    async withdrawChild(Address:string,amount:number){
-        const response = await this.contract.withdrawChild(Address,amount)
+    async withdrawChild(Address: string, amount: number) {
+        const response = await this.contract.withdrawChild(Address, amount)
         await response.wait()
     }
-    async withdrawParent(Address:string,amount:number){
-        const response = await this.contract.withdrawParent(Address,amount)
+    async withdrawParent(Address: string, amount: number) {
+        const response = await this.contract.withdrawParent(Address, amount)
         await response.wait()
     }
 
 
 
-    async fund(Address:string){
+    async fund(Address: string) {
         const response = await this.contract.fund(Address);
         await response.wait()
-        
+
     }
 
-    async getRole(): Promise <string> {
+    async getRole(): Promise<string> {
         const response = await this.contract.getRole()
         return response
     }
-    
+
     async getChildrenList(): Promise<Child[]> {
         const response = await this.contract.getChildrenList()
-        return response.map((child: any) =>{
+        return response.map((child: any) => {
             return this.parseChild(child)
         })
     }
@@ -118,7 +117,7 @@ export class ContractService {
             invester: value.invester,
             isReleasable: value.isReleasable,
             name: value.name,
-            releaseTime: new Date(value.releaseTime)
+            releaseTime: value.releaseTime
         } as Child;
     }
 }
