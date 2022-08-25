@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import { ethers } from "ethers";
 import { ConnectionInfo } from "ethers/lib/utils";
 import { ContractService } from "./contract-service";
@@ -53,6 +54,7 @@ export class WalletService {
             } else {
                 console.error(error);
             }
+            notification.error(error)
             throw new Error("metmask error!");
         })
     }

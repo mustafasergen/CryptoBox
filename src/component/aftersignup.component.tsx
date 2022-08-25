@@ -1,9 +1,11 @@
 
 import { Layout, Avatar, Menu, MenuProps, Card } from 'antd';
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Image } from 'antd';
 import  { BellOutlined, ExportOutlined, SearchOutlined,  SendOutlined,  TeamOutlined,  VerticalAlignBottomOutlined,  VerticalAlignTopOutlined,  WalletOutlined } from '@ant-design/icons';
+import { WalletService } from '../services/wallet-service';
+import { useEffect, useState } from 'react';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -14,7 +16,42 @@ const { Header, Footer, Sider, Content } = Layout;
 function AfterSignupParent() {
     
       window.scrollTo(0, 0)
-              type MenuItem = Required<MenuProps>['items'][number];
+
+
+      const [kullanıcıName, setName] = useState("");
+
+
+     
+
+      
+      useEffect(() => {
+        WalletService.connect().then(() => {
+          WalletService.contract.getRole().then(async(role: string) => {
+            
+            if (role == 'Unregistered') {
+              // setTimeout(() => {console.log("this is the first message")}, 10000);
+              console.log('kayıtlıdegil')
+ 
+            }else if (role == 'Parent'){
+              const parent = await WalletService.contract.getParent();
+              setName(parent.name);
+              console.log(parent.name)
+
+            }
+            
+          })
+    
+        })
+      }, []);
+        
+      
+      
+      
+      
+      
+      
+      
+      type MenuItem = Required<MenuProps>['items'][number];
         function getItem(
           label: React.ReactNode,
           key: React.Key,
@@ -73,7 +110,6 @@ function AfterSignupParent() {
                       defaultSelectedKeys={['1']}
                       items={items}
                     />
-                  
                   </Sider>
 
 
@@ -83,7 +119,8 @@ function AfterSignupParent() {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN, ISIM!</h2>
+                <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
+                <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
                 <Avatar style={{position:'absolute', left:1250, top:230,width:'100px',height:'100px'}} src= './coin2.png' />
 
                 <Link to='/paragonderme'><h2 style={{position:'absolute', left:1400,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>
@@ -95,13 +132,13 @@ function AfterSignupParent() {
                 <Link to='/parayatirma'><h2 style={{position:'absolute', left:1070,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Yatırma</h2></Link>
                 <Link to='/parayatirma'><VerticalAlignBottomOutlined style={{position:'absolute',left:1100,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
-
+                
                 <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:550,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:620,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:719,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:818,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:917,backgroundColor:'#13C2C2'}}></Card.Grid>
-                  
+                
                </Content>
                </Layout>
                <Footer style={{background:"white", padding:60,boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
@@ -117,3 +154,7 @@ function AfterSignupParent() {
 
 }
 export default AfterSignupParent; 
+
+function openNotificationWithIcon(arg0: string) {
+  throw new Error('Function not implemented.');
+}
