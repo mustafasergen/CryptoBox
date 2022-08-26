@@ -6,22 +6,13 @@ import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 
-
-
-
-
 const { Header, Content } = Layout;
 
-
-
-
-
 export default function CocukEkle() {
- 
-  useEffect(() => { WalletService.connect()
-                    
-  },[]);
 
+  useEffect(() => {
+    WalletService.connect()
+  }, []);
 
   window.scrollTo(0, 0)
 
@@ -32,7 +23,8 @@ export default function CocukEkle() {
       console.log(childmetamask)
       console.log(childbday)
       await WalletService.connect().then(async (result) => {
-        const response = await  WalletService.contract.addChild(childmetamask,childname,childbday);
+        const response = await WalletService.contract.addChild(childmetamask, childbday, childname);
+
         console.log('yeni çocuk')
 
         // const parent = await WalletService.contract.getParent();
@@ -40,7 +32,7 @@ export default function CocukEkle() {
       });
     }
     catch (error) {
-     
+      console.log(error)
     }
 
   };
@@ -69,16 +61,16 @@ export default function CocukEkle() {
     setChildMetaMask(event.target.value);
 
   }
- 
+
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    const dates = new Date(dateString).getTime() 
+    const dates = new Date(dateString).getTime()
     console.log(dates)
     setChildBday(dates);
-    
+
   };
-  
- 
+
+
 
   return (
 
@@ -95,7 +87,7 @@ export default function CocukEkle() {
         </Header>
         <Layout>
           <Content style={{
-            background:"white", 
+            background: "white",
             padding: 600,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
@@ -105,7 +97,7 @@ export default function CocukEkle() {
 
               <h2 style={{ position: 'absolute', left: 320, marginTop: '30px', color: 'black', fontSize: '30px' }}>
                 Çocuğunuzun Adı
-                
+
                 <br />
                 <br />
                 <br />
@@ -125,10 +117,10 @@ export default function CocukEkle() {
               {/* {childsurname}<br /> */}
               {childbday}<br />
               {childmetamask}<br />
-              
 
-              
-              <Button onClick={() => {addChildrendFunction();}} style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Çocuğu Ekle</Button>
+
+
+              <Button onClick={() => { addChildrendFunction(); }} style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Çocuğu Ekle</Button>
 
 
             </Card.Grid>
