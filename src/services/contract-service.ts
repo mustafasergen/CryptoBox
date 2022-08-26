@@ -106,8 +106,9 @@ export class ContractService {
     async fund(Address: string, sendValue: number) {
         console.log("fundcheck1")
         console.log(sendValue)
-        const response = await this.contract.fund(Address, {value: ethers.utils.parseEther(sendValue+"")   
-    });
+        const response = await this.contract.fund(Address, {
+            value: ethers.utils.parseEther(sendValue + "")
+        });
         console.log("fundcheck2")
         await response.wait()
 
@@ -117,6 +118,7 @@ export class ContractService {
         await response.wait()
     }
     async withdrawParent(Address: string, amount: number) {
+        console.log(Address, amount)
         const response = await this.contract.withdrawParent(Address, amount)
         await response.wait()
     }

@@ -27,9 +27,9 @@ export default function ParaGonderme() {
       console.log(recievingchild)
       console.log(explanation)
       await WalletService.connect().then(async (result) => {
-        const response = await  WalletService.contract.fund(recievingchild,parseInt(amount,10));
+        const response = await WalletService.contract.fund(recievingchild, parseInt(amount, 10));
         console.log(amount)
-        const hesap = await  WalletService.contract.getAmount("0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec");
+        const hesap = await WalletService.contract.getAmount("0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199");
         console.log(hesap.toString())
 
         // const parent = await WalletService.contract.getParent();
@@ -37,7 +37,7 @@ export default function ParaGonderme() {
       });
     }
     catch (error) {
-     
+
     }
 
   };
@@ -78,7 +78,7 @@ export default function ParaGonderme() {
         </Header>
         <Layout>
           <Content style={{
-            background:'white',
+            background: 'white',
             padding: 600,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
@@ -98,18 +98,18 @@ export default function ParaGonderme() {
               <h2 style={{ position: 'absolute', left: 700, marginTop: '120px', color: 'black', fontSize: '30px' }}>
                 ETH
               </h2>
-              
+
               <Input onChange={handlechangeAmount} style={{ position: 'absolute', left: 450, marginTop: '120px', width: '200px', height: '80px' }} placeholder="" />
               <Input onChange={handlechangeRecievingChild} style={{ position: 'absolute', left: 450, marginTop: '260px', width: '200px', height: '80px' }} placeholder="Alıcı Çocuk" />
               <Input onChange={handlechangeExplanation} style={{ position: 'absolute', left: 450, marginTop: '400px', width: '500px', height: '70px' }} placeholder="İsteğe Bağlı" />
-           
+
               {amount}
               {recievingchild}
               {explanation}
-              
 
 
-              <Link to="/basari" ><Button  onClick={() => { fundFunction(); }} style={{ position: 'absolute', left: 430, marginTop: '530px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Gönder</Button></Link>
+
+              <Link to="/basari" ><Button onClick={() => { fundFunction(); }} style={{ position: 'absolute', left: 430, marginTop: '530px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Gönder</Button></Link>
 
 
             </Card.Grid>

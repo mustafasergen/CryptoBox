@@ -18,21 +18,24 @@ export default function Paracekme() {
   window.scrollTo(0, 0)
 
 
-  const fundFunction = async () => {
+  const withdrawParentFunction = async () => {
     try {
       console.log("4")
       console.log(pullmoney)
 
       await WalletService.connect().then(async (result) => {
-        const response = await  WalletService.contract.withdrawParent(pullmoneyFrom,parseInt(pullmoney, 10));
+        console.log(pullmoneyFrom)
         console.log(pullmoney)
-
+        const response = await WalletService.contract.withdrawParent(pullmoneyFrom, parseInt(pullmoney, 10));
+        console.log(pullmoney)
+        const hesap = await WalletService.contract.getAmount("0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199");
+        console.log(hesap.toString())
         // const parent = await WalletService.contract.getParent();
         // console.log(parent)
       });
     }
     catch (error) {
-     
+      console.log(error)
     }
 
   };
@@ -68,7 +71,7 @@ export default function Paracekme() {
         </Header>
         <Layout>
           <Content style={{
-            background:'white',
+            background: 'white',
             padding: 600,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
@@ -91,13 +94,13 @@ export default function Paracekme() {
 
               {pullmoneyFrom}
               {pullmoney}
-            
 
 
 
 
 
-              <Link to="/basari" ><Button style={{ position: 'absolute', left: 350, marginTop: '380px', width: '370px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Ethereum Çek</Button></Link>
+
+              <Link to="/basari" ><Button onClick={() => { withdrawParentFunction(); }} style={{ position: 'absolute', left: 350, marginTop: '380px', width: '370px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Ethereum Çek</Button></Link>
 
 
             </Card.Grid>
