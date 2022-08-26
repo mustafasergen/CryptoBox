@@ -18,7 +18,7 @@ export default function ParacekmeCocuk() {
   window.scrollTo(0, 0)
 
 
-  const withdrawParentFunction = async () => {
+  const withdrawChildFunction = async () => {
     try {
       console.log("4")
       console.log(pullmoney)
@@ -26,7 +26,7 @@ export default function ParacekmeCocuk() {
       await WalletService.connect().then(async (result) => {
         console.log(pullmoneyFrom)
         console.log(pullmoney)
-        const response = await WalletService.contract.withdrawParent(pullmoneyFrom, parseInt(pullmoney, 10));
+        const response = await WalletService.contract.withdrawChild(pullmoneyFrom, pullmoney);
         console.log(pullmoney)
         const hesap = await WalletService.contract.getAmount(pullmoneyFrom);
         console.log(hesap.toString())
@@ -100,7 +100,7 @@ export default function ParacekmeCocuk() {
 
 
 
-              <Link to="/basari" ><Button onClick={() => { withdrawParentFunction(); }} style={{ position: 'absolute', left: 350, marginTop: '380px', width: '370px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Ethereum Çek</Button></Link>
+              <Link to="/basari" ><Button onClick={() => { withdrawChildFunction() }} style={{ position: 'absolute', left: 350, marginTop: '380px', width: '370px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Ethereum Çek</Button></Link>
 
 
             </Card.Grid>

@@ -113,14 +113,14 @@ export class ContractService {
         await response.wait()
 
     }
-    async withdrawChild(Address: string, amount: number) {
-        const response = await this.contract.withdrawChild(Address, amount)
+    async withdrawChild(Address: string, amount: string) {
+        const response = await this.contract.withdrawChild(Address, { value: ethers.utils.parseEther(amount )} )
         await response.wait()
     }
     async withdrawParent(Address: string, amount: number) {
         console.log(Address, amount)
         const response = await this.contract.withdrawParent(Address,
-            ethers.utils.parseEther(amount + ""))
+            { value:  ethers.utils.parseEther(amount + "")})
         await response.wait()
     }
 
