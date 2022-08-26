@@ -4,6 +4,7 @@ import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
+import { WalletService } from '../services/wallet-service';
 
 
 
@@ -18,7 +19,28 @@ export default function ParaGonderme() {
 
   window.scrollTo(0, 0)
 
+  const fundFunction = async () => {
+    console.log("9")
+    try {
+      console.log("4")
+      console.log(amount)
+      console.log(recievingchild)
+      console.log(explanation)
+      await WalletService.connect().then(async (result) => {
+        const response = await  WalletService.contract.fund(recievingchild,parseInt(amount,10));
+        console.log(amount)
+        const hesap = await  WalletService.contract.getAmount("0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec");
+        console.log(hesap.toString())
 
+        // const parent = await WalletService.contract.getParent();
+        // console.log(parent)
+      });
+    }
+    catch (error) {
+     
+    }
+
+  };
 
   const [amount, setAmount] = useState("");
   const [recievingchild, setRecievingChild] = useState("");
@@ -84,9 +106,10 @@ export default function ParaGonderme() {
               {amount}
               {recievingchild}
               {explanation}
+              
 
 
-              <Link to="/basari" ><Button style={{ position: 'absolute', left: 430, marginTop: '530px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Gönder</Button></Link>
+              <Link to="/basari" ><Button  onClick={() => { fundFunction(); }} style={{ position: 'absolute', left: 430, marginTop: '530px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Gönder</Button></Link>
 
 
             </Card.Grid>

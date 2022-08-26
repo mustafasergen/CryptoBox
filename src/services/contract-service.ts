@@ -103,8 +103,12 @@ export class ContractService {
         return amounts;
     }
 
-    async fund(Address: string) {
-        const response = await this.contract.fund(Address);
+    async fund(Address: string, sendValue: number) {
+        console.log("fundcheck1")
+        console.log(sendValue)
+        const response = await this.contract.fund(Address, {value: ethers.utils.parseEther(sendValue+"")   
+    });
+        console.log("fundcheck2")
         await response.wait()
 
     }
