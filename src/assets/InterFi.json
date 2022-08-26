@@ -304,6 +304,25 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "_child",
+        "type": "address"
+      }
+    ],
+    "name": "getReleaseTime",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "getRole",
     "outputs": [
@@ -340,11 +359,6 @@
         "internalType": "address payable",
         "name": "_child",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
       }
     ],
     "name": "withdrawParent",

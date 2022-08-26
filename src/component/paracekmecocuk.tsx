@@ -13,7 +13,7 @@ import { WalletService } from '../services/wallet-service';
 const { Header, Footer, Content } = Layout;
 
 
-export default function Paracekme() {
+export default function ParacekmeCocuk() {
 
   window.scrollTo(0, 0)
 
