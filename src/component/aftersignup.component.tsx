@@ -97,8 +97,6 @@ function AfterSignupParent() {
                 
                 type="link" danger><Link to="/">CryptoBox</Link></Button>
 
-                <SearchOutlined style={{position:'absolute',right:350,top:40,color:'#13C2C2',fontSize:'30px'}}/>
-                <BellOutlined style={{position:'absolute',right:300,top:40,color:'#13C2C2',borderBlockColor:'#13C2C2' ,fontSize:'30px'}}/>
                 <TeamOutlined style={{position:'absolute',right:250,top:40,color:'#13C2C2',borderBlockColor:'#13C2C2' ,fontSize:'30px'}}/>
 
 

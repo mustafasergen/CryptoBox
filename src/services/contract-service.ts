@@ -87,6 +87,7 @@ export class ContractService {
     async getChildrenList(): Promise<Child[]> {
         const response = await this.contract.getChildrenList()
         return response.map((child: any) => {
+            console.log({child})
             return this.parseChild(child)
         })
     }

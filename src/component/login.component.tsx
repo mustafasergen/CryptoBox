@@ -40,7 +40,7 @@ export default function Login () {
               // setTimeout(() => {console.log("this is the first message")}, 10000);
               openNotificationWithIcon('info');
  
-            }else if (role == 'Parent'){
+            }else if (role == 'Parent' || role =='Child'){
               console.log('parent')
               setLoading(false);
             }
@@ -94,14 +94,20 @@ export default function Login () {
    
 
                 <Card.Grid style={{width:'1200px', height:'750px',position:'absolute', left:570, top:265,backgroundColor:'#E6FFFB'}}>
-                <Spin spinning={loading}>
-                
-
-                                
-                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'280px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
-                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
-                
-                >Giriş Yapın</Button></Link>
+                <Spin
+                    style={{marginTop:'290px'}}
+                    spinning={loading}
+                    tip={
+                      <h2 style={{ color: "blue" }}>
+                        Lütfen MetaMask hesabına bağlanın
+                      </h2>
+                    }
+                    size="large"
+                  >     
+                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
+                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >Ebeveyn Hesabı olarak Giriş Yapın</Button></Link>
+                <Link to='/after_signup_child'><Button style={{position:'absolute', right:340, marginTop:'360px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
+                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >Çocuk Hesabı Olarak Giriş Yapın</Button></Link>
 
                 </Spin>
                 </Card.Grid>

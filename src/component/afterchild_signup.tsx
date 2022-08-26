@@ -40,7 +40,7 @@ function AfterSignupChild() {
                 const child = await WalletService.contract.getChild();
                 setName(child.name);
                 console.log(child.name)
-  
+
               }
             
           })

@@ -12,13 +12,28 @@ const { Header, Footer, Content } = Layout;
 export default function NewLogin() {
   window.scrollTo(0, 0);
 
-  type NotificationType = "info";
-  const openNotificationWithIcon = (type: NotificationType) => {
+  type NotificationType = "info" |'success';
+  const Kayıtolunuz = (type: NotificationType) => {
     notification[type]({
-      message: "Notification Title",
+      message: "Bilgilendirme Mesajı",
       description: "Kayıt olunuz",
     });
   };
+
+  const KayıtBaşarılı = (type: NotificationType) => {
+    notification[type]({
+      message: "Bilgilendirme Mesajı",
+      description: "Kayıt Başarılı Bir Şekilde oldu",
+    });
+  };
+  const Buton = (type: NotificationType) => {
+    notification[type]({
+      message: "Bilgilendirme Mesajı",
+      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+    });
+  };
+
+
 
   const navigate = useNavigate();
 
@@ -28,7 +43,7 @@ export default function NewLogin() {
       WalletService.contract.getRole().then((role: string) => {
         setLoading(false);
         if (role == "Unregistered") {
-          openNotificationWithIcon("info");
+          Kayıtolunuz("info");
         } else if (role == "Parent") {
           navigate("/login");
         }
@@ -55,11 +70,14 @@ export default function NewLogin() {
   };
 
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    addParentFunction()
+    KayıtBaşarılı("success");
+    setTimeout(() => {navigate("/login")}, 10000);
+    
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    openNotificationWithIcon("info");
+    Buton("info");
   };
   return (
     <Layout>
@@ -249,9 +267,6 @@ export default function NewLogin() {
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                   <Button
-                    onClick={() => {
-                      addParentFunction();
-                    }}
                     style={{ background: "#13C2C2", borderColor: "#13C2C2" }}
                     type="primary"
                     htmlType="submit"

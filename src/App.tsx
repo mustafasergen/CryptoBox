@@ -20,6 +20,7 @@ import CocukEkle from './component/cocukekle.component';
 import NewLogin from './component/signupnew';
 import AfterSignupChild from './component/afterchild_signup';
 import ParacekmeCocuk from './component/paracekmecocuk';
+import CocukEkleYeni from './component/cocukekleyeni';
 
 
 
@@ -44,6 +45,7 @@ function App() {
             <Route path='basari' element={<Basari />} />
             <Route path='paracekme' element={<Paracekme />} />
             <Route path='paracekme_cocuk' element={<ParacekmeCocuk />} />
+            <Route path='cocukekleyeni' element={<CocukEkleYeni />} />
             <Route path='cocukekle' element={<CocukEkle />} />
             <Route path='faq' element={<FAQ />} />
             <Route path='after_signup_child' element={<AfterSignupChild />} />
