@@ -18,6 +18,8 @@ import ParaYatırma from './component/parayatirma.component';
 import Basari from './component/basari.component';
 import CocukEkle from './component/cocukekle.component';
 import NewLogin from './component/signupnew';
+import AfterSignupChild from './component/afterchild_signup';
+import ParacekmeCocuk from './component/paracekmecocuk';
 
 
 
@@ -41,8 +43,10 @@ function App() {
             <Route path='paragonderme' element={<ParaGonderme />} />
             <Route path='basari' element={<Basari />} />
             <Route path='paracekme' element={<Paracekme />} />
+            <Route path='paracekme_cocuk' element={<ParacekmeCocuk />} />
             <Route path='cocukekle' element={<CocukEkle />} />
             <Route path='faq' element={<FAQ />} />
+            <Route path='after_signup_child' element={<AfterSignupChild />} />
             <Route path='after_signup' element={<AfterSignupParent />} />
             <Route path='cocuklarim' element={<Cocuk/>} />
             <Route path='yenideneme' element={<NewLogin/>} />

@@ -29,7 +29,7 @@ export default function ParaGonderme() {
       await WalletService.connect().then(async (result) => {
         const response = await WalletService.contract.fund(recievingchild, parseInt(amount, 10));
         console.log(amount)
-        const hesap = await WalletService.contract.getAmount("0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199");
+        const hesap = await WalletService.contract.getAmount(recievingchild);
         console.log(hesap.toString())
 
         // const parent = await WalletService.contract.getParent();
