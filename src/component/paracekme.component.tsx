@@ -20,18 +20,18 @@ export default function Paracekme() {
 
   const withdrawParentFunction = async () => {
     try {
-      console.log("4")
-      console.log(pullmoney)
+      console.log("withdrawParentFunction")
+      
 
       await WalletService.connect().then(async (result) => {
-        console.log(pullmoneyFrom)
-        console.log(pullmoney)
-        const response = await WalletService.contract.withdrawParent(pullmoneyFrom, parseInt(pullmoney, 10));
-        console.log(pullmoney)
+
+        console.log(pullmoneyFrom,pullmoney)
+        
+        const response = await WalletService.contract.withdrawParent(pullmoneyFrom, pullmoney); 
+        console.log(response)
         const hesap = await WalletService.contract.getAmount(pullmoneyFrom);
         console.log(hesap.toString())
-        // const parent = await WalletService.contract.getParent();
-        // console.log(parent)
+        
       });
     }
     catch (error) {

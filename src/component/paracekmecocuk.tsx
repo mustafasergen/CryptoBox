@@ -30,8 +30,7 @@ export default function ParacekmeCocuk() {
         console.log(pullmoney)
         const hesap = await WalletService.contract.getAmount(pullmoneyFrom);
         console.log(hesap.toString())
-        // const parent = await WalletService.contract.getParent();
-        // console.log(parent)
+        
       });
     }
     catch (error) {

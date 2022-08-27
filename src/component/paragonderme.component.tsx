@@ -22,15 +22,16 @@ export default function ParaGonderme() {
   const fundFunction = async () => {
     console.log("9")
     try {
-      console.log("4")
+      console.log("fundFunction")
       console.log(amount)
       console.log(recievingchild)
       console.log(explanation)
       await WalletService.connect().then(async (result) => {
-        const response = await WalletService.contract.fund(recievingchild, parseInt(amount, 10));
-        console.log(amount)
+        const response = await WalletService.contract.fund(recievingchild, amount);
+        
         const hesap = await WalletService.contract.getAmount(recievingchild);
-        console.log(hesap.toString())
+        console.log("bebe amount : "+hesap.toString())
+        
 
         // const parent = await WalletService.contract.getParent();
         // console.log(parent)
