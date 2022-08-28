@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Card, Form, Input, notification, Spin } from "antd";
+import { Card, Form, Input, notification, Skeleton, Spin } from "antd";
 import { Layout, Avatar } from "antd";
 import { Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { Image } from "antd";
 
 import { WalletService } from "../services/wallet-service";
+import { NotificationPlacement } from "antd/lib/notification";
 
 const { Header, Footer, Content } = Layout;
 
 export default function NewLogin() {
   window.scrollTo(0, 0);
 
-  type NotificationType = "info" |'success';
+  type NotificationType = "info" |'success'| 'warning'|'error';
   const Kayıtolunuz = (type: NotificationType) => {
     notification[type]({
       message: "Bilgilendirme Mesajı",
@@ -20,16 +21,24 @@ export default function NewLogin() {
     });
   };
 
-  const KayıtBaşarılı = (type: NotificationType) => {
+  const KayıtBaşarılı = (type: NotificationType,placement: NotificationPlacement) => {
     notification[type]({
-      message: "Bilgilendirme Mesajı",
-      description: "Kayıt Başarılı Bir Şekilde oldu",
+      message: `Bilgilendirme Mesajı `,
+      description:  "Ebeveyn hesabı eklenmesi için MetaMask'tan ücreti onaylayın lütfen.",
+      placement,
     });
   };
   const Buton = (type: NotificationType) => {
     notification[type]({
       message: "Bilgilendirme Mesajı",
       description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+    });
+  };
+  const Parent = (type: NotificationType,placement: NotificationPlacement) => {
+    notification[type]({
+      message: `Bilgilendirme Mesajı `,
+      description: "Hesabınız bu adres ile var, giriş sayfasına Yönlendiriyorsunuz",
+      placement,
     });
   };
 
@@ -41,12 +50,17 @@ export default function NewLogin() {
   useEffect(() => {
     WalletService.connect().then(() => {
       WalletService.contract.getRole().then((role: string) => {
-        setLoading(false);
+        
         if (role == "Unregistered") {
           Kayıtolunuz("info");
-        } else if (role == "Parent") {
-          navigate("/login");
+          setLoading(false);
+        } else if (role == "Parent" || role == 'Child') {
+          
+          Parent('warning','bottom')
+          
+          setTimeout(() => {navigate("/login")}, 5000);
         }
+        
       });
     });
   }, []);
@@ -71,15 +85,16 @@ export default function NewLogin() {
 
   const onFinish = (values: any) => {
     addParentFunction()
-    KayıtBaşarılı("success");
+    KayıtBaşarılı("success",'bottom');
     setTimeout(() => {navigate("/login")}, 10000);
     
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    Buton("info");
+    Buton("error");
   };
   return (
+    
     <Layout>
       <Header
         style={{
@@ -201,7 +216,8 @@ export default function NewLogin() {
         </Button>
       </Header>
       <Layout>
-        <Content
+
+            <Content
           style={{
             backgroundImage: "url(" + "./blur.png" + ")",
             padding: 600,
@@ -236,7 +252,7 @@ export default function NewLogin() {
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  Lütfen MetaMask hesabına bağlanın
+                  Kayıt olmadıysanıza lütfen kayıt olun, Eğer hesabınız varsa Kayıtlı hesabınız ile Giriş yapınız
                 </h2>
               }
               size="large"
@@ -255,7 +271,7 @@ export default function NewLogin() {
                   label="Ad"
                   name="username"
                   rules={[
-                    { required: true, message: "Please input your username!" },
+                    { required: true, message: "Bu kısım boş bırakılamaz" },
                   ]}
                 >
                   <Input
@@ -276,10 +292,11 @@ export default function NewLogin() {
                 </Form.Item>
               </Form>
 
-              {yenikullanıcı}
+              
             </Spin>
           </Card.Grid>
         </Content>
+        
 
         <Footer style={{ background: "white", padding: 60 }}>
           <h2 style={{ position: "absolute", right: 1000 }}>

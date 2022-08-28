@@ -25,9 +25,9 @@ export default function ParaGonderme() {
 
   const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
     notification.info({
-      message: `Bilgilendirme Mesajı  ${placement}`,
+      message: `Bilgilendirme Mesajı `,
       description:
-      "Çoçuğunuz para gönderildi, Profil sayfasına yönlendiriyorsunuz",
+      "Çoçuğunuz para gönderilmesi için MetaMask'tan ücreti onaylayın lütfen.",
       placement,
     });
   };
@@ -59,14 +59,15 @@ export default function ParaGonderme() {
 
   const fundFunction = async () => {
     try {
+      console.log("fundFunction")
       console.log(amount)
       console.log(recievingchild)
       console.log(explanation)
       await WalletService.connect().then(async (result) => {
-        const response = await WalletService.contract.fund(recievingchild, parseInt(amount, 10));
+        const response = await WalletService.contract.fund(recievingchild, amount);
         console.log(amount)
         const hesap = await WalletService.contract.getAmount(recievingchild);
-        console.log(hesap.toString())
+        console.log("bebe amount : "+hesap.toString())
         console.log("Para Gönderildi")
 
       });
@@ -155,7 +156,7 @@ export default function ParaGonderme() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-          >Çoçuğunuza Para Gönderin</h1>
+          >Çocuğunuza Para Gönderin</h1>
             <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
             <Spin
               spinning={loading}
@@ -164,6 +165,7 @@ export default function ParaGonderme() {
                   Lütfen MetaMask hesabına bağlanın
                 </h2>
               }>
+                <h1 style={{position: "absolute",marginLeft: '765px',marginTop: '4px',color: '#13C2C2',fontSize: "20px",fontWeight: "bold",}} >ETH</h1>
 
               <Form
                 style={{ marginTop: "240px", marginLeft: "200px" }}
@@ -205,15 +207,11 @@ export default function ParaGonderme() {
                 <Form.Item                  
                 label='Bilgilendirme'
                 name="Bilgirendirme"
-                rules={[
-                  { required: true, message: "Bu kısım boş bırakılamaz" },
-                ]}
-
                 >
                 <Input
                     onChange={handlechangeExplanation}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="MetaMask Adresini Giriniz"
+                    placeholder="İsteğe bağlı Açıklama ekleyiniz"
                   /></Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 20 }}>
@@ -222,7 +220,7 @@ export default function ParaGonderme() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Çoçuk Ekle
+                    Gönder
                   </Button>
                 </Form.Item>
               </Form>

@@ -18,9 +18,9 @@ export default function CocukEkleYeni() {
 
     const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
       notification.info({
-        message: `Bilgilendirme Mesajı  ${placement}`,
+        message: `Bilgilendirme Mesajı `,
         description:
-        "Çoçuğunuz eklendi, Çocuklarım sayfasına yönlendiriyorsunuz",
+        "Çoçuğunuzun eklenmesi için MetaMask'tan ücreti onaylayın lütfen.",
         placement,
       });
     };
@@ -138,7 +138,7 @@ export default function CocukEkleYeni() {
             <h1
             style={{
               position: "absolute",
-              left: 800,
+              left: 920,
               top: 180,
               color: '#13C2C2',
               fontSize: "50px",

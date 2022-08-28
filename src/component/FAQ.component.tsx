@@ -129,7 +129,7 @@ export default function FAQ () {
                   
                   <h2 style={{position:'absolute', left:900, top:250,color:'#13C2C2',fontWeight:'bold',fontSize:'40px'}}>SIK SORULAN SORULAR</h2>
                   <Tree style={{position:'absolute', left:200, top:-100,width:'1500px',height:'400px'}}
-                    showLine={showLine}
+                    // showLine={showLine}
                     showIcon={showIcon}
                     defaultExpandedKeys={['0-0-0','0-1-0','0-2-0']}
                     

@@ -1,10 +1,12 @@
-import React, { Component, useState } from 'react';
-import { Card, Input } from 'antd';
+import React, { Component, useEffect, useState } from 'react';
+import { Card, Form, Input, Spin } from 'antd';
 import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
+import { TeamOutlined } from '@ant-design/icons';
 
 
 
@@ -13,26 +15,61 @@ import { WalletService } from '../services/wallet-service';
 const { Header, Footer, Content } = Layout;
 
 
-export default function ParacekmeCocuk() {
+export default function Paracekme() {
+
+  type NotificationType = "info"| 'warning';
+
+  const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
+    notification.info({
+      message: `Bilgilendirme Mesajı `,
+      description:
+      "Hesabınızdaki parayı çekebilmek için, MetaMask'tan ücreti onaylayın lütfen.",
+      placement,
+    });
+  };
+
+
+
+
+  const Başarısız = (type: NotificationType) => {
+    notification[type]({
+      message: "Bilgilendirme Mesajı ",
+      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+    });
+  };
+
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    WalletService.connect().then(() => {
+      WalletService.contract.getRole().then((role: string) => {
+        if (role == "Unregistered" || role== 'Parent') {
+          
+        } else if (role== 'Child') {
+          setLoading(false);
+        }
+      });
+    });
+  }, []);
+
+
 
   window.scrollTo(0, 0)
 
 
-  const withdrawParentFunction = async () => {
+  const withdrawChildFunction = async () => {
     try {
-      console.log("4")
-      console.log(pullmoney)
+      // console.log("4")
+      // console.log(pullmoney)
 
-      await WalletService.connect().then(async (result) => {
-        console.log(pullmoneyFrom)
-        console.log(pullmoney)
-        const response = await WalletService.contract.withdrawParent(pullmoneyFrom, parseInt(pullmoney, 10));
-        console.log(pullmoney)
-        const hesap = await WalletService.contract.getAmount(pullmoneyFrom);
-        console.log(hesap.toString())
-        // const parent = await WalletService.contract.getParent();
-        // console.log(parent)
-      });
+      // await WalletService.connect().then(async (result) => {
+      //   console.log(pullmoneyFrom)
+      //   console.log(pullmoney)
+      //   const response = await WalletService.contract.withdrawChild(pullmoneyFrom, pullmoney);
+      //   console.log(pullmoney)
+      //   const hesap = await WalletService.contract.getAmount(pullmoneyFrom);
+      //   console.log(hesap.toString())
+        
+      // });
     }
     catch (error) {
       console.log(error)
@@ -40,19 +77,26 @@ export default function ParacekmeCocuk() {
 
   };
 
+  const navigate = useNavigate();
 
   const [pullmoney, setPullMoney] = useState("");
-  const [pullmoneyFrom, setPullMoneyFrom] = useState("");
+ 
 
 
   const handlechangePullMoney = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPullMoney(event.target.value);
 
   }
-  const handlechangePullMoneyFrom = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPullMoneyFrom(event.target.value);
 
-  }
+  const onFinish = (values: any) => {
+    withdrawChildFunction()
+    Başarılı('info','bottom');
+    setTimeout(() => {navigate("/after_signup")}, 10000);
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    Başarısız("warning");
+  };
 
 
 
@@ -68,6 +112,19 @@ export default function ParacekmeCocuk() {
           <Button style={{ position: 'absolute', left: 190, top: 15, color: '#13C2C2', fontWeight: 'bold', fontSize: '35px' }}
 
             type="link" danger><Link to="/">CryptoBox</Link></Button>
+            
+          <Link to="/after_signup_child">
+          <TeamOutlined
+            style={{
+              position: "absolute",
+              right: 250,
+              top: 40,
+              color: "#13C2C2",
+              borderBlockColor: "#13C2C2",
+              fontSize: "30px",
+            }}
+          />
+          </Link>
         </Header>
         <Layout>
           <Content style={{
@@ -77,33 +134,66 @@ export default function ParacekmeCocuk() {
             backgroundRepeat: 'no-repeat'
           }}
           >
-            <Card.Grid style={{ width: '1000px', height: '650px', position: 'absolute', left: 680, top: 265, backgroundColor: '#E6FFFB' }}>
+            <h1
+            style={{
+              position: "absolute",
+              left: 830,
+              top: 180,
+              color: '#13C2C2',
+              fontSize: "50px",
+              fontWeight: "bold",
+            }}
+            >Hesabımdan Para Çekme</h1>
+            <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
+            <Spin
+              spinning={loading}
+              tip={
+                <h2 style={{ color: "blue" }}>
+                  Lütfen MetaMask hesabına bağlanın
+                </h2>
+              }>
 
-              <h2 style={{ position: 'absolute', left: 250, marginTop: '270px', color: 'black', fontSize: '30px' }}>
-                Tutar:
-              </h2>
-              <h2 style={{ position: 'absolute', left: 700, marginTop: '270px', color: 'black', fontSize: '30px' }}>
-                ETH
-              </h2>
-              <h2 style={{ position: 'absolute', left: 250, marginTop: '150px', color: 'black', fontSize: '30px' }}>
-                Adres:
-              </h2>
+              <h1 style={{position: "absolute",marginLeft: '765px',marginTop: '4px',color: '#13C2C2',fontSize: "20px",fontWeight: "bold",}} >ETH</h1>
 
-              <Input onChange={handlechangePullMoneyFrom} style={{ position: 'absolute', left: 430, marginTop: '140px', width: '200px', height: '80px' }} placeholder="Adres" />
-              <Input onChange={handlechangePullMoney} style={{ position: 'absolute', left: 430, marginTop: '260px', width: '200px', height: '80px' }} placeholder="Tutar" />
+              <Form
+                style={{ marginTop: "240px", marginLeft: "200px" }}
+                name="basic"
+                labelCol={{ span: 5 }}
+                wrapperCol={{ span: 9 }}
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
+              >
+                <Form.Item
+                  label="Tutar"
+                  name="TUTAR"
+                  rules={[
+                    { required: true, message: "Bu kısım boş bırakılamaz" },
+                  ]}
+                >
+                  <Input
+                    onChange={handlechangePullMoney}
+                    style={{ width: "350px", height: "40px" }}
+                    placeholder="Çekeceğiniz Ether Tutarını Girin"
+                  />
+                </Form.Item>
+   
 
-              {pullmoneyFrom}
-              {pullmoney}
+ 
 
-
-
-
-
-
-              <Link to="/basari" ><Button onClick={() => { withdrawParentFunction(); }} style={{ position: 'absolute', left: 350, marginTop: '380px', width: '370px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Ethereum Çek</Button></Link>
-
-
-            </Card.Grid>
+                <Form.Item wrapperCol={{ offset: 8, span: 20 }}>
+                  <Button
+                    style={{width: '120px', height: '40px',background: "#13C2C2", borderColor: "#13C2C2" }}
+                    type="primary"
+                    htmlType="submit"
+                    >
+                    Ethereum Çek
+                  </Button>
+                </Form.Item>
+              </Form>
+              </Spin>
+              </Card.Grid>
 
           </Content>
 

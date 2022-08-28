@@ -14,6 +14,7 @@ import { WalletService } from "../services/wallet-service";
 import { useEffect, useState } from "react";
 import { Child } from "../services/contract-service";
 
+
 const { Header, Footer, Sider, Content } = Layout;
 
 function Cocuk() {
@@ -84,10 +85,10 @@ function Cocuk() {
       <Link to="/after_signup">
         <h2
           style={{
-            fontSize: "30px",
+            fontSize: "28px",
             color: "black",
             textAlign: "center",
-            marginTop: "6px",
+            marginTop: "15px",
           }}
         >
           My CrytoBox
@@ -101,10 +102,10 @@ function Cocuk() {
     getItem(
       <h2
         style={{
-          fontSize: "30px",
+          fontSize: "28px",
           color: "black",
           textAlign: "center",
-          marginTop: "6px",
+          marginTop: "15px",
         }}
       >
         Çocuklarım
@@ -114,17 +115,18 @@ function Cocuk() {
         style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
       />
     ),
-    getItem(
+    getItem(<Link to="/login">
       <h2
         style={{
-          fontSize: "30px",
+          fontSize: "28px",
           color: "black",
           textAlign: "center",
-          marginTop: "6px",
+          marginTop: "15px",
         }}
       >
-        Çıkış Yap
-      </h2>,
+        Oturum Değiştirme
+      </h2>
+      </Link>,
       "3",
       <ExportOutlined
         style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
@@ -210,6 +212,7 @@ function Cocuk() {
               backgroundRepeat: "no-repeat",
             }}
           >
+            <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>Çocuklarım</h2>
             
             <Table
               style={{

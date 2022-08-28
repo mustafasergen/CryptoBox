@@ -14,6 +14,8 @@ const { Header, Footer, Sider, Content } = Layout;
 
 
 function AfterSignupParent() {
+
+  
     
       window.scrollTo(0, 0)
 
@@ -30,7 +32,7 @@ function AfterSignupParent() {
           WalletService.contract.getRole().then(async(role: string) => {
             
             if (role == 'Unregistered') {
-              // setTimeout(() => {console.log("this is the first message")}, 10000);
+             
               console.log('kayıtlıdegil')
  
             }else if (role == 'Parent'){
@@ -39,7 +41,7 @@ function AfterSignupParent() {
               console.log(parent.name)
               const child = await WalletService.contract.getChildrenList();
               
-              console.log({child})
+              
 
             }
             
@@ -76,9 +78,9 @@ function AfterSignupParent() {
 
 
       const items: MenuItem[] = [
-        getItem(<Link to="/after_signup"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>My CrytoBox</h2></Link>, '1', <WalletOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}} />),
-        getItem(<Link to="/cocuklarim"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>Çocuklarım</h2></Link>, '2', <TeamOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
-        getItem(<h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>Çıkış Yap</h2>, '3', <ExportOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
+        getItem(<Link to="/after_signup"><h2 style={{fontSize:'28px',color:'black',textAlign:'center',marginTop:'15px'}}>My CrytoBox</h2></Link>, '1', <WalletOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}} />),
+        getItem(<Link to="/cocuklarim"><h2 style={{fontSize:'28px',color:'black',textAlign:'center',marginTop:'15px'}}>Çocuklarım</h2></Link>, '2', <TeamOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
+        getItem(<Link to="/login"><h2 style={{fontSize:'28px',color:'black',textAlign:'center',marginTop:'15px'}}>Oturum Değiştirme </h2></Link>, '3', <ExportOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
         
 
       ];
@@ -124,16 +126,14 @@ function AfterSignupParent() {
                 <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
                 <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
                 <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıNameChild}</h2>
-                <Avatar style={{position:'absolute', left:1250, top:230,width:'100px',height:'100px'}} src= './coin2.png' />
+                <Avatar style={{position:'absolute', left:1190, top:230,width:'100px',height:'100px'}} src= './coin2.png' />
 
-                <Link to='/paragonderme'><h2 style={{position:'absolute', left:1400,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>
-                <Link to='/paragonderme'><SendOutlined style={{position:'absolute',left:1450,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
+                <Link to='/paragonderme'><h2 style={{position:'absolute', left:1250,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>
+                <Link to='/paragonderme'><SendOutlined style={{position:'absolute',left:1300,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
-                <Link to='/paracekme'><h2 style={{position:'absolute', left:1250,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>
-                <Link to='/paracekme'><VerticalAlignTopOutlined style={{position:'absolute',left:1280,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
+                <Link to='/paracekme'><h2 style={{position:'absolute', left:1100,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>
+                <Link to='/paracekme'><VerticalAlignTopOutlined style={{position:'absolute',left:1130,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
-                <Link to='/parayatirma'><h2 style={{position:'absolute', left:1070,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Yatırma</h2></Link>
-                <Link to='/parayatirma'><VerticalAlignBottomOutlined style={{position:'absolute',left:1100,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
                 
                 <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:550,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
