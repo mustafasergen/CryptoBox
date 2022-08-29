@@ -22,7 +22,6 @@ class About extends Component {
         <div>
             <Layout>
               <Header style={{background:"white", padding:50,position:'sticky', top:0, zIndex: 100, boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                <Avatar style={{position:'absolute', right:100, top:35,}} src= './coin2.png' />
 
                 <Link to="/"><Image style={{position:'absolute', left:30,top:-65}}width={100} src="./logo1.png" /></Link>
                

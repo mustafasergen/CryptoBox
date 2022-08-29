@@ -59,7 +59,7 @@ export default function Login () {
         <div>
             <Layout>
             <Header style={{background:"white", padding:50,position:'sticky', top:0, zIndex: 100, boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                <Avatar style={{position:'absolute', right:100, top:35,}} src= './coin2.png' />
+                
 
                 <Link to="/"><Image style={{position:'absolute', left:30,top:-65}}width={100} src="./logo1.png" /></Link>
                 
@@ -106,9 +106,9 @@ export default function Login () {
                     }
                     size="large"
                   >     
-                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'black',fontWeight:'bold',
+                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >Ebeveyn Hesabı olarak Giriş Yapın</Button></Link>
-                <Link to='/after_signup_child'><Button style={{position:'absolute', right:340, marginTop:'360px', width:'500px', height:'80px', color:'black',fontWeight:'bold',
+                <Link to='/after_signup_child'><Button style={{position:'absolute', right:340, marginTop:'360px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >Çocuk Hesabı Olarak Giriş Yapın</Button></Link>
 
                 </Spin>
