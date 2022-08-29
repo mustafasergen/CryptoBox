@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 
 import abi from '../assets/InterFi.json';
 
+
 const CONTRACT_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 
 export type Parent = {
@@ -87,6 +88,7 @@ export class ContractService {
     async getChildrenList(): Promise<Child[]> {
         const response = await this.contract.getChildrenList()
         return response.map((child: any) => {
+            console.log({child})
             return this.parseChild(child)
         })
     }
@@ -103,24 +105,24 @@ export class ContractService {
         return amounts;
     }
 
-    async fund(Address: string, sendValue: number) {
+    async fund(Address: string, sendValue: string) {
         console.log("fundcheck1")
         console.log(sendValue)
         const response = await this.contract.fund(Address, {
-            value: ethers.utils.parseEther(sendValue + "")
+            value: ethers.utils.parseEther(sendValue )
         });
         console.log("fundcheck2")
         await response.wait()
 
     }
-    async withdrawChild(Address: string, amount: number) {
-        const response = await this.contract.withdrawChild(Address, amount)
+    async withdrawChild( amount: string) {
+        const response = await this.contract.withdrawChild( ethers.utils.parseEther(amount) )
         await response.wait()
     }
-    async withdrawParent(Address: string, amount: number) {
+    async withdrawParent(Address: string, amount: string) {
         console.log(Address, amount)
         const response = await this.contract.withdrawParent(Address,
-            ethers.utils.parseEther(amount + ""))
+            ethers.utils.parseEther(amount ))
         await response.wait()
     }
 

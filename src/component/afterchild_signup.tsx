@@ -5,6 +5,7 @@ import { Image } from 'antd';
 import  { BellOutlined, ExportOutlined, SearchOutlined,  SendOutlined,  TeamOutlined,  VerticalAlignBottomOutlined,  VerticalAlignTopOutlined,  WalletOutlined } from '@ant-design/icons';
 import { WalletService } from '../services/wallet-service';
 import { useEffect, useState } from 'react';
+import { ethers } from 'ethers';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -18,29 +19,27 @@ function AfterSignupChild() {
 
 
       const [kullanıcıName, setName] = useState("");
+      const [miktar, setMiktar] = useState("");
+      const [time, setTime] = useState("");
 
-
-     
-
-      
       useEffect(() => {
         WalletService.connect().then(() => {
           WalletService.contract.getRole().then(async(role: string) => {
             
             if (role == 'Unregistered') {
-              // setTimeout(() => {console.log("this is the first message")}, 10000);
               console.log('kayıtlıdegil')
- 
             }else if (role == 'Parent'){
                 console.log('kayıtlıdegil')
-
-
             }
             else if (role == 'Child'){
                 const child = await WalletService.contract.getChild();
                 setName(child.name);
-                console.log(child.name)
-  
+                const ethValue = ethers.utils.formatEther(child.amount.toString());
+                setMiktar(ethValue);
+                let sec = child.releaseTime
+                let time = new Date(sec)
+                let normalDate = new Date(sec).toLocaleString('en-TR',{timeZone:'Turkey'})
+                setTime(normalDate);
               }
             
           })
@@ -97,10 +96,24 @@ function AfterSignupChild() {
                 
                 type="link" danger><Link to="/">CryptoBox</Link></Button>
 
-                <SearchOutlined style={{position:'absolute',right:350,top:40,color:'#13C2C2',fontSize:'30px'}}/>
-                <BellOutlined style={{position:'absolute',right:300,top:40,color:'#13C2C2',borderBlockColor:'#13C2C2' ,fontSize:'30px'}}/>
-                <TeamOutlined style={{position:'absolute',right:250,top:40,color:'#13C2C2',borderBlockColor:'#13C2C2' ,fontSize:'30px'}}/>
-
+                 <Button
+                    style={{
+                      position: "absolute",
+                      right: 180,
+                      top: 25,
+                      width: "170px",
+                      height: "50px",
+                      borderColor: "#13C2C2",
+                      borderWidth: "5px",
+                      color: "#13C2C2",
+                      fontWeight: "bold",
+                      fontSize: "15px",
+                    }}
+                    type="primary"
+                    ghost
+                  >
+                  <Link to="/login">Oturum Değiştirme</Link>
+                </Button>
 
               </Header>            
                   <Layout>
@@ -113,11 +126,13 @@ function AfterSignupChild() {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <h2 style={{fontWeight:'bold', position:'absolute', left:1100,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
-                <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
-                <br/>
-                <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:200,color:'#13C2C2',fontSize:'35px'}}>..... tarihinden itibaren hesabından işlem yapmaya başlayabillirsin</h2>
-                <h2 style={{fontWeight:'bold', position:'absolute', left:1300,top:370,color:'black',fontSize:'35px'}}>... ETH</h2>
+                <h2 style={{fontWeight:'bold', position:'absolute', left:1020,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
+                <h2 style={{position:'absolute', left:1260,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
+                <h2 style={{position:'absolute', left:1500,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{time}</h2>
+                
+                
+                <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:250,color:'#13C2C2',fontSize:'35px'}}>..... tarihinden itibaren hesabından işlem yapmaya başlayabillirsin</h2>
+                <h2 style={{fontWeight:'bold', position:'absolute', left:1130,top:370,color:'black',fontSize:'35px'}}>{miktar} ETH</h2>
                 <Avatar style={{position:'absolute', left:1000, top:350,width:'100px',height:'100px'}} src= './coin2.png' />
 
                 <Link to='/paracekme_cocuk'><h2 style={{position:'absolute', left:1250,top:550,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>

@@ -1,7 +1,11 @@
 import { notification } from "antd";
 import { ethers } from "ethers";
 import { ConnectionInfo } from "ethers/lib/utils";
+import { useNavigate } from "react-router";
 import { ContractService } from "./contract-service";
+
+
+
 
 let provider: ethers.providers.Web3Provider;
 let connect = false;
@@ -30,17 +34,22 @@ export class WalletService {
         //@ts-ignore
         return typeof window !== "undefined" && typeof window.ethereum !== "undefined"
     }
+  
+                                            
     private static checkWallet() {
-        if (this.isWalletAvailable()) return;
+        if (this.isWalletAvailable()) 
+        return; 
         throw new Error("Wallet does not available, Please install ethereum wallet!");
     }
+
+    
 
     static async getAccounts(): Promise<string[]> {
         this.checkWallet();
         //@ts-ignore
         return window.ethereum.request({ method: 'eth_accounts' }).catch((error: any) => {
             console.log({ error });
-            throw new Error("metmask error!");
+            throw new Error("metamask error!");
         })
     }
 

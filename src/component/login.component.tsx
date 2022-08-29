@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
+import { NotificationPlacement } from 'antd/lib/notification';
 
 
 
@@ -17,15 +18,16 @@ const { Header, Footer, Content } = Layout;
 export default function Login () {
     
 
-      
-      type NotificationType = 'info';
-      const openNotificationWithIcon = (type: NotificationType) => {
-          notification[type]({
-            message: 'Notification Title',
-            description:
-              'Önce bu hesap ile kayıt yapınız',
-          });
-        };
+  type NotificationType = "info"| 'warning';
+  const openNotificationWithIcon = (type: NotificationType, placement: NotificationPlacement) => {
+    notification.info({
+      message: `Bilgilendirme Mesajı `,
+      description:
+      "Lütfen Önce Hesap Oluşturun",
+      placement,
+    });
+  };
+
       window.scrollTo(0, 0)
       
 
@@ -38,10 +40,10 @@ export default function Login () {
             
             if (role == 'Unregistered') {
               // setTimeout(() => {console.log("this is the first message")}, 10000);
-              openNotificationWithIcon('info');
+              openNotificationWithIcon('info','bottom');
  
-            }else if (role == 'Parent'){
-              console.log('parent')
+            }else if (role == 'Parent' || role =='Child'){
+              console.log('parent or Child')
               setLoading(false);
             }
             
@@ -94,14 +96,20 @@ export default function Login () {
    
 
                 <Card.Grid style={{width:'1200px', height:'750px',position:'absolute', left:570, top:265,backgroundColor:'#E6FFFB'}}>
-                <Spin spinning={loading}>
-                
-
-                                
-                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'280px', width:'500px', height:'80px', color:'black',fontWeight:'bold',backgroundImage:"./Metamask.png",
-                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
-                
-                >Giriş Yapın</Button></Link>
+                <Spin
+                    style={{marginTop:'290px'}}
+                    spinning={loading}
+                    tip={
+                      <h2 style={{ color: "blue" }}>
+                        Kayıt olmadıysanıza lütfen kayıt olun, Eğer hesabınız varsa Kayıtlı hesabınız ile Giriş yapınız
+                      </h2>
+                    }
+                    size="large"
+                  >     
+                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'black',fontWeight:'bold',
+                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >Ebeveyn Hesabı olarak Giriş Yapın</Button></Link>
+                <Link to='/after_signup_child'><Button style={{position:'absolute', right:340, marginTop:'360px', width:'500px', height:'80px', color:'black',fontWeight:'bold',
+                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >Çocuk Hesabı Olarak Giriş Yapın</Button></Link>
 
                 </Spin>
                 </Card.Grid>

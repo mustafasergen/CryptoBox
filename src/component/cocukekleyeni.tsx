@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Card, DatePicker, Form, Input, notification, Spin } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Card, DatePicker, DatePickerProps, Form, Input, notification, Spin } from 'antd';
 import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,106 +8,96 @@ import { WalletService } from '../services/wallet-service';
 import { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
 
+const { Header, Content } = Layout;
+
+export default function CocukEkleYeni() {
 
 
 
-const { Header, Footer, Content } = Layout;
+    type NotificationType = "info"| 'warning';
 
-
-
-
-
-export default function ParaGonderme() {
-
-
-  
-  type NotificationType = "info"| 'warning';
-
-  const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
-    notification.info({
-      message: `Bilgilendirme Mesajı `,
-      description:
-      "Çoçuğunuz para gönderilmesi için MetaMask'tan ücreti onaylayın lütfen.",
-      placement,
-    });
-  };
-
-
-
-
-  const Başarısız = (type: NotificationType) => {
-    notification[type]({
-      message: "Bilgilendirme Mesajı ",
-      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
-    });
-  };
-
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    WalletService.connect().then(() => {
-      WalletService.contract.getRole().then((role: string) => {
-        if (role == "Unregistered" || role== 'Child') {
-          
-        } else if (role == "Parent") {
-          setLoading(false);
-        }
+    const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
+      notification.info({
+        message: `Bilgilendirme Mesajı `,
+        description:
+        "Çoçuğunuzun eklenmesi için MetaMask'tan ücreti onaylayın lütfen.",
+        placement,
       });
-    });
-  }, []);
+    };
 
+
+
+
+    const Başarısız = (type: NotificationType) => {
+      notification[type]({
+        message: "Bilgilendirme Mesajı",
+        description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+      });
+    };
+
+    
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+      WalletService.connect().then(() => {
+        WalletService.contract.getRole().then((role: string) => {
+          if (role == "Unregistered" || role== 'Child') {
+            
+          } else if (role == "Parent") {
+            setLoading(false);
+          }
+        });
+      });
+    }, []);
   window.scrollTo(0, 0)
 
-  const fundFunction = async () => {
+  const addChildrendFunction = async () => {
     try {
-      console.log("fundFunction")
-      console.log(amount)
-      console.log(recievingchild)
-      console.log(explanation)
-      await WalletService.connect().then(async (result) => {
-        const response = await WalletService.contract.fund(recievingchild, amount);
-        console.log(amount)
-        const hesap = await WalletService.contract.getAmount(recievingchild);
-        console.log("bebe amount : "+hesap.toString())
-        console.log("Para Gönderildi")
 
+      await WalletService.connect().then(async (result) => {
+        const response = await WalletService.contract.addChild(childmetamask, childbday, childname);
+        console.log('Çocuk Eklendi')
+        // const parent = await WalletService.contract.getParent();
+        // console.log(parent)
       });
     }
     catch (error) {
-
+      console.log(error)
     }
 
   };
+
+
   const navigate = useNavigate();
 
-  const [amount, setAmount] = useState("");
-  const [recievingchild, setRecievingChild] = useState("");
-  const [explanation, setExplanation] = useState("");
+  const [childname, setChildName] = useState("");
+  const [childbday, setChildBday] = useState(0);
+  const [childmetamask, setChildMetaMask] = useState("");
 
-  const handlechangeAmount = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(event.target.value);
-
-  }
-  const handlechangeRecievingChild = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRecievingChild(event.target.value);
+  const handlechangeChildName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChildName(event.target.value);
 
   }
-  const handlechangeExplanation = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setExplanation(event.target.value);
+
+  const handlechangeChildMetamask = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChildMetaMask(event.target.value);
 
   }
+
+  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+    const dates = new Date(dateString).getTime()
+    console.log(dates)
+    setChildBday(dates);
+  };
 
   const onFinish = (values: any) => {
-    fundFunction()
+    addChildrendFunction()
     Başarılı('info','bottom');
-    setTimeout(() => {navigate("/after_signup")}, 10000);
+    setTimeout(() => {navigate("/cocuklarim")}, 10000);
   };
 
   const onFinishFailed = (errorInfo: any) => {
     Başarısız("warning");
   };
-
-
-
 
 
 
@@ -122,9 +112,9 @@ export default function ParaGonderme() {
 
           <Button style={{ position: 'absolute', left: 190, top: 15, color: '#13C2C2', fontWeight: 'bold', fontSize: '35px' }}
 
-            type="link" danger><Link to="/">CryptoBox</Link></Button>
+          type="link" danger><Link to="/">CryptoBox</Link></Button>
 
-            <Link to="/after_signup">
+          <Link to="/after_signup">
           <TeamOutlined
             style={{
               position: "absolute",
@@ -139,33 +129,39 @@ export default function ParaGonderme() {
         </Header>
         <Layout>
           <Content style={{
-            background: 'white',
+            background: "white",
             padding: 600,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
           }}
           >
-
-
             <h1
             style={{
               position: "absolute",
-              left: 800,
+              left: 920,
               top: 180,
               color: '#13C2C2',
               fontSize: "50px",
               fontWeight: "bold",
             }}
-          >Çocuğunuza Para Gönderin</h1>
-            <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
-            <Spin
+          >Çoçuğunuzu Ekleyin</h1>
+          <Card.Grid
+            style={{
+              width: "1200px",
+              height: "750px",
+              position: "absolute",
+              left: 570,
+              top: 265,
+              backgroundColor: "#E6FFFB",
+            }}
+          >
+              <Spin
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
                   Lütfen MetaMask hesabına bağlanın
                 </h2>
               }>
-                <h1 style={{position: "absolute",marginLeft: '765px',marginTop: '4px',color: '#13C2C2',fontSize: "20px",fontWeight: "bold",}} >ETH</h1>
 
               <Form
                 style={{ marginTop: "240px", marginLeft: "200px" }}
@@ -178,41 +174,37 @@ export default function ParaGonderme() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Tutar"
-                  name="TUTAR"
+                  label="Ad ve Soyad"
+                  name="username"
                   rules={[
                     { required: true, message: "Bu kısım boş bırakılamaz" },
                   ]}
                 >
                   <Input
-                    onChange={handlechangeAmount}
+                    onChange={handlechangeChildName}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="Göndereceğiniz Ether Tutarını Girin"
+                    placeholder="İsim ve Soyisim Giriniz"
                   />
                 </Form.Item>
                 <Form.Item                  
-                label= ' MetaMask Adresi'
-                name="Alıcı Adresi"
+                label='MetaMask Adresi'
+                name="MetaMask Adresi"
                 rules={[
                   { required: true, message: "Bu kısım boş bırakılamaz" },
                 ]}
 
                 >
                 <Input
-                    onChange={handlechangeRecievingChild}
+                    onChange={handlechangeChildMetamask}
                     style={{ width: "350px", height: "40px" }}
                     placeholder="MetaMask Adresini Giriniz"
                   /></Form.Item>
 
-                <Form.Item                  
-                label='Bilgilendirme'
-                name="Bilgirendirme"
-                >
-                <Input
-                    onChange={handlechangeExplanation}
-                    style={{ width: "350px", height: "40px" }}
-                    placeholder="İsteğe bağlı Açıklama ekleyiniz"
-                  /></Form.Item>
+                   <Form.Item
+                   label='Çoçuğunuzun Doğum Tarihi'>
+                   <DatePicker 
+                   style={{ width: '500px', height: '40px' }} onChange={onChange} placeholder="Çocuğunuzun Doğum Tarihi" />
+                   </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 20 }}>
                   <Button
@@ -220,18 +212,14 @@ export default function ParaGonderme() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Gönder
+                    Çoçuk Ekle
                   </Button>
                 </Form.Item>
               </Form>
               </Spin>
-
-
-            </Card.Grid>
+          </Card.Grid>
 
           </Content>
-
-
         </Layout>
       </Layout>
     </div>
@@ -241,3 +229,5 @@ export default function ParaGonderme() {
 
 
 }
+
+

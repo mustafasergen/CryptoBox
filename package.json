@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@ant-design/plots": "^1.2.1",
     "@metamask/onboarding": "^1.0.1",
     "@metamask/providers": "^9.1.0",
     "@testing-library/jest-dom": "^5.16.5",
