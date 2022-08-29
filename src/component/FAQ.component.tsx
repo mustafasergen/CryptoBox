@@ -22,7 +22,7 @@ const treeData: DataNode[] = [
     children: [
       {
         title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>Maalesef kayıt olmak için MetaMask hesabın olması gerekiyor. Detaylı bilgi<br/>
-        ve indirme detayları için <Link style={{color:'orange'}} to='/metamask'>METAMASK NEDİR?</Link> sayfamıza göz atabilirsin.</h2>,
+        ve indirme detayları için <Link style={{color:'orange'}} to='/meta_mask'>METAMASK NEDİR?</Link> sayfamıza göz atabilirsin.</h2>,
         key: '0-0-0',
         icon: <CarryOutOutlined />,
 

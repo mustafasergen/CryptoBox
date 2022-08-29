@@ -26,13 +26,13 @@ function AfterSignupParent() {
 
      
 
-      
+      const navigate = useNavigate();
       useEffect(() => {
         WalletService.connect().then(() => {
           WalletService.contract.getRole().then(async(role: string) => {
             
-            if (role == 'Unregistered') {
-             
+            if (role == 'Unregistered' || role=='Child') {
+              navigate('/login')
               console.log('kayıtlıdegil')
  
             }else if (role == 'Parent'){

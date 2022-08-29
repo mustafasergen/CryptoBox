@@ -4,6 +4,9 @@ import { ConnectionInfo } from "ethers/lib/utils";
 import { useNavigate } from "react-router";
 import { ContractService } from "./contract-service";
 
+
+
+
 let provider: ethers.providers.Web3Provider;
 let connect = false;
 let account = '';

@@ -4,7 +4,6 @@ import About from './component/about.component';
 import Home from './component/home.component';
 import Login from './component/login.component';
 import Metamask from './component/metamask.component';
-
 import NoMetaMask from './component/notmetamask.component';
 import PrivatePage from './component/PrivatePage';
 import AuthProvider, { AuthRef, useAuth } from './component/auth/AuthProvider';
@@ -14,9 +13,7 @@ import AfterSignupParent from './component/aftersignup.component';
 import Cocuk from './component/cocuklarim';
 import ParaGonderme from './component/paragonderme.component';
 import Paracekme from './component/paracekme.component';
-
 import Basari from './component/basari.component';
-
 import NewLogin from './component/signupnew';
 import AfterSignupChild from './component/afterchild_signup';
 import ParacekmeCocuk from './component/paracekmecocuk';

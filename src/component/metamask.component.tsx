@@ -30,7 +30,7 @@ class MetaMask extends Component {
 
                <Button style={{position:'absolute', right:530, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button> 
+                type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button>   
 
                <Button style={{position:'absolute', right:780, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 

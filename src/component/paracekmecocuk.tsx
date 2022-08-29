@@ -58,18 +58,13 @@ export default function Paracekme() {
 
   const withdrawChildFunction = async () => {
     try {
-      // console.log("4")
-      // console.log(pullmoney)
-
-      // await WalletService.connect().then(async (result) => {
-      //   console.log(pullmoneyFrom)
-      //   console.log(pullmoney)
-      //   const response = await WalletService.contract.withdrawChild(pullmoneyFrom, pullmoney);
-      //   console.log(pullmoney)
-      //   const hesap = await WalletService.contract.getAmount(pullmoneyFrom);
-      //   console.log(hesap.toString())
+      await WalletService.connect().then(async (result) => {
+        console.log(pullmoney)
+        const response = await WalletService.contract.withdrawChild(pullmoney);
+        const hesap = await WalletService.contract.getAmount('0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199');
+        console.log(hesap.toString())
         
-      // });
+      });
     }
     catch (error) {
       console.log(error)
@@ -91,7 +86,7 @@ export default function Paracekme() {
   const onFinish = (values: any) => {
     withdrawChildFunction()
     Başarılı('info','bottom');
-    setTimeout(() => {navigate("/after_signup")}, 10000);
+    setTimeout(() => {navigate("/after_signup_child")}, 10000);
   };
 
   const onFinishFailed = (errorInfo: any) => {

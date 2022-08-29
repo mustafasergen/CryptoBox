@@ -4,7 +4,7 @@ import { createContext, ReactNode, useState } from "react";
 export interface User {
     name: string;
     address: string;
-    role: 'parent' | 'children';
+    role: 'Parent' | 'Child';
 }
 export interface AuthContextType {
     getUser: () => User | undefined;

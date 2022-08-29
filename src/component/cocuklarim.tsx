@@ -13,11 +13,14 @@ import {
 import { WalletService } from "../services/wallet-service";
 import { useEffect, useState } from "react";
 import { Child } from "../services/contract-service";
+import { ethers } from "ethers";
 
 
 const { Header, Footer, Sider, Content } = Layout;
 
 function Cocuk() {
+  
+
   window.scrollTo(0, 0);
 
   const [childs, setChilds] = useState<Child[]>([]);
@@ -50,11 +53,12 @@ function Cocuk() {
       title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>Bakiye</h2>,
       dataIndex: "amount",
       key: "amount",
-      // // render: (value : number,child:Child) =>{
-      // //   return <>
-      // //   {child.amount}
-      // //   </>
-      // }
+        render: (value : number,child:Child) =>{
+          const ethValue = ethers.utils.formatEther(child.amount.toString());
+          return <>
+          {ethValue +" ETH"}
+        </>
+      }
     },
     {
       title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>MetaMask Adresi</h2>,
