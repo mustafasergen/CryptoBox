@@ -4,7 +4,8 @@ import { ethers } from 'ethers'
 import abi from '../assets/InterFi.json';
 
 
-const CONTRACT_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+const CONTRACT_ADDRESS = "0x514255d8f3387AC750e24776729D461fa8cB90d5";
+
 
 export type Parent = {
     name: string;
