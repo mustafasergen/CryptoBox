@@ -106,10 +106,7 @@ export default function NewLogin() {
           boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
         }}
       >
-        <Avatar
-          style={{ position: "absolute", right: 100, top: 35 }}
-          src="./coin2.png"
-        />
+
 
         <Link to="/">
           <Image
@@ -268,7 +265,7 @@ export default function NewLogin() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Ad"
+                  label="Ad Soyad"
                   name="username"
                   rules={[
                     { required: true, message: "Bu kısım boş bırakılamaz" },
@@ -277,7 +274,7 @@ export default function NewLogin() {
                   <Input
                     onChange={handlechangeName}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="İsim Giriniz"
+                    placeholder="Adınızı Soyadınızı Giriniz"
                   />
                 </Form.Item>
 
@@ -287,7 +284,7 @@ export default function NewLogin() {
                     type="primary"
                     htmlType="submit"
                   >
-                    Giriş
+                    Kayıt Ol
                   </Button>
                 </Form.Item>
               </Form>

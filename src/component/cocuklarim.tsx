@@ -24,8 +24,10 @@ function Cocuk() {
   window.scrollTo(0, 0);
 
   const [childs, setChilds] = useState<Child[]>([]);
-
   const [loading, setLoading] = useState(true);
+
+ 
+  
   useEffect(() => {
     WalletService.connect().then(() => {
       WalletService.contract.getRole().then(async (role: string) => {
@@ -34,13 +36,16 @@ function Cocuk() {
           console.log("kayıtlıdegil");
         } else if (role == "Parent") {
           const child = await WalletService.contract.getChildrenList();
+
           setChilds(child);
           setLoading(false);
-          
         }
       });
     });
   }, []);
+
+
+  
 
   const dataSource = [childs];
   const columns = [
@@ -151,10 +156,7 @@ function Cocuk() {
             boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
           }}
         >
-          <Avatar
-            style={{ position: "absolute", right: 100, top: 35 }}
-            src="./coin2.png"
-          />
+
 
           <Link to="/">
             <Image
@@ -216,13 +218,16 @@ function Cocuk() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>Çocuklarım</h2>
+            <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>Çocuklara Gönderilen Toplam Miktar</h2>
+            
+            <Avatar style={{position:'absolute', left:1100, top:230,width:'136px',height:'252px'}} src= './ether1.png' />
+
             
             <Table
               style={{
                 position: "absolute",
                 left: 850,
-                top: 400,
+                top: 550,
                 width: "900px",
               }}
               dataSource={childs}
@@ -235,7 +240,7 @@ function Cocuk() {
                   height: "100px",
                   position: "absolute",
                   left: 850,
-                  top: 780,
+                  top: 930,
                   backgroundColor: "white",
                   boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
                 }}

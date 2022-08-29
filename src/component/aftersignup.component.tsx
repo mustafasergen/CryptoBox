@@ -91,7 +91,6 @@ function AfterSignupParent() {
 
             <Layout>
               <Header style={{background:"white", padding:50,position:'sticky', top:0, zIndex: 100, boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                <Avatar style={{position:'absolute', right:100, top:35,}} src= './coin2.png' />
 
                 <Link to="/"><Image style={{position:'absolute', left:30,top:-65}}width={100} src="./logo1.png" /></Link>
                
@@ -124,23 +123,23 @@ function AfterSignupParent() {
                 backgroundRepeat: 'no-repeat'}}>
 
                 <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
-                <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
+                <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName!}</h2>
                 <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıNameChild}</h2>
-                <Avatar style={{position:'absolute', left:1190, top:230,width:'100px',height:'100px'}} src= './coin2.png' />
+                <Avatar style={{position:'absolute', left:1170, top:200,width:'136px',height:'252px'}} src= './ether1.png' />
 
-                <Link to='/paragonderme'><h2 style={{position:'absolute', left:1250,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>
-                <Link to='/paragonderme'><SendOutlined style={{position:'absolute',left:1300,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
+                <Link to='/paragonderme'><h2 style={{position:'absolute', left:1250,top:530,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>
+                <Link to='/paragonderme'><SendOutlined style={{position:'absolute',left:1300,top:480,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
-                <Link to='/paracekme'><h2 style={{position:'absolute', left:1100,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>
-                <Link to='/paracekme'><VerticalAlignTopOutlined style={{position:'absolute',left:1130,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
+                <Link to='/paracekme'><h2 style={{position:'absolute', left:1100,top:530,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>
+                <Link to='/paracekme'><VerticalAlignTopOutlined style={{position:'absolute',left:1130,top:480,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
 
                 
-                <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:550,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:620,backgroundColor:'#13C2C2'}}></Card.Grid>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:719,backgroundColor:'#13C2C2'}}></Card.Grid>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:818,backgroundColor:'#13C2C2'}}></Card.Grid>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:917,backgroundColor:'#13C2C2'}}></Card.Grid>
+                <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:600,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
+                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:690,backgroundColor:'#13C2C2'}}></Card.Grid>
+                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:789,backgroundColor:'#13C2C2'}}></Card.Grid>
+                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:888,backgroundColor:'#13C2C2'}}></Card.Grid>
+                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:987,backgroundColor:'#13C2C2'}}></Card.Grid>
                 
                </Content>
                </Layout>
@@ -158,6 +157,4 @@ function AfterSignupParent() {
 }
 export default AfterSignupParent; 
 
-function openNotificationWithIcon(arg0: string) {
-  throw new Error('Function not implemented.');
-}
+
