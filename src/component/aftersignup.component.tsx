@@ -1,5 +1,5 @@
 
-import { Layout, Avatar, Menu, MenuProps, Card } from 'antd';
+import { Layout, Avatar, Menu, MenuProps, Card, Table } from 'antd';
 import { Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { Image } from 'antd';
@@ -7,6 +7,7 @@ import { BellOutlined, ExportOutlined, SearchOutlined, SendOutlined, TeamOutline
 import { WalletService } from '../services/wallet-service';
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import { Child } from '../services/contract-service';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -14,7 +15,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const endpoint = "https://api-rinkeby.etherscan.io/api"
 const ETHERSCAN_API_KEY = "FMS8JYNTIQF7HBFM6G34P6SK52W6JQZKSM"
-const CONTRACT_ADDRESS = "0x514255d8f3387ac750e24776729d461fa8cb90d5";
+const CONTRACT_ADDRESS = "0xdA0ACe7006Ad5B36F2CdFF13276C95FBCB4D53C8";
 const deneme = "0x302955b74C969aA09bb270DAa775B65Fc9b7Bc29"
 
 function AfterSignupParent() {
@@ -26,7 +27,7 @@ function AfterSignupParent() {
 
   const [kullanıcıName, setName] = useState("");
   const [kullanıcıNameChild, setChildName] = useState("");
-
+  const [translaction, setTrans] = useState<Child[]>([]);
 
 
 
@@ -52,13 +53,33 @@ function AfterSignupParent() {
           if (context[i].to === CONTRACT_ADDRESS) {
             console.log(context[i].to)
           }
-
         }
+        setTrans(context);
       })
 
     })
   }, []);
 
+  
+  const dataSource = [translaction];
+  const columns = [
+    {
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>Kime</h2>,
+      dataIndex: "to",
+      key: "name",
+    },
+    {
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>Değer</h2>,
+      dataIndex: "value",
+      key: "amount",
+
+    },
+    {
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>İşlem</h2>,
+      dataIndex: "functionName",
+      key: "address",
+    },
+  ];
 
 
 
@@ -147,11 +168,16 @@ function AfterSignupParent() {
 
 
 
-            <h2 style={{ fontWeight: 'bold', position: 'absolute', left: 850, top: 550, color: '#434343', fontSize: '30px' }}>Hesap Hareketleri</h2>
-            <Card.Grid style={{ width: '900px', height: '100px', position: 'absolute', left: 800, top: 620, backgroundColor: '#13C2C2' }}></Card.Grid>
-            <Card.Grid style={{ width: '900px', height: '100px', position: 'absolute', left: 800, top: 719, backgroundColor: '#13C2C2' }}></Card.Grid>
-            <Card.Grid style={{ width: '900px', height: '100px', position: 'absolute', left: 800, top: 818, backgroundColor: '#13C2C2' }}></Card.Grid>
-            <Card.Grid style={{ width: '900px', height: '100px', position: 'absolute', left: 800, top: 917, backgroundColor: '#13C2C2' }}></Card.Grid>
+            <Table
+              style={{
+                position: "absolute",
+                left: 850,
+                top: 550,
+                width: "900px",
+              }}
+              dataSource={translaction}
+              columns={columns}
+            />
 
           </Content>
         </Layout>
@@ -169,6 +195,4 @@ function AfterSignupParent() {
 }
 export default AfterSignupParent;
 
-function openNotificationWithIcon(arg0: string) {
-  throw new Error('Function not implemented.');
-}
+
