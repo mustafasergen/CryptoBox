@@ -20,7 +20,7 @@ function AfterSignupChild() {
 
       const [kullanıcıName, setName] = useState("");
       const [miktar, setMiktar] = useState("");
-      const [time, setTime] = useState(new Date);
+      const [time, setTime] = useState("");
 
       useEffect(() => {
         WalletService.connect().then(() => {
@@ -41,6 +41,32 @@ function AfterSignupChild() {
                 
                 // var myDate = new Date(child.releaseTime*1000);
                 // console.log(myDate.toLocaleString());
+
+                console.log("--------------");
+                var epoch = new Date(0);
+               
+                const time =Math.floor(child.releaseTime/ 1000)
+                console.log(time);
+
+                epoch.setSeconds(time);
+
+                var date = epoch.toISOString();
+
+                console.log(date);
+
+                date = date.replace('T', ' ');
+
+                const dateFormat = date.split('.')[0].split(' ')[0] ;
+                console.log(dateFormat);
+               const arr=dateFormat.split('-');
+               const year=arr[0];
+                const month=arr[1];
+                const day=arr[2];
+                console.log(day+'.'+month+'.'+year);
+               const finalFormat=arr[2]+"."+arr[1]+"."+arr[0];
+               console.log(finalFormat);
+               setTime(finalFormat);
+               
            
 
 
@@ -133,10 +159,11 @@ function AfterSignupChild() {
                 <h2 style={{position:'absolute', left:1260,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}!</h2>
                
                 
-                
+                <h2 style={{position:'absolute',  left:550,top:250,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{time}!</h2>
                 <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:250,color:'#13C2C2',fontSize:'35px',textAlign:'center'}}> tarihinden itibaren hesabından işlem yapmaya <br/>
                 başlayabillirsin.
                 </h2>
+               
                 
                 <h2 style={{fontWeight:'bold', position:'absolute', left:1170,top:480,color:'black',fontSize:'55px'}}>{miktar} ETH</h2>
                 <Avatar style={{position:'absolute', left:950, top:400,width:'136px',height:'252px'}} src= './ether1.png' />
