@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 import abi from '../assets/InterFi.json';
 
 
-const CONTRACT_ADDRESS = "0x514255d8f3387AC750e24776729D461fa8cB90d5";
+const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 
 export type Parent = {
@@ -62,6 +62,7 @@ export class ContractService {
         return response;
     }
 
+
     async getChildren(): Promise<Child[]> {
         const response = await this.contract.getChildren()
 
@@ -84,6 +85,10 @@ export class ContractService {
     async getRole(): Promise<string> {
         const response = await this.contract.getRole()
         return response
+    }
+    async getSumChildren(): Promise<number> {
+        const response = await this.contract.sumChildren();
+        return response;
     }
 
     async getChildrenList(): Promise<Child[]> {

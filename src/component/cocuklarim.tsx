@@ -25,6 +25,7 @@ function Cocuk() {
 
   const [childs, setChilds] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
+  const [amount, setAmount] = useState('');
 
  
   
@@ -37,8 +38,13 @@ function Cocuk() {
         } else if (role == "Parent") {
           const child = await WalletService.contract.getChildrenList();
 
+          const sum = await WalletService.contract.getSumChildren();
+          const ethValue = ethers.utils.formatEther(sum.toString());
           setChilds(child);
           setLoading(false);
+          setAmount(ethValue);
+          
+        
         }
       });
     });
@@ -219,6 +225,9 @@ function Cocuk() {
             }}
           >
             <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>Çocuklara Gönderilen Toplam Miktar</h2>
+            <h2 style={{fontWeight:'bold', position:'absolute', left:1290,top:300,color:'black',fontSize:'55px'}}>{amount} ETH </h2>
+
+            
             
             <Avatar style={{position:'absolute', left:1100, top:230,width:'136px',height:'252px'}} src= './ether1.png' />
 

@@ -37,12 +37,13 @@ function AfterSignupChild() {
                 const ethValue = ethers.utils.formatEther(child.amount.toString());
                 setMiktar(ethValue);
 
+                // console.log(child.releaseTime.toString())
                 
-                // var sec = child.releaseTime
-                // var time = new Date(sec)
-                // time.setUTCSeconds(sec);
-                // setTime(time);
-                // console.log(time)
+                // var myDate = new Date(child.releaseTime*1000);
+                // console.log(myDate.toLocaleString());
+           
+
+
               }
             
           })
@@ -133,7 +134,7 @@ function AfterSignupChild() {
                
                 
                 
-                <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:250,color:'#13C2C2',fontSize:'35px',textAlign:'center'}}>tarihinden itibaren hesabından işlem yapmaya <br/>
+                <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:250,color:'#13C2C2',fontSize:'35px',textAlign:'center'}}> tarihinden itibaren hesabından işlem yapmaya <br/>
                 başlayabillirsin.
                 </h2>
                 
