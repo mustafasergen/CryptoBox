@@ -7,6 +7,8 @@ import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 import { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 const { Header, Content } = Layout;
 
@@ -125,6 +127,8 @@ export default function CocukEkleYeni() {
             }}
           />
           </Link>
+
+          <LanguageComponent/>
         </Header>
         <Layout>
           <Content style={{
@@ -143,7 +147,7 @@ export default function CocukEkleYeni() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-          >Çoçuğunuzu Ekleyin</h1>
+          >{ML("COCUGU_EKLE")}</h1>
           <Card.Grid
             style={{
               width: "1200px",
@@ -158,7 +162,7 @@ export default function CocukEkleYeni() {
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  Lütfen MetaMask hesabına bağlanın
+                  {ML("LUTFEN_METAMASK_HESABINA_BAGLANIN")}
                 </h2>
               }>
 
@@ -182,7 +186,7 @@ export default function CocukEkleYeni() {
                   <Input
                     onChange={handlechangeChildName}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="İsim ve Soyisim Giriniz"
+                    placeholder="AD_SOYAD"
                   />
                 </Form.Item>
                 <Form.Item                  
@@ -196,13 +200,13 @@ export default function CocukEkleYeni() {
                 <Input
                     onChange={handlechangeChildMetamask}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="MetaMask Adresini Giriniz"
+                    placeholder={ML("COCUGUNUZUN_METAMASK_HESABI")}
                   /></Form.Item>
 
                    <Form.Item
                    label='Çoçuğunuzun Doğum Tarihi'>
                    <DatePicker 
-                   style={{ width: '500px', height: '40px' }} onChange={onChange} placeholder="Çocuğunuzun Doğum Tarihi" />
+                   style={{ width: '500px', height: '40px' }} onChange={onChange} placeholder={ML("COCUGUNUZUN_DOGUM_TARIHI")} />
                    </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 20 }}>
@@ -211,7 +215,7 @@ export default function CocukEkleYeni() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Çoçuk Ekle
+                    {ML("COCUGU_EKLE")}
                   </Button>
                 </Form.Item>
               </Form>

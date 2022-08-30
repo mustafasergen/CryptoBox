@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { I18nextProvider } from 'react-i18next';
 import App from './App';
+import i18n from './i18n.config';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -8,7 +10,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   
-    <App />
+  <I18nextProvider i18n = {i18n} >
+  <App />
+  </I18nextProvider>
  
 );
 

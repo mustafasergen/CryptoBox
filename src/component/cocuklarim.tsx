@@ -14,6 +14,8 @@ import { WalletService } from "../services/wallet-service";
 import { useEffect, useState } from "react";
 import { Child } from "../services/contract-service";
 import { ethers } from "ethers";
+import { ML } from "../i18n.config";
+import LanguageComponent from "./language.component";
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -56,12 +58,12 @@ function Cocuk() {
   const dataSource = [childs];
   const columns = [
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>İsim</h2>,
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("AD")}</h2>,
       dataIndex: "name",
       key: "name",
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>Bakiye</h2>,
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("BAKIYE")}</h2>,
       dataIndex: "amount",
       key: "amount",
         render: (value : number,child:Child) =>{
@@ -72,7 +74,7 @@ function Cocuk() {
       }
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>MetaMask Adresi</h2>,
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("METAMASK_ADRESI")}</h2>,
       dataIndex: "Address",
       key: "address",
     },
@@ -123,7 +125,7 @@ function Cocuk() {
           marginTop: "15px",
         }}
       >
-        Çocuklarım
+        {ML("COCUKLARIM")}
       </h2>,
       "2",
       <TeamOutlined
@@ -139,7 +141,7 @@ function Cocuk() {
           marginTop: "15px",
         }}
       >
-        Oturum Değiştirme
+        {ML("OTURUM_DEGISTIRME")}
       </h2>
       </Link>,
       "3",
@@ -198,6 +200,7 @@ function Cocuk() {
               fontSize: "30px",
             }}
           />
+           <LanguageComponent/>
         </Header>
         <Layout>
           <Sider style={{ padding: 200, backgroundColor: "#13C2C2" }}>
@@ -224,7 +227,7 @@ function Cocuk() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>Çocuklara Gönderilen Toplam Miktar</h2>
+            <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>{ML("COCUKLARA_GONDERILEN_TOPLAM_MIKTAR")}</h2>
             <h2 style={{fontWeight:'bold', position:'absolute', left:1290,top:300,color:'black',fontSize:'55px'}}>{amount} ETH </h2>
 
             
@@ -264,7 +267,7 @@ function Cocuk() {
                     fontSize: "17px",
                   }}
                 >
-                  Yeni Çocuk Ekle
+                  {ML("COCUGU_EKLE")}
                 </h2>
                 <PlusOutlined
                   style={{
@@ -288,7 +291,7 @@ function Cocuk() {
         >
           <h2 style={{ position: "absolute", right: 1000, top: 1300 }}>
             {" "}
-            © 2022 Intertech, Inc. Her hakkı saklıdır
+            {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}
           </h2>
         </Footer>
       </Layout>

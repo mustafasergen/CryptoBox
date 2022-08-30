@@ -5,6 +5,8 @@ import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { CheckCircleOutlined } from '@ant-design/icons';
 import { Image } from 'antd';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 
 
@@ -30,12 +32,12 @@ class MetaMask extends Component {
 
                <Button style={{position:'absolute', right:530, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button>   
+                type="link" danger><Link to="/meta_mask">{ML("METAMASK_NEDIR")}</Link></Button>   
 
                <Button style={{position:'absolute', right:780, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
                
-                type="link" danger><Link to="/about">HAKKIMIZDA</Link></Button>       
+                type="link" danger><Link to="/about">{ML("HAKKIMIZDA")}</Link></Button>       
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
@@ -43,10 +45,11 @@ class MetaMask extends Component {
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
-                type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
+                type="primary" ghost><Link to="/login">{ML("OTURUM_AC")}</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/yenideneme">Kayıt ol</Link></Button>
+                type="primary"><Link to="/yenideneme">{ML("KAYIT_OL")}</Link></Button>
+                <LanguageComponent/>
               </Header>
               <Layout>
                 
@@ -58,15 +61,15 @@ class MetaMask extends Component {
 
 
                 <h2 style={{fontWeight:'regular',fontSize:'25px',position:'absolute', left:280,top:200,textAlign:'center'}}>
-                <p style={{fontWeight:'bold',fontSize:'55px',color:'#FA8C16'}} >MetaMask Nedir ?</p>
-                <p style={{fontWeight:'bold',fontSize:'45px',color:'#434343',wordSpacing: 3}} ><br/>Ethereum Blockchain ile etkileşim<br/> kurmak için kullanılan bir Kripto<br/> Cüzdanıdır.</p>
-                <p style={{fontWeight:'regular',fontSize:'36px',color:'#434343',wordSpacing: 3}} >Token satın alın, saklayın, gönderin ve<br/> değiştirin</p>
-                <p style={{fontWeight:'regular',fontSize:'39px',color:'#000000',wordSpacing: 3}} > tarayıcı uzantısı ve bir mobil uygulama<br/>
-                olarak mevcut olan MetaMask, size key<br/>
-                vault, güvenli oturum açma, Token<br/> 
-                cüzdanı ve Token takası ile dijital<br/>
-                varlıklarınızı yönetmek için ihtiyacınız olan <br/>
-                her şeyi sağlar. 
+                <p style={{fontWeight:'bold',fontSize:'55px',color:'#FA8C16'}} >{ML("METAMASK_NEDIR")}</p>
+                <p style={{fontWeight:'bold',fontSize:'45px',color:'#434343',wordSpacing: 3}} ><br/>{ML("ETHEREUM_BLOCKCHAIN_ILE_ETKILESIM")}<br/>{ML("KURMAK_ICIN_KULLANILAN_BIR_KRIPTO")}<br/>{ML("CUZDANIDIR")}</p>
+                <p style={{fontWeight:'regular',fontSize:'36px',color:'#434343',wordSpacing: 3}} >{ML("TOKEN_SATIN_ALIN_SAKLAYIN_GONDERIN_VE")}<br/>{ML("DEGISTIRIN")}</p>
+                <p style={{fontWeight:'regular',fontSize:'39px',color:'#000000',wordSpacing: 3}} > {ML("BIR_TARAYICI_UZANTISI_VE_BIR_MOBIL_UYGULAMA")}<br/>
+                {ML("OLARAK_MEVCUT_OLAN_METAMASK_SIZE_KEY")}<br/>
+                {ML("VAULT_GUVENLI_OTURUM_ACMA_TOKEN")}<br/> 
+                {ML("CUZDANI_VE_TOKEN_TAKASI_ILE_DIJITAL")}<br/>
+                {ML("VARLIKLARINIZI_YONETMEK_ICIN_IHTIYACINIZ_OLAN")}<br/>
+                {ML("HER_SEYI_SAGLAR")}
                 </p></h2>
 
                 <Image style={{position:'absolute', left:700,top:-300}}width={800} src="./örnek1.png" />
@@ -79,19 +82,19 @@ class MetaMask extends Component {
                 backgroundRepeat: 'no-repeat'}}>
 
                 <h2 style={{position:'absolute', left:150,top:1400,textAlign:'center'}}>
-                <p style={{fontWeight:'bold',fontSize:'39px',color:'#434343'}}>Blockchain uygulamalarını keşfedin</p>
-                <p style={{fontWeight:'regular',fontSize:'37px',color:'#000000',wordSpacing: 3}} >MetaMask, blok zinciri tabanlı<br/>
-                uygulamalara bağlanmanın en basit ama<br/>
-                en güvenli yolunu sağlar. Yeni merkezi<br/>
-                olmayan web'de etkileşim kurarken<br/>
-                kontrol her zaman sizdedir.</p>
-                <p style={{fontWeight:'bold',fontSize:'36px',color:'#434343',wordSpacing: 3}} >Verilerinize sahip olun</p>
-                <p style={{fontWeight:'regular',fontSize:'37px',color:'#000000',wordSpacing: 3}} >MetaMask, cihazınızda şifreler ve
-                  anahtarlar oluşturur, böylece<br/>
-                  hesaplarınıza ve verilerinize yalnızca siz<br/>
-                  erişebilirsiniz. Neyi paylaşacağınızı ve<br/>
-                  neyi gizli tutacağınızı her zaman siz<br/>
-                  seçersiniz.</p></h2>
+                <p style={{fontWeight:'bold',fontSize:'39px',color:'#434343'}}>{ML("BLOCKCHAIN_UYGULAMALARINI_KESFEDIN")}</p>
+                <p style={{fontWeight:'regular',fontSize:'37px',color:'#000000',wordSpacing: 3}} >{ML("METAMASK_BLOCK_ZINCIRI_TABANLI")}<br/>
+                {ML("UYGULAMALARA_BAGLANMANIN_EN_BASIT_AMA")}<br/>
+                {ML("EN_GUVENLI_YOLUN_SAGLAR_YENI_MERKEZI")}<br/>
+                {ML("OLMAYAN_WEBDE_ETKILESIM_KURARKEN")}<br/>
+                {ML("KONTROL_HER_ZAMAN_SIZDEDIR")}</p>
+                <p style={{fontWeight:'bold',fontSize:'36px',color:'#434343',wordSpacing: 3}} >{ML("VERILERINIZE_SAHIP_OLUN")}</p>
+                <p style={{fontWeight:'regular',fontSize:'37px',color:'#000000',wordSpacing: 3}} >{ML("METAMASK_CIHAZINIZDA_SIFRELER_VE")}
+                {ML("ANAHTARLAR_OLUŞTURUR_BOYLECE")}<br/>
+                {ML("HESAPLARINIZA_VE_VERILERINIZE_YALNIZCA_SIZ")}<br/>
+                {ML("ERISEBILIRSINIZ_NEYI_PAYLASACAGINIZI_VE")}<br/>
+                {ML("NEYI_GIZLI_TUTACAGINIZI_HER_ZAMAN_SIZ")}<br/>
+                {ML("SECERSINIZ")}.</p></h2>
                   <Image style={{position:'absolute', left:800,top:-580}}width={600} src="./örnek2.png" />
                   <Image style={{position:'absolute', left:800,top:-50}}width={600} src="./örnek3.png" />
 
@@ -112,13 +115,13 @@ class MetaMask extends Component {
                   title='video'/>
 
                 <Link to={{ pathname: "metamask.io/download/" }} target="_blank"> <h2 style={{position:'absolute', left:840,color:"#FA8C16",top:3000,fontWeight:'bold',fontSize:'35px',fontFamily:'Verdana'}}>
-                  Hemen tarayıcın için MetaMask indir</h2> </Link>
+                  {ML("HEMEN_TARAYICIN_ICIN_METAMASK_INDIR")}</h2> </Link>
 
 
                 </Content>
 
                 <Footer style={{background:"white", padding:60,boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                  <h2 style={{position:'absolute', right:1000,}}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+                  <h2 style={{position:'absolute', right:1000,}}>{ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>.
                   </Footer>
               </Layout>
             </Layout>

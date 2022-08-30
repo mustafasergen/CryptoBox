@@ -7,6 +7,8 @@ import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 
 
@@ -119,6 +121,7 @@ export default function Paracekme() {
             }}
           />
           </Link>
+          <LanguageComponent/>
         </Header>
         <Layout>
           <Content style={{
@@ -137,13 +140,13 @@ export default function Paracekme() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-            >Hesabımdan Para Çekme</h1>
+            >{("ETHEREUM_CEK")}</h1>
             <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
             <Spin
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  Lütfen MetaMask hesabına bağlanın
+                  {ML("LUTFEN_METAMASK_HESABINA_BAGLANIN")}
                 </h2>
               }>
 
@@ -182,7 +185,7 @@ export default function Paracekme() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Ethereum Çek
+                    {ML("ETHEREUM_CEK")}
                   </Button>
                 </Form.Item>
               </Form>
@@ -192,7 +195,7 @@ export default function Paracekme() {
           </Content>
 
           <Footer style={{ background: "white", padding: 60, }}>
-            <h2 style={{ position: 'absolute', right: 1000, }}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+            <h2 style={{ position: 'absolute', right: 1000, }}>{ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>.
           </Footer>
         </Layout>
       </Layout>

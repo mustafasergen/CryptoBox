@@ -7,6 +7,8 @@ import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 import { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 
 
@@ -135,6 +137,7 @@ export default function ParaGonderme() {
             }}
           />
           </Link>
+          <LanguageComponent/>
         </Header>
         <Layout>
           <Content style={{
@@ -155,13 +158,13 @@ export default function ParaGonderme() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-          >Çocuğunuza Para Gönderin</h1>
+          >{ML("PARA_GONDERME")}</h1>
             <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
             <Spin
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  Lütfen MetaMask hesabına bağlanın
+                  {ML("LUTFEN_METAMASK_HESABINA_BAGLANIN")}
                 </h2>
               }>
                 <h1 style={{position: "absolute",marginLeft: '765px',marginTop: '4px',color: '#13C2C2',fontSize: "20px",fontWeight: "bold",}} >ETH</h1>
@@ -219,7 +222,7 @@ export default function ParaGonderme() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Gönder
+                    {ML("GONDER")}
                   </Button>
                 </Form.Item>
               </Form>
