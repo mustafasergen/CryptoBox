@@ -20,7 +20,7 @@ function AfterSignupChild() {
 
       const [kullanıcıName, setName] = useState("");
       const [miktar, setMiktar] = useState("");
-      const [time, setTime] = useState("");
+      const [time, setTime] = useState(new Date);
 
       useEffect(() => {
         WalletService.connect().then(() => {
@@ -36,10 +36,13 @@ function AfterSignupChild() {
                 setName(child.name);
                 const ethValue = ethers.utils.formatEther(child.amount.toString());
                 setMiktar(ethValue);
-                let sec = child.releaseTime
-                let time = new Date(sec)
-                let normalDate = new Date(sec).toLocaleString('en-TR',{timeZone:'Turkey'})
-                setTime(normalDate);
+
+                
+                // var sec = child.releaseTime
+                // var time = new Date(sec)
+                // time.setUTCSeconds(sec);
+                // setTime(time);
+                // console.log(time)
               }
             
           })
@@ -88,7 +91,6 @@ function AfterSignupChild() {
 
             <Layout>
               <Header style={{background:"white", padding:50,position:'sticky', top:0, zIndex: 100, boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                <Avatar style={{position:'absolute', right:100, top:35,}} src= './coin2.png' />
 
                 <Link to="/"><Image style={{position:'absolute', left:30,top:-65}}width={100} src="./logo1.png" /></Link>
                
@@ -126,24 +128,26 @@ function AfterSignupChild() {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <h2 style={{fontWeight:'bold', position:'absolute', left:1020,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
-                <h2 style={{position:'absolute', left:1260,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
-                <h2 style={{position:'absolute', left:1500,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{time}</h2>
+                <h2 style={{fontWeight:'bold', position:'absolute', left:1020,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN,</h2>
+                <h2 style={{position:'absolute', left:1260,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}!</h2>
+               
                 
                 
-                <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:250,color:'#13C2C2',fontSize:'35px'}}>..... tarihinden itibaren hesabından işlem yapmaya başlayabillirsin</h2>
-                <h2 style={{fontWeight:'bold', position:'absolute', left:1130,top:370,color:'black',fontSize:'35px'}}>{miktar} ETH</h2>
-                <Avatar style={{position:'absolute', left:1000, top:350,width:'100px',height:'100px'}} src= './coin2.png' />
+                <h2 style={{fontWeight:'bold', position:'absolute', left:750,top:250,color:'#13C2C2',fontSize:'35px',textAlign:'center'}}>tarihinden itibaren hesabından işlem yapmaya <br/>
+                başlayabillirsin.
+                </h2>
+                
+                <h2 style={{fontWeight:'bold', position:'absolute', left:1170,top:480,color:'black',fontSize:'55px'}}>{miktar} ETH</h2>
+                <Avatar style={{position:'absolute', left:950, top:400,width:'136px',height:'252px'}} src= './ether1.png' />
 
-                <Link to='/paracekme_cocuk'><h2 style={{position:'absolute', left:1250,top:550,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>
-                <Link to='/paracekme_cocuk'><VerticalAlignTopOutlined style={{position:'absolute',left:1280,top:500,color:'#13C2C2',fontSize:'45px'}} /></Link>
+                <Link to='/paracekme_cocuk'><h2 style={{position:'absolute', left:1200,top:700,color:'black',fontSize:'25px'}}>Para Çekme</h2></Link>
+                <Link to='/paracekme_cocuk'><VerticalAlignTopOutlined style={{position:'absolute',left:1230,top:650,color:'black',fontSize:'50px'}} /></Link>
 
                 
-                <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:550,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:620,backgroundColor:'#13C2C2'}}></Card.Grid>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:719,backgroundColor:'#13C2C2'}}></Card.Grid>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:818,backgroundColor:'#13C2C2'}}></Card.Grid>
-                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:917,backgroundColor:'#13C2C2'}}></Card.Grid>
+                <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:798,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
+
+                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:868,backgroundColor:'#13C2C2'}}></Card.Grid>
+                <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:967,backgroundColor:'#13C2C2'}}></Card.Grid>
                 
                </Content>
                </Layout>

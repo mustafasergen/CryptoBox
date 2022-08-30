@@ -22,7 +22,7 @@ class Hakkımda extends Component {
         <div>
             <Layout>
               <Header style={{background:"white", padding:50,position:'sticky', top:0, zIndex: 100, boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                <Avatar style={{position:'absolute', right:100, top:35,}} src= './coin2.png' />
+                
 
                 <Link to="/"><Image style={{position:'absolute', left:30,top:-65}}width={100} src="./logo1.png" /></Link>
                
@@ -95,8 +95,8 @@ class Hakkımda extends Component {
                 backgroundRepeat: 'no-repeat'}}>
 
                 
-                <h2 style={{position:'absolute', left:790,color:"orange",top:1410,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}>ÇOCUĞUNUZUN GELECEĞİ İÇİN<br/> ŞİMDİ YATIRIM YAPIN</h2><br/>
-                <Image style={{position:'absolute', left:-120,top:-680,zIndex:0}}width={1200} src="./computer1.png" />
+                <h2 style={{position:'absolute', left:790,color:"orange",top:1310,fontWeight:'bold',fontSize:'43px',fontFamily:'Verdana', textAlign:'center',zIndex:1}}>ÇOCUĞUNUZUN GELECEĞİ İÇİN<br/> ŞİMDİ YATIRIM YAPIN</h2><br/>
+                <Image style={{position:'absolute', left:-120,top:-590,zIndex:0}}width={1200} src="./bilgisayar1.png" />
                 
                 
                 <CheckCircleOutlined style={{position:'absolute', left:910,color:"#87E8DE",top:2400,fontSize:'70px'}} />
@@ -111,7 +111,7 @@ class Hakkımda extends Component {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <Image style={{position:'absolute', left:-120,top:-1000,zIndex:0}}width={1200} src="./computer1.png" />
+                <Image style={{position:'absolute', left:-120,top:-960,zIndex:0}}width={1200} src="./bilgisayar2.png" />
                 
                 <CheckCircleOutlined style={{position:'absolute', left:800,color:"#87E8DE",top:3550,fontSize:'70px'}} />
                 <br/>
@@ -126,7 +126,7 @@ class Hakkımda extends Component {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <Image style={{position:'absolute', left:-120,top:-1300,zIndex:0}}width={1200} src="./computer1.png" />
+                <Image style={{position:'absolute', left:-120,top:-1200,zIndex:0}}width={1200} src="./bilgisayar3.png" />
                 
                 <CheckCircleOutlined style={{position:'absolute', left:900,color:"#87E8DE",top:4730,fontSize:'70px'}} />
                 <br/>
