@@ -6,6 +6,8 @@ import { Image } from 'antd';
 import { CarryOutOutlined } from '@ant-design/icons';
 import Tree, { DataNode } from 'antd/lib/tree';
 import { useState } from 'react';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 
 const { Header, Footer, Content } = Layout;
@@ -16,13 +18,13 @@ const { Header, Footer, Content } = Layout;
 const treeData: DataNode[] = [
   {
   
-    title: <h2 style={{color:'black',fontWeight:'bold',fontSize:'40px'}}>MetMask hesabım yok. Yine de CrytoBox'a kayıt olabilir miyim?</h2>,
+    title: <h2 style={{color:'black',fontWeight:'bold',fontSize:'40px'}}>{ML("METMASK_HESABIM_YOK_YINE_DE_CRYTOBOXA_KAYIT_OLABILIR_MIYIM")}</h2>,
     key: '0-0',
     icon: <CarryOutOutlined />,
     children: [
       {
-        title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>Maalesef kayıt olmak için MetaMask hesabın olması gerekiyor. Detaylı bilgi<br/>
-        ve indirme detayları için <Link style={{color:'orange'}} to='/metamask'>METAMASK NEDİR?</Link> sayfamıza göz atabilirsin.</h2>,
+        title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>{ML("MAALESEF_KAYIT_OLMAK_ICIN_METAMASK_HESABIN_OLMASI_GEREKIYOR_DETAYLI_BILGI")}<br/>
+        {ML("VE_INDIRME_DETAYLARI_ICIN")}<Link style={{color:'orange'}} to='/metamask'>{ML("METAMASK_NEDIR")}</Link> {ML("SAYFAMIZA_GOZ_ATABILIRSIN")}</h2>,
         key: '0-0-0',
         icon: <CarryOutOutlined />,
 
@@ -31,28 +33,28 @@ const treeData: DataNode[] = [
     ],
   },
   {
-    title: <h2 style={{color:'black',fontWeight:'bold',fontSize:'40px'}}>CryptoBox güvenilir bir uygulama mı?</h2>,
+    title: <h2 style={{color:'black',fontWeight:'bold',fontSize:'40px'}}>{ML("CRYPTOBOX_GUVENILIR_BIR_UYGULAMA_MI")}</h2>,
     key: '0-1',
     icon: <CarryOutOutlined />,
     children: [
       {
-        title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>Ethereum en güvenli kripto para birimlerinden bir tanesidir. CryptoBox da 
+        title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>{ML("ETHEREUM_EN_GUVENLI_KRIPTO_PARA_BIRIMLERINDEN_BIR_TANESIDIR_CRYPTOBOX_DA")} 
         <br/>
-        güvenilirliğini Ethereum’un akıllı kontrat ve güvenli finansal işlemleri destekelemesinden alır. </h2>,
+        {ML("GUVENILIRLIGINI_ETHEREUMUN_AKILLI_KONTRAT_VE_GUVENLI_FINANSAL_ISLEMLERI_DESTEKELEMESINDEN_ALIR")} </h2>,
         key: '0-1-0',
         icon: <CarryOutOutlined />,
       },
     ],
   },
   {
-    title: <h2 style={{color:'black',fontWeight:'bold',fontSize:'40px'}}>CryptoBox’a kimler üye olabilir?</h2>,
+    title: <h2 style={{color:'black',fontWeight:'bold',fontSize:'40px'}}>{ML("CRYPTOBOXA_KIMLER_UYE_OLABILIR")}</h2>,
     key: '0-2',
     icon: <CarryOutOutlined />,
     children: [
       {
-        title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>MetaMask hesabı Ethereum networkünde olan, hesabında Ethereum’u bulunan
+        title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>{ML("METAMASK_HESABI_ETHEREUM_NETWORKUNDE_OLAN_HESABINDA_ETHEREUMU_BULUNAN")}
         <br/>
-        ve çocukları için kripto birikimi yapmak isteyen tüm ebeveynler üye olabilir. </h2>,
+        {ML("VE_COCUKLARI_ICIN_KRIPTO_BIRIKIMI_YAPMAK_ISTEYEN_TUM_EBEVEYNLER_UYE_OLABILIR")} </h2>,
         key: '0-2-0',
         icon: <CarryOutOutlined />,
       },
@@ -99,12 +101,12 @@ export default function FAQ () {
 
                <Button style={{position:'absolute', right:530, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
-                type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button>   
+                type="link" danger><Link to="/meta_mask">{ML("METAMASK_NEDIR")}</Link></Button>   
 
                <Button style={{position:'absolute', right:780, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
                
-                type="link" danger><Link to="/about">HAKKIMIZDA</Link></Button>       
+                type="link" danger><Link to="/about">{ML("HAKKIMIZDA")}</Link></Button>       
                                
                 <Button style={{position:'absolute', right:450, top:25, color:'#13C2C2', fontWeight:'bold',fontSize:'25px'}}
                 
@@ -112,10 +114,14 @@ export default function FAQ () {
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
-                type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
+                type="primary" ghost><Link to="/login">{ML("OTURUM_AC")}</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/yenideneme">Kayıt ol</Link></Button>
+                type="primary"><Link to="/yenideneme"></Link>{ML("KAYIT_OL")}</Button>
+              
+              <LanguageComponent/>
+
+              
               </Header>
               <Layout>
               <Content style={{background: 'white',
@@ -127,7 +133,7 @@ export default function FAQ () {
                     
               
                   
-                  <h2 style={{position:'absolute', left:900, top:250,color:'#13C2C2',fontWeight:'bold',fontSize:'40px'}}>SIK SORULAN SORULAR</h2>
+                  <h2 style={{position:'absolute', left:900, top:250,color:'#13C2C2',fontWeight:'bold',fontSize:'40px'}}>{ML("SIK_SORULAN_SORULAR")}</h2>
                   <Tree style={{position:'absolute', left:200, top:-100,width:'1500px',height:'400px'}}
                     showLine={showLine}
                     showIcon={showIcon}
@@ -145,7 +151,7 @@ export default function FAQ () {
                 </Content>
 
                 <Footer style={{background:"white", padding:60,}}>
-                  <h2 style={{position:'absolute', right:1000,}}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+                  <h2 style={{position:'absolute', right:1000,}}>{ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>.
                   </Footer>
               </Layout>
             </Layout>

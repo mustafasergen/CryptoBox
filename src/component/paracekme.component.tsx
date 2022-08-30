@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
+import { ML } from '../i18n.config';
 
 
 
@@ -108,7 +109,7 @@ export default function Paracekme() {
           </Content>
 
           <Footer style={{ background: "white", padding: 60, }}>
-            <h2 style={{ position: 'absolute', right: 1000, }}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+            <h2 style={{ position: 'absolute', right: 1000, }}>{ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>.
           </Footer>
         </Layout>
       </Layout>

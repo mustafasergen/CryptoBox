@@ -4,6 +4,7 @@ import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
+import { ML } from '../i18n.config';
 
 
 
@@ -47,7 +48,7 @@ export default function ParaYatırma() {
             <Card.Grid style={{ width: '1000px', height: '650px', position: 'absolute', left: 680, top: 265, backgroundColor: '#E6FFFB' }}>
 
               <h2 style={{ position: 'absolute', left: 250, marginTop: '220px', color: 'black', fontSize: '30px' }}>
-                Tutar:
+              {ML("TUTAR")}
               </h2>
               <h2 style={{ position: 'absolute', left: 700, marginTop: '220px', color: 'black', fontSize: '30px' }}>
                 ETH
@@ -57,7 +58,7 @@ export default function ParaYatırma() {
 
               {paymoney}
 
-              <Link to="/basari" ><Button style={{ position: 'absolute', left: 350, marginTop: '380px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Ethereum Yatır</Button></Link>
+              <Link to="/basari" ><Button style={{ position: 'absolute', left: 350, marginTop: '380px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" ></Button>{ML("ETHEREUM_YATIR")}</Link>
 
             </Card.Grid>
           </Content>

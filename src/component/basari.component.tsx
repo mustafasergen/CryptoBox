@@ -4,6 +4,8 @@ import { Layout, Avatar } from 'antd';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 declare var window: any
 
 
@@ -28,7 +30,11 @@ export default function Basari() {
           <Button style={{ position: 'absolute', left: 190, top: 15, color: '#13C2C2', fontWeight: 'bold', fontSize: '35px' }}
 
             type="link" danger><Link to="/">CryptoBox</Link></Button>
+
+          <LanguageComponent/>
+
         </Header>
+
         <Layout>
           <Content style={{
             background:'white',
@@ -39,7 +45,7 @@ export default function Basari() {
 
                 <Card.Grid style={{width:'1200px', height:'750px',position:'absolute', left:570, top:265,backgroundColor:'#13C2C2'}}>
                   
-                  <h2 style={{fontWeight:'bold',fontSize:'40px',position:'absolute', left:280,marginTop:'300px',textAlign:'center',color:'white'}}>İşleminiz başarıyla tamamlanmıştır. </h2>
+                  <h2 style={{fontWeight:'bold',fontSize:'40px',position:'absolute', left:280,marginTop:'300px',textAlign:'center',color:'white'}}>{ML("ISLEMINIZ_BASARIYLA_TAMAMLANMISTIR")}</h2>
   
                   </Card.Grid>
 

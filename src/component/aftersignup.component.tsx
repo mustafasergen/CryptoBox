@@ -6,6 +6,7 @@ import { Image } from 'antd';
 import  { BellOutlined, ExportOutlined, SearchOutlined,  SendOutlined,  TeamOutlined,  VerticalAlignBottomOutlined,  VerticalAlignTopOutlined,  WalletOutlined } from '@ant-design/icons';
 import { WalletService } from '../services/wallet-service';
 import { useEffect, useState } from 'react';
+import { ML } from '../i18n.config';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -76,9 +77,9 @@ function AfterSignupParent() {
 
 
       const items: MenuItem[] = [
-        getItem(<Link to="/after_signup"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>My CrytoBox</h2></Link>, '1', <WalletOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}} />),
-        getItem(<Link to="/cocuklarim"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>Çocuklarım</h2></Link>, '2', <TeamOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
-        getItem(<h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>Çıkış Yap</h2>, '3', <ExportOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
+        getItem(<Link to="/after_signup"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>{ML("MY_CRYPTOBOX")}</h2></Link>, '1', <WalletOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}} />),
+        getItem(<Link to="/cocuklarim"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>{ML("COCUKLARIM")}</h2></Link>, '2', <TeamOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
+        getItem(<h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>{ML("CIKIS_YAP")}</h2>, '3', <ExportOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
         
 
       ];
@@ -123,22 +124,22 @@ function AfterSignupParent() {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'}}>
 
-                <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>HOŞ GELDİN</h2>
+                <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>{ML("HOS_GELDIN")}</h2>
                 <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıName}</h2>
                 <h2 style={{position:'absolute', left:670,top:130,fontWeight:'bold',color:'#13C2C2',fontSize:'35px'}}>{kullanıcıNameChild}</h2>
                 <Avatar style={{position:'absolute', left:1250, top:230,width:'100px',height:'100px'}} src= './coin2.png' />
 
-                <Link to='/paragonderme'><h2 style={{position:'absolute', left:1400,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Gönderme</h2></Link>
+                <Link to='/paragonderme'><h2 style={{position:'absolute', left:1400,top:450,color:'#13C2C2',fontSize:'20px'}}>{ML("PARA_GONDERME")}</h2></Link>
                 <Link to='/paragonderme'><SendOutlined style={{position:'absolute',left:1450,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
-                <Link to='/paracekme'><h2 style={{position:'absolute', left:1250,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Çekme</h2></Link>
+                <Link to='/paracekme'><h2 style={{position:'absolute', left:1250,top:450,color:'#13C2C2',fontSize:'20px'}}>{ML("PARA_CEKME")}</h2></Link>
                 <Link to='/paracekme'><VerticalAlignTopOutlined style={{position:'absolute',left:1280,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
                 <Link to='/parayatirma'><h2 style={{position:'absolute', left:1070,top:450,color:'#13C2C2',fontSize:'20px'}}>Para Yatırma</h2></Link>
                 <Link to='/parayatirma'><VerticalAlignBottomOutlined style={{position:'absolute',left:1100,top:400,color:'#13C2C2',fontSize:'45px'}} /></Link>
 
                 
-                <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:550,color:'#434343',fontSize:'30px'}}>Hesap Hareketleri</h2>
+                <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:550,color:'#434343',fontSize:'30px'}}>{ML("HESAP_HAREKETLERI")}</h2>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:620,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:719,backgroundColor:'#13C2C2'}}></Card.Grid>
                 <Card.Grid style={{width:'900px', height:'100px',position:'absolute', left:800, top:818,backgroundColor:'#13C2C2'}}></Card.Grid>
@@ -147,7 +148,7 @@ function AfterSignupParent() {
                </Content>
                </Layout>
                <Footer style={{background:"white", padding:60,boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                  <h2 style={{position:'absolute', right:1000,top:1300}}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>
+                  <h2 style={{position:'absolute', right:1000,top:1300}}> {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>
                 </Footer> 
                 
             </Layout>

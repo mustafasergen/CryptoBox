@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
+import { ML } from '../i18n.config';
 
 
 
@@ -87,21 +88,21 @@ export default function ParaGonderme() {
             <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
 
               <h2 style={{ position: 'absolute', left: 250, marginTop: '120px', color: 'black', fontSize: '30px' }}>
-                Tutar:
+                {ML("TUTAR")}
                 <br />
                 <br />
                 <br />
-                Alıcı Çocuk:
+                {ML("ALICI_COCUK")}
                 <br /> <br /> <br />
-                Açıklama:
+                {ML("ACIKLAMA")}
               </h2>
               <h2 style={{ position: 'absolute', left: 700, marginTop: '120px', color: 'black', fontSize: '30px' }}>
                 ETH
               </h2>
 
               <Input onChange={handlechangeAmount} style={{ position: 'absolute', left: 450, marginTop: '120px', width: '200px', height: '80px' }} placeholder="" />
-              <Input onChange={handlechangeRecievingChild} style={{ position: 'absolute', left: 450, marginTop: '260px', width: '200px', height: '80px' }} placeholder="Alıcı Çocuk" />
-              <Input onChange={handlechangeExplanation} style={{ position: 'absolute', left: 450, marginTop: '400px', width: '500px', height: '70px' }} placeholder="İsteğe Bağlı" />
+              <Input onChange={handlechangeRecievingChild} style={{ position: 'absolute', left: 450, marginTop: '260px', width: '200px', height: '80px' }} placeholder={ML("ALICI_COCUK")} />
+              <Input onChange={handlechangeExplanation} style={{ position: 'absolute', left: 450, marginTop: '400px', width: '500px', height: '70px' }} placeholder={ML("ISTEGE_BAGLI")} />
 
               {amount}
               {recievingchild}
@@ -109,7 +110,7 @@ export default function ParaGonderme() {
 
 
 
-              <Link to="/basari" ><Button onClick={() => { fundFunction(); }} style={{ position: 'absolute', left: 430, marginTop: '530px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Gönder</Button></Link>
+              <Link to="/basari" ><Button onClick={() => { fundFunction(); }} style={{ position: 'absolute', left: 430, marginTop: '530px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >{ML("GONDER")}</Button></Link>
 
 
             </Card.Grid>

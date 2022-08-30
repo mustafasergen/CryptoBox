@@ -8,6 +8,8 @@ import { ethers } from 'ethers'
 import { MetaMaskInpageProvider } from "@metamask/providers";
 import { useNavigate } from "react-router-dom";
 import { WalletService } from '../services/wallet-service';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 declare var window: any
 
 
@@ -80,12 +82,12 @@ export default function Signup() {
 
           <Button style={{ position: 'absolute', right: 530, top: 25, color: '#13C2C2', fontWeight: 'bold', fontSize: '25px' }}
 
-            type="link" danger><Link to="/meta_mask">METAMASK NEDİR?</Link></Button>
+            type="link" danger><Link to="/meta_mask">{ML("METAMASK_NEDIR")}</Link></Button>
 
           <Button style={{ position: 'absolute', right: 780, top: 25, color: '#13C2C2', fontWeight: 'bold', fontSize: '25px' }}
 
 
-            type="link" danger><Link to="/about">HAKKIMIZDA</Link></Button>
+            type="link" danger><Link to="/about">{ML("HAKKIMIZDA")}</Link></Button>
 
           <Button style={{ position: 'absolute', right: 450, top: 25, color: '#13C2C2', fontWeight: 'bold', fontSize: '25px' }}
 
@@ -93,10 +95,13 @@ export default function Signup() {
 
           <Button style={{ position: 'absolute', right: 180, top: 25, width: '110px', height: '50px', borderColor: '#13C2C2', borderWidth: '5px', color: '#13C2C2', fontWeight: 'bold', fontSize: '15px' }}
 
-            type="primary" ghost><Link to="/login">Oturum aç</Link></Button>
+            type="primary" ghost><Link to="/login">{ML("OTURUM_AC")}</Link></Button>
           <Button style={{ position: 'absolute', right: 320, top: 25, width: '100px', height: '50px', color: 'white', fontWeight: 'bold', fontSize: '15px', backgroundColor: '#13C2C2', borderColor: '#13C2C2' }}
 
-            type="primary"><Link to="/signup">Kayıt ol</Link></Button>
+            type="primary"><Link to="/signup">{ML("KAYIT_OL")}</Link></Button>
+
+            <LanguageComponent/>
+            
         </Header>
         <Layout>
           <Content style={{
@@ -108,7 +113,7 @@ export default function Signup() {
           >
 
 
-            <h1 style={{ position: 'absolute', left: 800, top: 180, color: 'black', fontSize: '50px', fontWeight: 'bold' }}>CryptoBox Hesabınızı Oluşturun
+            <h1 style={{ position: 'absolute', left: 800, top: 180, color: 'black', fontSize: '50px', fontWeight: 'bold' }}>{ML("CRYPTOBOX_HESABINIZI_OLUSTURUN")}
             </h1>
             
               <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
@@ -117,11 +122,11 @@ export default function Signup() {
 
 
                 <h2 style={{ position: 'absolute', left: 320, marginTop: '50px', color: 'black', fontSize: '30px' }}>
-                  Ad
+                  {ML("AD")}
                   <br />
                   <br />
                   <br />
-                  Soyad
+                  {ML("SOYAD")}
                 </h2>
 
                 <Input onChange={handlechangeName} style={{ position: 'absolute', left: 320, marginTop: '110px', width: '500px', height: '70px' }} placeholder="İsminizi giriniz" />

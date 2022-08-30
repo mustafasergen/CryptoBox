@@ -5,6 +5,7 @@ import { Image } from 'antd';
 import  { BellOutlined, ExportOutlined, SearchOutlined,  SendOutlined,  TeamOutlined,  VerticalAlignBottomOutlined,  VerticalAlignTopOutlined,  WalletOutlined } from '@ant-design/icons';
 import { WalletService } from '../services/wallet-service';
 import { useEffect, useState } from 'react';
+import { ML } from '../i18n.config';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -78,7 +79,7 @@ function AfterSignupChild() {
       const items: MenuItem[] = [
         getItem(<Link to="/after_signup"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>My CrytoBox</h2></Link>, '1', <WalletOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}} />),
         getItem(<Link to="/cocuklarim"><h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>Çocuklarım</h2></Link>, '2', <TeamOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
-        getItem(<h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>Çıkış Yap</h2>, '3', <ExportOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
+        getItem(<h2 style={{fontSize:'30px',color:'black',textAlign:'center',marginTop:'6px'}}>{ML("CIKIS_YAP")}</h2>, '3', <ExportOutlined style={{position:'absolute',marginTop:'6px',fontSize:'35px'}}/>),
         
 
       ];
@@ -133,7 +134,7 @@ function AfterSignupChild() {
                </Content>
                </Layout>
                <Footer style={{background:"white", padding:60,boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)'}}>
-                  <h2 style={{position:'absolute', right:1000,top:1300}}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>
+                  <h2 style={{position:'absolute', right:1000,top:1300}}> {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>
                 </Footer> 
                 
             </Layout>

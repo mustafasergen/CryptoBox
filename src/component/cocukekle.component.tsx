@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
+import { ML } from '../i18n.config';
 
 const { Header, Content } = Layout;
 
@@ -96,23 +97,22 @@ export default function CocukEkle() {
             <Card.Grid style={{ width: '1200px', height: '790px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
 
               <h2 style={{ position: 'absolute', left: 320, marginTop: '30px', color: 'black', fontSize: '30px' }}>
-                Çocuğunuzun Adı
-
+              {ML("COCUGUNUZUN_ADI")}
                 <br />
                 <br />
                 <br />
-                Çocuğunuzun Soyadı
+                {ML("COCUGUNUZUN_SOYADI")}
                 <br /> <br /> <br />
-                Çocuğunuzun Doğum Tarihid
+                {ML("COCUGUNUZUN_DOGUM_TARIHI")}
                 <br /> <br /> <br />
-                Çocuğunuzun Metamask Hesabı
+                {ML("COCUGUNUZUN_METAMASK_HESABI")}
               </h2>
 
-              <Input onChange={handlechangeChildName} style={{ position: 'absolute', left: 320, marginTop: '90px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun İsmi" />
+              <Input onChange={handlechangeChildName} style={{ position: 'absolute', left: 320, marginTop: '90px', width: '500px', height: '70px' }} placeholder={ML("COCUGUNUZUN_ADI")} />
               {/* <Input onChange={handlechangeChildSurname} style={{ position: 'absolute', left: 320, marginTop: '230px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Soyadı" /> */}
               {/* <Input onChange={handlechangeChildBday} style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Doğum Tarihi" /> */}
-              <DatePicker style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} onChange={onChange} placeholder="Çocuğunuzun Doğum Tarihi" ></DatePicker>
-              <Input onChange={handlechangeChildMetamask} style={{ position: 'absolute', left: 320, marginTop: '510px', width: '500px', height: '70px' }} placeholder="Çocuğunuzun Metamask Adresi" />
+              <DatePicker style={{ position: 'absolute', left: 320, marginTop: '370px', width: '500px', height: '70px' }} onChange={onChange} placeholder={ML("COCUGUNUZUN_DOGUM_TARIHI")} ></DatePicker>
+              <Input onChange={handlechangeChildMetamask} style={{ position: 'absolute', left: 320, marginTop: '510px', width: '500px', height: '70px' }} placeholder={ML("COCUGUNUZUN_METAMASK_HESABI")} />
               {childname}<br />
               {/* {childsurname}<br /> */}
               {childbday}<br />
@@ -120,7 +120,7 @@ export default function CocukEkle() {
 
 
 
-              <Button onClick={() => { addChildrendFunction(); }} style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >Çocuğu Ekle</Button>
+              <Button onClick={() => { addChildrendFunction(); }} style={{ position: 'absolute', left: 380, marginTop: '540px', width: '350px', height: '80px', backgroundColor: '#13C2C2', fontSize: '35px', borderColor: '#13C2C2' }} type="primary" >{ML("")}</Button>
 
 
             </Card.Grid>
