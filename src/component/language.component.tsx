@@ -10,7 +10,7 @@ export interface LanguageProps {
 export default function LanguageComponent(props: LanguageProps) {
   const menu = (
 
-    <Menu style={{left: 2100, top:3}}>
+    <Menu>
       {languages.map(({ code, name, country_code }) => {
         return <Menu.Item key={country_code} onClick={(info) => {
           i18next.changeLanguage(code).then(() => window.location.reload())
@@ -21,19 +21,22 @@ export default function LanguageComponent(props: LanguageProps) {
     </Menu>
   );
   return <>
-    <Dropdown overlay={menu}>
-      
-      <a onClick={e => e.preventDefault()}>
-      <Button style={{ position: 'absolute', left: 2250, top: 30, width: '280', height: '30px', color: 'white', fontWeight: 'bold', fontSize: '15px', backgroundColor: '#13C2C2', borderColor: '#13C2C2' }}
+    <div style={{ position: "absolute", right: 10, top: 15, bottom: 0 }}>
 
-                type="primary">
-        <Space>
-          {ML("LANGUAGES")}
-          <DownOutlined />
-        </Space>
-        
-        </Button>
-      </a>
-    </Dropdown>
+      <Dropdown overlay={menu}>
+        <a onClick={e => e.preventDefault()}>
+          <Button style={{ width: '280', height: '30px', color: 'white', fontWeight: 'bold', fontSize: '15px', backgroundColor: '#13C2C2', borderColor: '#13C2C2' }}
+
+            type="primary">
+            <Space>
+              {ML("LANGUAGES")}
+              <DownOutlined />
+            </Space>
+
+          </Button>
+        </a>
+      </Dropdown>
+    </div>
+
   </>
 }
