@@ -110,7 +110,7 @@ export default function Login () {
                     size="large"
                   >     
                 <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
-                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >{ML("EBEVEYN_HESABI_OLARAK_GIRIS_YAPINIZ")}n</Button></Link>
+                textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >{ML("EBEVEYN_HESABI_OLARAK_GIRIS_YAPINIZ")}</Button></Link>
                 <Link to='/after_signup_child'><Button style={{position:'absolute', right:340, marginTop:'360px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >{ML("COCUK_HESABI_OLARAK_GIRIS_YAPINIZ")}</Button></Link>
 

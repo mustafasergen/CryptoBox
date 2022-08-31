@@ -112,8 +112,8 @@ class About extends Component {
                 <h1 style={{fontWeight:'bold',fontSize:'60px',position:'absolute', left:640,top:1580,textAlign:'center',color:'#FA8C16'}}>{ML("VIZYONUMUZ")}</h1>
                 <h1 style={{fontWeight:'bold',fontSize:'35px',position:'absolute', left:540,top:1700,textAlign:'center',color:'000000',}}>{ML("AILELER_ICIN")}<br/>
                 {ML("ETHEREUM_KRIPTO_PARA_BIRIMIYLE")}<br />
+                {ML("CUZDAN_HIZMETI_VEREN")} <br />
                 {ML("URUNLER_ICERISINDE")} <br />
-                {ML("BIRIKIM_YAPMALARINA")} <br />
                 {ML("1_NUMARA_OLMAK")}
                 </h1>
 

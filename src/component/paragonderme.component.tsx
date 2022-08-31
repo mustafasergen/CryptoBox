@@ -27,9 +27,9 @@ export default function ParaGonderme() {
 
   const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
     notification.info({
-      message: `Bilgilendirme Mesajı `,
+      message: ML("BILGILENDIRME_MESAJI"),
       description:
-      "Çoçuğunuz para gönderilmesi için MetaMask'tan ücreti onaylayın lütfen.",
+      ML("METAMASKTAN_UCRETI_ONAYLAYIN_LUTFEN"),
       placement,
     });
   };
@@ -39,8 +39,8 @@ export default function ParaGonderme() {
 
   const Başarısız = (type: NotificationType) => {
     notification[type]({
-      message: "Bilgilendirme Mesajı ",
-      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description: ML("LUTFEN_BILGILERI_ISTENILEN_GIBI_DOLDURUN"),
     });
   };
 
@@ -180,40 +180,40 @@ export default function ParaGonderme() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Tutar"
+                  label={ML("TUTAR")}
                   name="TUTAR"
                   rules={[
-                    { required: true, message: "Bu kısım boş bırakılamaz" },
+                    { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ")  },
                   ]}
                 >
                   <Input
                     onChange={handlechangeAmount}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="Göndereceğiniz Ether Tutarını Girin"
+                    placeholder={ML("TUTAR") }
                   />
                 </Form.Item>
                 <Form.Item                  
-                label= ' MetaMask Adresi'
+                label= {ML("METAMASK_ADRESI")}
                 name="Alıcı Adresi"
                 rules={[
-                  { required: true, message: "Bu kısım boş bırakılamaz" },
+                  { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                 ]}
 
                 >
                 <Input
                     onChange={handlechangeRecievingChild}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="MetaMask Adresini Giriniz"
+                    placeholder={ML("METAMASK_ADRESI") }
                   /></Form.Item>
 
                 <Form.Item                  
-                label='Bilgilendirme'
+                label={ML("BILGILENDIRME")}
                 name="Bilgirendirme"
                 >
                 <Input
                     onChange={handlechangeExplanation}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="İsteğe bağlı Açıklama ekleyiniz"
+                    placeholder={ML("ISTEGE_BAGLI") }
                   /></Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 20 }}>

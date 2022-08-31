@@ -8,6 +8,7 @@ import { Image } from "antd";
 import { WalletService } from "../services/wallet-service";
 import { NotificationPlacement } from "antd/lib/notification";
 import { ML } from "../i18n.config";
+import LanguageComponent from "./language.component";
 
 const { Header, Footer, Content } = Layout;
 
@@ -17,28 +18,28 @@ export default function NewLogin() {
   type NotificationType = "info" |'success'| 'warning'|'error';
   const Kayıtolunuz = (type: NotificationType) => {
     notification[type]({
-      message: "Bilgilendirme Mesajı",
-      description: "Kayıt olunuz",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description: ML("KAYIT_OL"),
     });
   };
 
   const KayıtBaşarılı = (type: NotificationType,placement: NotificationPlacement) => {
     notification[type]({
-      message: `Bilgilendirme Mesajı `,
-      description:  "Ebeveyn hesabı eklenmesi için MetaMask'tan ücreti onaylayın lütfen.",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description: ML("METAMASKTAN_UCRETI_ONAYLAYIN_LUTFEN"),
       placement,
     });
   };
   const Buton = (type: NotificationType) => {
     notification[type]({
-      message: "Bilgilendirme Mesajı",
-      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description: ML("LUTFEN_BILGILERI_ISTENILEN_GIBI_DOLDURUN"),
     });
   };
   const Parent = (type: NotificationType,placement: NotificationPlacement) => {
     notification[type]({
-      message: `Bilgilendirme Mesajı `,
-      description: "Hesabınız bu adres ile var, giriş sayfasına Yönlendiriyorsunuz",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description: ML("BU_ADRES_ILE_HESAP_VAR"),
       placement,
     });
   };
@@ -212,6 +213,7 @@ export default function NewLogin() {
         >
           <Link to="/yenideneme">{ML("KAYIT_OL")}</Link>
         </Button>
+        <LanguageComponent/>
       </Header>
       <Layout>
 
@@ -266,16 +268,16 @@ export default function NewLogin() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Ad Soyad"
+                  label={ML("AD_SOYAD")}
                   name="username"
                   rules={[
-                    { required: true, message: "Bu kısım boş bırakılamaz" },
+                    { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                   ]}
                 >
                   <Input
                     onChange={handlechangeName}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="Adınızı Soyadınızı Giriniz"
+                    placeholder={ML("AD_SOYAD")}
                   />
                 </Form.Item>
 

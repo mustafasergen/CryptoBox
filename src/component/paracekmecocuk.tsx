@@ -23,9 +23,9 @@ export default function Paracekme() {
 
   const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
     notification.info({
-      message: `Bilgilendirme Mesajı `,
+      message: ML("BILGILENDIRME_MESAJI"),
       description:
-      "Hesabınızdaki parayı çekebilmek için, MetaMask'tan ücreti onaylayın lütfen.",
+      ML("METAMASKTAN_UCRETI_ONAYLAYIN_LUTFEN"),
       placement,
     });
   };
@@ -35,8 +35,8 @@ export default function Paracekme() {
 
   const Başarısız = (type: NotificationType) => {
     notification[type]({
-      message: "Bilgilendirme Mesajı ",
-      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description:  ML("LUTFEN_BILGILERI_ISTENILEN_GIBI_DOLDURUN"),
     });
   };
 
@@ -140,7 +140,7 @@ export default function Paracekme() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-            >{("ETHEREUM_CEK")}</h1>
+            >{ML("ETHEREUM_CEK")}</h1>
             <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
             <Spin
               spinning={loading}
@@ -163,16 +163,16 @@ export default function Paracekme() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Tutar"
+                  label={ML("TUTAR")}
                   name="TUTAR"
                   rules={[
-                    { required: true, message: "Bu kısım boş bırakılamaz" },
+                    { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                   ]}
                 >
                   <Input
                     onChange={handlechangePullMoney}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="Çekeceğiniz Ether Tutarını Girin"
+                    placeholder={ML("TUTAR")}
                   />
                 </Form.Item>
    
