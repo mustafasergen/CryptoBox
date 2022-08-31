@@ -7,6 +7,8 @@ import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 import { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 const { Header, Content } = Layout;
 
@@ -20,7 +22,7 @@ export default function CocukEkleYeni() {
       notification.info({
         message: `Bilgilendirme Mesajı `,
         description:
-        "Çoçuğunuzun eklenmesi için MetaMask'tan ücreti onaylayın lütfen.",
+        ML("COCUGUNUZUN_EKLENMESI_ICIN_METAMASKTAN_UCRETI_ONAYLAYIN_LUTFEN"),
         placement,
       });
     };
@@ -30,8 +32,8 @@ export default function CocukEkleYeni() {
 
     const Başarısız = (type: NotificationType) => {
       notification[type]({
-        message: "Bilgilendirme Mesajı",
-        description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+        message: ML("BILGILENDIRME_MESAJI"),
+        description: ML("LUTFEN_BILGILERI_ISTENILEN_GIBI_DOLDURUN"),
       });
     };
 
@@ -125,6 +127,8 @@ export default function CocukEkleYeni() {
             }}
           />
           </Link>
+
+          <LanguageComponent/>
         </Header>
         <Layout>
           <Content style={{
@@ -143,7 +147,7 @@ export default function CocukEkleYeni() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-          >Çoçuğunuzu Ekleyin</h1>
+          >{ML("COCUGU_EKLE")}</h1>
           <Card.Grid
             style={{
               width: "1200px",
@@ -158,7 +162,7 @@ export default function CocukEkleYeni() {
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  Lütfen MetaMask hesabına bağlanın
+                  {ML("LUTFEN_METAMASK_HESABINA_BAGLANIN")}
                 </h2>
               }>
 
@@ -173,36 +177,36 @@ export default function CocukEkleYeni() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Ad ve Soyad"
+                  label={ML("AD_SOYAD")}
                   name="username"
                   rules={[
-                    { required: true, message: "Bu kısım boş bırakılamaz" },
+                    { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                   ]}
                 >
                   <Input
                     onChange={handlechangeChildName}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="İsim ve Soyisim Giriniz"
+                    placeholder= {ML("AD_SOYAD")}
                   />
                 </Form.Item>
                 <Form.Item                  
-                label='MetaMask Adresi'
+                label={ML("METAMASK_ADRESI")}
                 name="MetaMask Adresi"
                 rules={[
-                  { required: true, message: "Bu kısım boş bırakılamaz" },
+                  { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                 ]}
 
                 >
                 <Input
                     onChange={handlechangeChildMetamask}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="MetaMask Adresini Giriniz"
+                    placeholder={ML("COCUGUNUZUN_METAMASK_HESABI")}
                   /></Form.Item>
 
                    <Form.Item
-                   label='Çoçuğunuzun Doğum Tarihi'>
+                   label={ML("COCUGUNUZUN_DOGUM_TARIHI")}>
                    <DatePicker 
-                   style={{ width: '500px', height: '40px' }} onChange={onChange} placeholder="Çocuğunuzun Doğum Tarihi" />
+                   style={{ width: '500px', height: '40px' }} onChange={onChange} placeholder={ML("COCUGUNUZUN_DOGUM_TARIHI")} />
                    </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 20 }}>
@@ -211,7 +215,7 @@ export default function CocukEkleYeni() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Çoçuk Ekle
+                    {ML("COCUGU_EKLE")}
                   </Button>
                 </Form.Item>
               </Form>

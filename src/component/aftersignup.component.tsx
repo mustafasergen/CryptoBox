@@ -8,6 +8,8 @@ import { WalletService } from '../services/wallet-service';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { Child } from '../services/contract-service';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -64,18 +66,18 @@ function AfterSignupParent() {
   const dataSource = [translaction];
   const columns = [
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>Kime</h2>,
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("KIME")}</h2>,
       dataIndex: "to",
       key: "name",
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>Değer</h2>,
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("TUTAR")}</h2>,
       dataIndex: "value",
       key: "amount",
 
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>İşlem</h2>,
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("ISLEM")}</h2>,
       dataIndex: "functionName",
       key: "address",
     },
@@ -109,8 +111,8 @@ function AfterSignupParent() {
 
   const items: MenuItem[] = [
     getItem(<Link to="/after_signup"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>My CrytoBox</h2></Link>, '1', <WalletOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
-    getItem(<Link to="/cocuklarim"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>Çocuklarım</h2></Link>, '2', <TeamOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
-    getItem(<Link to="/login"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>Oturum Değiştirme </h2></Link>, '3', <ExportOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
+    getItem(<Link to="/cocuklarim"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>{ML("COCUKLARIM")}</h2></Link>, '2', <TeamOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
+    getItem(<Link to="/login"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>{ML("OTURUM_DEGISTIRME")}</h2></Link>, '3', <ExportOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
 
 
   ];
@@ -131,6 +133,7 @@ function AfterSignupParent() {
 
           <TeamOutlined style={{ position: 'absolute', right: 250, top: 40, color: '#13C2C2', borderBlockColor: '#13C2C2', fontSize: '30px' }} />
 
+          <LanguageComponent/>
 
         </Header>
         <Layout>
@@ -155,15 +158,15 @@ function AfterSignupParent() {
             backgroundRepeat: 'no-repeat'
           }}>
 
-            <h2 style={{ fontWeight: 'bold', position: 'absolute', left: 450, top: 130, color: '#13C2C2', fontSize: '35px' }}>HOŞ GELDİN</h2>
+            <h2 style={{ fontWeight: 'bold', position: 'absolute', left: 450, top: 130, color: '#13C2C2', fontSize: '35px' }}>{ML("HOS_GELDIN")}</h2>
             <h2 style={{ position: 'absolute', left: 670, top: 130, fontWeight: 'bold', color: '#13C2C2', fontSize: '35px' }}>{kullanıcıName}</h2>
             <h2 style={{ position: 'absolute', left: 670, top: 130, fontWeight: 'bold', color: '#13C2C2', fontSize: '35px' }}>{kullanıcıNameChild}</h2>
             <Avatar style={{ position: 'absolute', left: 1190, top: 230, width: '100px', height: '100px' }} src='./coin2.png' />
 
-            <Link to='/paragonderme'><h2 style={{ position: 'absolute', left: 1250, top: 450, color: '#13C2C2', fontSize: '20px' }}>Para Gönderme</h2></Link>
+            <Link to='/paragonderme'><h2 style={{ position: 'absolute', left: 1250, top: 450, color: '#13C2C2', fontSize: '20px' }}>{ML("PARA_GONDERME")}</h2></Link>
             <Link to='/paragonderme'><SendOutlined style={{ position: 'absolute', left: 1300, top: 400, color: '#13C2C2', fontSize: '45px' }} /></Link>
 
-            <Link to='/paracekme'><h2 style={{ position: 'absolute', left: 1100, top: 450, color: '#13C2C2', fontSize: '20px' }}>Para Çekme</h2></Link>
+            <Link to='/paracekme'><h2 style={{ position: 'absolute', left: 1100, top: 450, color: '#13C2C2', fontSize: '20px' }}>{ML("PARA_CEK")}</h2></Link>
             <Link to='/paracekme'><VerticalAlignTopOutlined style={{ position: 'absolute', left: 1130, top: 400, color: '#13C2C2', fontSize: '45px' }} /></Link>
 
 
@@ -182,7 +185,7 @@ function AfterSignupParent() {
           </Content>
         </Layout>
         <Footer style={{ background: "white", padding: 60, boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, 0.7)' }}>
-          <h2 style={{ position: 'absolute', right: 1000, top: 1300 }}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>
+          <h2 style={{ position: 'absolute', right: 1000, top: 1300 }}>{ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>
         </Footer>
 
       </Layout>

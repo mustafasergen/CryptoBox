@@ -7,6 +7,8 @@ import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
+import { ML } from '../i18n.config';
+import LanguageComponent from './language.component';
 
 
 
@@ -21,9 +23,9 @@ export default function Paracekme() {
 
   const Başarılı = (type: NotificationType, placement: NotificationPlacement) => {
     notification.info({
-      message: `Bilgilendirme Mesajı `,
+      message: ML("BILGILENDIRME_MESAJI"),
       description:
-      "Çoçuğunuzun hesabından para çekilmesi için MetaMask'tan ücreti onaylayın lütfen.",
+      ML("METAMASKTAN_UCRETI_ONAYLAYIN_LUTFEN"),
       placement,
     });
   };
@@ -33,8 +35,8 @@ export default function Paracekme() {
 
   const Başarısız = (type: NotificationType) => {
     notification[type]({
-      message: "Bilgilendirme Mesajı ",
-      description: "Lütfen Bilgileri İstenilen gibi doldurdun",
+      message: ML("BILGILENDIRME_MESAJI"),
+      description: ML("LUTFEN_BILGILERI_ISTENILEN_GIBI_DOLDURUN"),
     });
   };
 
@@ -126,6 +128,7 @@ export default function Paracekme() {
             }}
           />
           </Link>
+          <LanguageComponent/>
         </Header>
         <Layout>
           <Content style={{
@@ -144,13 +147,13 @@ export default function Paracekme() {
               fontSize: "50px",
               fontWeight: "bold",
             }}
-          >Çocuğunuzun Hesabından Para Çekme</h1>
+          >{ML("COCUGUNUZUN_HESABINDAN_PARA_CEK")}</h1>
             <Card.Grid style={{ width: '1200px', height: '750px', position: 'absolute', left: 570, top: 265, backgroundColor: '#E6FFFB' }}>
             <Spin
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  Lütfen MetaMask hesabına bağlanın
+                  {ML("LUTFEN_METAMASK_HESABINA_BAGLANIN")}
                 </h2>
               }>
 
@@ -167,30 +170,30 @@ export default function Paracekme() {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Tutar"
+                  label={ML("TUTAR")}
                   name="TUTAR"
                   rules={[
-                    { required: true, message: "Bu kısım boş bırakılamaz" },
+                    { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                   ]}
                 >
                   <Input
                     onChange={handlechangePullMoney}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="Göndereceğiniz Ether Tutarını Girin"
+                    placeholder={ML("TUTAR")}
                   />
                 </Form.Item>
                 <Form.Item                  
-                label= ' MetaMask Adresi'
+                label= {ML("METAMASK_ADRESI")}
                 name="Alıcı Adresi"
                 rules={[
-                  { required: true, message: "Bu kısım boş bırakılamaz" },
+                  { required: true, message: ML("BU_KISIM_BOS_BIRAKILAMAZ") },
                 ]}
 
                 >
                 <Input
                     onChange={handlechangePullMoneyFrom}
                     style={{ width: "350px", height: "40px" }}
-                    placeholder="MetaMask Adresini Giriniz"
+                    placeholder={ML("METAMASK_ADRESI")}
                   /></Form.Item>
 
  
@@ -201,7 +204,7 @@ export default function Paracekme() {
                     type="primary"
                     htmlType="submit"
                     >
-                    Ethereum Çek
+                    {ML("PARA_CEK")}
                   </Button>
                 </Form.Item>
               </Form>
@@ -211,7 +214,7 @@ export default function Paracekme() {
           </Content>
 
           <Footer style={{ background: "white", padding: 60, }}>
-            <h2 style={{ position: 'absolute', right: 1000, }}> © 2022 Intertech, Inc. Her hakkı saklıdır</h2>.
+            <h2 style={{ position: 'absolute', right: 1000, }}>{ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}</h2>.
           </Footer>
         </Layout>
       </Layout>
