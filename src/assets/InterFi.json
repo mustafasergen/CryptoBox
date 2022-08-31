@@ -16,6 +16,11 @@
   },
   {
     "inputs": [],
+    "name": "Not_released_yet",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "There_is_no_child_belongs_parent",
     "type": "error"
   },

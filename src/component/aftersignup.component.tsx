@@ -11,6 +11,7 @@ import { Child } from '../services/contract-service';
 import { ML } from '../i18n.config';
 import LanguageComponent from './language.component';
 
+
 const { Header, Footer, Sider, Content } = Layout;
 
 
@@ -30,6 +31,7 @@ function AfterSignupParent() {
   const [kullanıcıName, setName] = useState("");
   const [kullanıcıNameChild, setChildName] = useState("");
   const [translaction, setTrans] = useState<Child[]>([]);
+  
 
 
 
@@ -110,7 +112,7 @@ function AfterSignupParent() {
 
 
   const items: MenuItem[] = [
-    getItem(<Link to="/after_signup"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>My CrytoBox</h2></Link>, '1', <WalletOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
+    getItem(<Link to="/after_signup"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>My CryptoBox</h2></Link>, '1', <WalletOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
     getItem(<Link to="/cocuklarim"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>{ML("COCUKLARIM")}</h2></Link>, '2', <TeamOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
     getItem(<Link to="/login"><h2 style={{ fontSize: '28px', color: 'black', textAlign: 'center', marginTop: '15px' }}>{ML("OTURUM_DEGISTIRME")}</h2></Link>, '3', <ExportOutlined style={{ position: 'absolute', marginTop: '6px', fontSize: '35px' }} />),
 
@@ -170,7 +172,7 @@ function AfterSignupParent() {
             <Link to='/paracekme'><VerticalAlignTopOutlined style={{ position: 'absolute', left: 1130, top: 400, color: '#13C2C2', fontSize: '45px' }} /></Link>
 
 
-
+            <h2 style={{fontWeight:'bold',position:'absolute', left:850,top:500,color:'#13C2C2',fontSize:'30px'}}>Hesap Hareketleri</h2>
             <Table
               style={{
                 position: "absolute",

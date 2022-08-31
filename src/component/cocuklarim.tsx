@@ -108,7 +108,7 @@ function Cocuk() {
             marginTop: "15px",
           }}
         >
-          My CrytoBox
+          My CryptoBox
         </h2>
       </Link>,
       "1",

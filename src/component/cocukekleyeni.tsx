@@ -7,8 +7,12 @@ import { Image } from 'antd';
 import { WalletService } from '../services/wallet-service';
 import { NotificationPlacement } from 'antd/lib/notification';
 import { TeamOutlined } from '@ant-design/icons';
+
 import { ML } from '../i18n.config';
 import LanguageComponent from './language.component';
+
+import { constants } from 'os';
+
 
 const { Header, Content } = Layout;
 
@@ -86,9 +90,12 @@ export default function CocukEkleYeni() {
   }
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    const dates = new Date(dateString).getTime()
-    console.log(dates)
-    setChildBday(dates);
+    let  dates = new Date(dateString); 
+    dates.setTime(dates.getTime() + (60 * 60 * 1000));
+
+    const dateFormatted = dates.getTime();
+    console.log(dateFormatted)
+    setChildBday(dateFormatted);
   };
 
   const onFinish = (values: any) => {
