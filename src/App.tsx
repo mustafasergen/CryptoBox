@@ -32,20 +32,20 @@ function App() {
         <AuthProvider>
           <CheckAuthProvider />
           <Routes>
-            <Route path='login' element={<Login />} />
+            <Route path='signin' element={<Login />} />
             <Route path='about' element={<About />} />
             <Route path='meta_mask' element={<Metamask />} />
             <Route path='Nometa_mask' element={<NoMetaMask />} />
-            <Route path='paragonderme' element={<ParaGonderme />} />
+            <Route path='sendETH' element={<ParaGonderme />} />
             <Route path='basari' element={<Basari />} />
-            <Route path='paracekme' element={<Paracekme />} />
-            <Route path='paracekme_cocuk' element={<ParacekmeCocuk />} />
-            <Route path='cocukekleyeni' element={<CocukEkleYeni />} />
+            <Route path='takeETH' element={<Paracekme />} />
+            <Route path='takeETH_child' element={<ParacekmeCocuk />} />
+            <Route path='addchild' element={<CocukEkleYeni />} />
             <Route path='faq' element={<FAQ />} />
             <Route path='after_signup_child' element={<AfterSignupChild />} />
-            <Route path='after_signup' element={<AfterSignupParent />} />
-            <Route path='cocuklarim' element={<Cocuk/>} />
-            <Route path='yenideneme' element={<NewLogin/>} />
+            <Route path='after_signup_parent' element={<AfterSignupParent />} />
+            <Route path='children' element={<Cocuk/>} />
+            <Route path='signup' element={<NewLogin/>} />
             <Route path='privatepage' element={<PrivateRoute node={<PrivatePage />} />} />
             <Route path='/' element={<Home />} />
           </Routes>

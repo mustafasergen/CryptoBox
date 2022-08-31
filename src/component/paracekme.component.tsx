@@ -95,7 +95,7 @@ export default function Paracekme() {
   const onFinish = (values: any) => {
     withdrawParentFunction()
     Başarılı('info','bottom');
-    setTimeout(() => {navigate("/after_signup")}, 10000);
+    setTimeout(() => {navigate("/after_signup_parent")}, 10000);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -116,7 +116,7 @@ export default function Paracekme() {
 
             type="link" danger><Link to="/">CryptoBox</Link></Button>
             
-          <Link to="/after_signup">
+          <Link to="/after_signup_parent">
           <TeamOutlined
             style={{
               position: "absolute",

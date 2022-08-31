@@ -84,10 +84,10 @@ export default function Login () {
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
-                type="primary" ghost><Link to="/login">{ML("OTURUM_AC")}</Link></Button>
+                type="primary" ghost><Link to="/signin">{ML("OTURUM_AC")}</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/yenideneme">{ML("KAYIT_OL")}</Link></Button>
+                type="primary"><Link to="/signup">{ML("KAYIT_OL")}</Link></Button>
                 <LanguageComponent/>
               </Header>
               <Layout>
@@ -109,7 +109,7 @@ export default function Login () {
                     }
                     size="large"
                   >     
-                <Link to='/after_signup'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
+                <Link to='/after_signup_parent'><Button style={{position:'absolute', right:340, marginTop:'200px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >{ML("EBEVEYN_HESABI_OLARAK_GIRIS_YAPINIZ")}</Button></Link>
                 <Link to='/after_signup_child'><Button style={{position:'absolute', right:340, marginTop:'360px', width:'500px', height:'80px', color:'white',fontWeight:'bold',
                 textAlign:'center',fontSize:'25px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} >{ML("COCUK_HESABI_OLARAK_GIRIS_YAPINIZ")}</Button></Link>

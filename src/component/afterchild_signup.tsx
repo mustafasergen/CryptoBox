@@ -1,6 +1,6 @@
-import { Layout, Avatar, Menu, MenuProps, Card } from "antd";
+import { Layout, Avatar, Menu, MenuProps, Card, Table } from "antd";
 import { Button } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Image } from "antd";
 import {
   BellOutlined,
@@ -17,6 +17,8 @@ import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { ML } from "../i18n.config";
 import LanguageComponent from "./language.component";
+import { Child } from "../services/contract-service";
+import axios from "axios";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -26,14 +28,21 @@ function AfterSignupChild() {
   const [kullanıcıName, setName] = useState("");
   const [miktar, setMiktar] = useState("");
   const [time, setTime] = useState("");
+  const navigate = useNavigate();
+  const [translaction, setTrans] = useState<Child[]>([]);
+
+    const endpoint = "https://api-rinkeby.etherscan.io/api"
+  const ETHERSCAN_API_KEY = "FMS8JYNTIQF7HBFM6G34P6SK52W6JQZKSM"
+  const CONTRACT_ADDRESS = "0xdA0ACe7006Ad5B36F2CdFF13276C95FBCB4D53C8";
+  const deneme = "0x302955b74C969aA09bb270DAa775B65Fc9b7Bc29"
+
 
   useEffect(() => {
     WalletService.connect().then(() => {
       WalletService.contract.getRole().then(async (role: string) => {
-        if (role == "Unregistered") {
-          console.log("kayıtlıdegil");
-        } else if (role == "Parent") {
-          console.log("kayıtlıdegil");
+        if (role == "Unregistered" ||role == "Parent") {
+          navigate('/signin')
+
         } else if (role == "Child") {
           const child = await WalletService.contract.getChild();
           setName(child.name);
@@ -64,10 +73,23 @@ function AfterSignupChild() {
           const finalFormat = arr[2] + "." + arr[1] + "." + arr[0];
           console.log(finalFormat);
           setTime(finalFormat);
+
+          const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${CONTRACT_ADDRESS}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${ETHERSCAN_API_KEY}`)
+          let context = etherscan.data.result;
+          for (let i = 0; i < context.length; i++) {
+            if (context[i].to === CONTRACT_ADDRESS) {
+              console.log(context[i].to)
+            }
+          }
+          setTrans(context);
         }
       });
     });
   }, []);
+
+
+
+
 
   type MenuItem = Required<MenuProps>["items"][number];
   function getItem(
@@ -86,60 +108,27 @@ function AfterSignupChild() {
     } as MenuItem;
   }
 
-  const items: MenuItem[] = [
-    getItem(
-      <Link to="/after_signup">
-        <h2
-          style={{
-            fontSize: "30px",
-            color: "black",
-            textAlign: "center",
-            marginTop: "6px",
-          }}
-        >
-          My CryptoBox
-        </h2>
-      </Link>,
-      "1",
-      <WalletOutlined
-        style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
-      />
-    ),
-    getItem(
-      <Link to="/cocuklarim">
-        <h2
-          style={{
-            fontSize: "30px",
-            color: "black",
-            textAlign: "center",
-            marginTop: "6px",
-          }}
-        >
-          {ML("COCUKLARIM")}
-        </h2>
-      </Link>,
-      "2",
-      <TeamOutlined
-        style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
-      />
-    ),
-    getItem(
-      <h2
-        style={{
-          fontSize: "30px",
-          color: "black",
-          textAlign: "center",
-          marginTop: "6px",
-        }}
-      >
-        {ML("CIKIS_YAP")}
-      </h2>,
-      "3",
-      <ExportOutlined
-        style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
-      />
-    ),
+  
+  const dataSource = [translaction];
+  const columns = [
+    {
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("KIME")}</h2>,
+      dataIndex: "to",
+      key: "name",
+    },
+    {
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("TUTAR")}</h2>,
+      dataIndex: "value",
+      key: "amount",
+
+    },
+    {
+      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("ISLEM")}</h2>,
+      dataIndex: "functionName",
+      key: "address",
+    },
   ];
+
 
   return (
     <div>
@@ -193,7 +182,7 @@ function AfterSignupChild() {
             type="primary"
             ghost
           >
-            <Link to="/login">{ML("OTURUM_DEGISTIRME")}</Link>
+            <Link to="/signin">{ML("OTURUM_DEGISTIRME")}</Link>
           </Button>
 
           <LanguageComponent />
@@ -202,7 +191,7 @@ function AfterSignupChild() {
           <Content
             style={{
               background: "white",
-              padding: 580,
+              padding: 690,
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
@@ -237,7 +226,7 @@ function AfterSignupChild() {
               style={{
                 fontWeight: "bold",
                 position: "absolute",
-                left: 750,
+                left: 1000,
                 top: 250,
                 color: "#13C2C2",
                 fontSize: "35px",
@@ -252,7 +241,7 @@ function AfterSignupChild() {
             <h2
               style={{
                 position: "absolute",
-                left: 550,
+                left: 790,
                 top: 250,
                 fontWeight: "bold",
                 color: "#13C2C2",
@@ -261,21 +250,7 @@ function AfterSignupChild() {
             >
               {time}!
             </h2>
-            <h2
-              style={{
-                fontWeight: "bold",
-                position: "absolute",
-                left: 750,
-                top: 250,
-                color: "#13C2C2",
-                fontSize: "35px",
-                textAlign: "center",
-              }}
-            >
-              {" "}
-              tarihinden itibaren hesabından işlem yapmaya <br />
-              başlayabillirsin.
-            </h2>
+
 
             <h2
               style={{
@@ -300,7 +275,7 @@ function AfterSignupChild() {
               src="./ether1.png"
             />
 
-            <Link to="/paracekme_cocuk">
+            <Link to="/takeETH_child">
               <h2
                 style={{
                   position: "absolute",
@@ -313,7 +288,7 @@ function AfterSignupChild() {
                 {ML("PARA_CEK")}
               </h2>
             </Link>
-            <Link to="/paracekme_cocuk">
+            <Link to="/takeETH_child">
               <VerticalAlignTopOutlined
                 style={{
                   position: "absolute",
@@ -338,26 +313,16 @@ function AfterSignupChild() {
               {ML("HESAP_HAREKETLERI")}
             </h2>
 
-            <Card.Grid
+            <Table
               style={{
-                width: "900px",
-                height: "100px",
                 position: "absolute",
-                left: 800,
-                top: 868,
-                backgroundColor: "#13C2C2",
-              }}
-            ></Card.Grid>
-            <Card.Grid
-              style={{
+                left: 850,
+                top: 850,
                 width: "900px",
-                height: "100px",
-                position: "absolute",
-                left: 800,
-                top: 967,
-                backgroundColor: "#13C2C2",
               }}
-            ></Card.Grid>
+              dataSource={translaction}
+              columns={columns}
+            />
           </Content>
         </Layout>
         <Footer
@@ -367,7 +332,7 @@ function AfterSignupChild() {
             boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
           }}
         >
-          <h2 style={{ position: "absolute", right: 1000, top: 1300 }}>
+          <h2 style={{ position: "absolute", right: 1000, top: 1520 }}>
             {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}
           </h2>
         </Footer>

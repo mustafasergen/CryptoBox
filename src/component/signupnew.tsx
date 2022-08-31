@@ -12,6 +12,8 @@ import LanguageComponent from "./language.component";
 
 const { Header, Footer, Content } = Layout;
 
+
+
 export default function NewLogin() {
   window.scrollTo(0, 0);
 
@@ -60,7 +62,7 @@ export default function NewLogin() {
           
           Parent('warning','bottom')
           
-          setTimeout(() => {navigate("/login")}, 5000);
+          setTimeout(() => {navigate("/signin")}, 5000);
         }
         
       });
@@ -88,7 +90,7 @@ export default function NewLogin() {
   const onFinish = (values: any) => {
     addParentFunction()
     KayıtBaşarılı("success",'bottom');
-    setTimeout(() => {navigate("/login")}, 10000);
+    setTimeout(() => {navigate("/signin")}, 10000);
     
   };
 
@@ -194,7 +196,7 @@ export default function NewLogin() {
           type="primary"
           ghost
         >
-          <Link to="/login">{ML("OTURUM_AC")}</Link>
+          <Link to="/signin">{ML("OTURUM_AC")}</Link>
         </Button>
         <Button
           style={{
@@ -211,7 +213,7 @@ export default function NewLogin() {
           }}
           type="primary"
         >
-          <Link to="/yenideneme">{ML("KAYIT_OL")}</Link>
+          <Link to="/signup">{ML("KAYIT_OL")}</Link>
         </Button>
         <LanguageComponent/>
       </Header>

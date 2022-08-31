@@ -99,7 +99,7 @@ function Cocuk() {
 
   const items: MenuItem[] = [
     getItem(
-      <Link to="/after_signup">
+      <Link to="/after_signup_parent">
         <h2
           style={{
             fontSize: "28px",
@@ -132,7 +132,7 @@ function Cocuk() {
         style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
       />
     ),
-    getItem(<Link to="/login">
+    getItem(<Link to="/signin">
       <h2
         style={{
           fontSize: "28px",
@@ -245,7 +245,7 @@ function Cocuk() {
               dataSource={childs}
               columns={columns}
             />
-            <Link to="/cocukekleyeni">
+            <Link to="/addchild">
               <Card.Grid
                 style={{
                   width: "900px",

@@ -101,7 +101,7 @@ export default function CocukEkleYeni() {
   const onFinish = (values: any) => {
     addChildrendFunction()
     Başarılı('info','bottom');
-    setTimeout(() => {navigate("/cocuklarim")}, 10000);
+    setTimeout(() => {navigate("/children")}, 10000);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -122,7 +122,7 @@ export default function CocukEkleYeni() {
 
           type="link" danger><Link to="/">CryptoBox</Link></Button>
 
-          <Link to="/after_signup">
+          <Link to="/after_signup_parent">
           <TeamOutlined
             style={{
               position: "absolute",

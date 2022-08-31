@@ -24,7 +24,7 @@ const treeData: DataNode[] = [
     children: [
       {
         title: <h2 style={{color:'black',textAlign:'center',fontSize:'25px'}}>{ML("MAALESEF_KAYIT_OLMAK_ICIN_METAMASK_HESABIN_OLMASI_GEREKIYOR_DETAYLI_BILGI")}<br/>
-        {ML("VE_INDIRME_DETAYLARI_ICIN")}<Link style={{color:'orange'}} to='/metamask'>{ML("METAMASK_NEDIR")}</Link> {ML("SAYFAMIZA_GOZ_ATABILIRSIN")}</h2>,
+        {ML("VE_INDIRME_DETAYLARI_ICIN")}<Link style={{color:'orange'}} to='/meta_mask'>{ML("METAMASK_NEDIR")}</Link> {ML("SAYFAMIZA_GOZ_ATABILIRSIN")}</h2>,
         key: '0-0-0',
         icon: <CarryOutOutlined />,
 
@@ -113,10 +113,10 @@ export default function FAQ () {
                
                 <Button style={{position:'absolute', right:180, top:25, width:'110px', height:'50px',borderColor:'#13C2C2',borderWidth:'5px', color:'#13C2C2',fontWeight:'bold',fontSize:'15px' }} 
                 
-                type="primary" ghost><Link to="/login">{ML("OTURUM_AC")}</Link></Button>
+                type="primary" ghost><Link to="/signin">{ML("OTURUM_AC")}</Link></Button>
                 <Button style={{position:'absolute', right:320, top:25, width:'100px', height:'50px', color:'white',fontWeight:'bold',fontSize:'15px', backgroundColor:'#13C2C2', borderColor:'#13C2C2' }} 
                 
-                type="primary"><Link to="/yenideneme">{ML("KAYIT_OL")}</Link></Button>
+                type="primary"><Link to="/signup">{ML("KAYIT_OL")}</Link></Button>
 
                 <LanguageComponent/>
 
