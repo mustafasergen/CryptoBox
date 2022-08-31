@@ -386,12 +386,12 @@ i18n
 export const languages = [
     {
         code: 'tr',
-        name: 'Türkçe',
+        name: '🇹🇷 Türkçe',
         country_code: 'tr',
     },
     {
         code: 'en',
-        name: 'English',
+        name: '🇬🇧 English',
         country_code: 'gb',
     }
 ]
