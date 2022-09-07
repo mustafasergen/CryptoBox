@@ -4,20 +4,19 @@ import { Layout, Avatar } from "antd";
 import { Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { Image } from "antd";
-
 import { WalletService } from "../services/wallet-service";
 import { NotificationPlacement } from "antd/lib/notification";
 import { ML } from "../i18n.config";
 import LanguageComponent from "./language.component";
+import Head from "./head";
+import Foot from "./foot";
 
 const { Header, Footer, Content } = Layout;
 
-
-
-export default function NewLogin() {
+export default function Register() {
   window.scrollTo(0, 0);
 
-  type NotificationType = "info" |'success'| 'warning'|'error';
+  type NotificationType = "info" | "success" | "warning" | "error";
   const Kayıtolunuz = (type: NotificationType) => {
     notification[type]({
       message: ML("BILGILENDIRME_MESAJI"),
@@ -25,7 +24,10 @@ export default function NewLogin() {
     });
   };
 
-  const KayıtBaşarılı = (type: NotificationType,placement: NotificationPlacement) => {
+  const KayıtBaşarılı = (
+    type: NotificationType,
+    placement: NotificationPlacement
+  ) => {
     notification[type]({
       message: ML("BILGILENDIRME_MESAJI"),
       description: ML("METAMASKTAN_UCRETI_ONAYLAYIN_LUTFEN"),
@@ -38,7 +40,7 @@ export default function NewLogin() {
       description: ML("LUTFEN_BILGILERI_ISTENILEN_GIBI_DOLDURUN"),
     });
   };
-  const Parent = (type: NotificationType,placement: NotificationPlacement) => {
+  const Parent = (type: NotificationType, placement: NotificationPlacement) => {
     notification[type]({
       message: ML("BILGILENDIRME_MESAJI"),
       description: ML("BU_ADRES_ILE_HESAP_VAR"),
@@ -46,25 +48,22 @@ export default function NewLogin() {
     });
   };
 
-
-
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     WalletService.connect().then(() => {
       WalletService.contract.getRole().then((role: string) => {
-        
         if (role == "Unregistered") {
           Kayıtolunuz("info");
           setLoading(false);
-        } else if (role == "Parent" || role == 'Child') {
-          
-          Parent('warning','bottom')
-          
-          setTimeout(() => {navigate("/signin")}, 5000);
+        } else if (role == "Parent" || role == "Child") {
+          Parent("warning", "bottom");
+
+          setTimeout(() => {
+            navigate("/signin");
+          }, 5000);
         }
-        
       });
     });
   }, []);
@@ -88,138 +87,22 @@ export default function NewLogin() {
   };
 
   const onFinish = (values: any) => {
-    addParentFunction()
-    KayıtBaşarılı("success",'bottom');
-    setTimeout(() => {navigate("/signin")}, 10000);
-    
+    addParentFunction();
+    KayıtBaşarılı("success", "bottom");
+    setTimeout(() => {
+      navigate("/signin");
+    }, 10000);
   };
 
   const onFinishFailed = (errorInfo: any) => {
     Buton("error");
   };
   return (
-    
     <Layout>
-      <Header
-        style={{
-          background: "white",
-          padding: 50,
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-          boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
-        }}
-      >
+      <Head />
 
-
-        <Link to="/">
-          <Image
-            style={{ position: "absolute", left: 30, top: -65 }}
-            width={100}
-            src="./logo1.png"
-          />
-        </Link>
-
-        <Button
-          style={{
-            position: "absolute",
-            left: 190,
-            top: 15,
-            color: "#13C2C2",
-            fontWeight: "bold",
-            fontSize: "35px",
-          }}
-          type="link"
-          danger
-        >
-          <Link to="/">CryptoBox</Link>
-        </Button>
-
-        <Button
-          style={{
-            position: "absolute",
-            right: 530,
-            top: 25,
-            color: "#13C2C2",
-            fontWeight: "bold",
-            fontSize: "25px",
-          }}
-          type="link"
-          danger
-        >
-          <Link to="/meta_mask">{ML("METAMASK_NEDIR")}</Link>
-        </Button>
-
-        <Button
-          style={{
-            position: "absolute",
-            right: 780,
-            top: 25,
-            color: "#13C2C2",
-            fontWeight: "bold",
-            fontSize: "25px",
-          }}
-          type="link"
-          danger
-        >
-          <Link to="/about">{ML("HAKKIMIZDA")}</Link>
-        </Button>
-
-        <Button
-          style={{
-            position: "absolute",
-            right: 450,
-            top: 25,
-            color: "#13C2C2",
-            fontWeight: "bold",
-            fontSize: "25px",
-          }}
-          type="link"
-          danger
-        >
-          <Link to="/faq">FAQ</Link>
-        </Button>
-
-        <Button
-          style={{
-            position: "absolute",
-            right: 180,
-            top: 25,
-            width: "110px",
-            height: "50px",
-            borderColor: "#13C2C2",
-            borderWidth: "5px",
-            color: "#13C2C2",
-            fontWeight: "bold",
-            fontSize: "15px",
-          }}
-          type="primary"
-          ghost
-        >
-          <Link to="/signin">{ML("OTURUM_AC")}</Link>
-        </Button>
-        <Button
-          style={{
-            position: "absolute",
-            right: 320,
-            top: 25,
-            width: "100px",
-            height: "50px",
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "15px",
-            backgroundColor: "#13C2C2",
-            borderColor: "#13C2C2",
-          }}
-          type="primary"
-        >
-          <Link to="/signup">{ML("KAYIT_OL")}</Link>
-        </Button>
-        <LanguageComponent/>
-      </Header>
       <Layout>
-
-            <Content
+        <Content
           style={{
             backgroundImage: "url(" + "./blur.png" + ")",
             padding: 600,
@@ -254,7 +137,9 @@ export default function NewLogin() {
               spinning={loading}
               tip={
                 <h2 style={{ color: "blue" }}>
-                  {ML("KAYIT_OLMADIYSANIZ_LUTFEN_KAYIT_OLUNUZ_EGER_KAYITLI_HESABINIZ_VARSA_GIRIS_YAPINIZ")}
+                  {ML(
+                    "KAYIT_OLMADIYSANIZ_LUTFEN_KAYIT_OLUNUZ_EGER_KAYITLI_HESABINIZ_VARSA_GIRIS_YAPINIZ"
+                  )}
                 </h2>
               }
               size="large"
@@ -293,20 +178,11 @@ export default function NewLogin() {
                   </Button>
                 </Form.Item>
               </Form>
-
-              
             </Spin>
           </Card.Grid>
         </Content>
-        
 
-        <Footer style={{ background: "white", padding: 60 }}>
-          <h2 style={{ position: "absolute", right: 1000 }}>
-            {" "}
-            {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}
-          </h2>
-          .
-        </Footer>
+        <Foot />
       </Layout>
     </Layout>
   );

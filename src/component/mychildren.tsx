@@ -1,4 +1,4 @@
-import { Layout, Avatar, Menu, MenuProps, Card, Table, Row } from "antd";
+import { Layout, Avatar, Menu, MenuProps, Card, Table, Row, Drawer } from "antd";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { Image } from "antd";
@@ -16,26 +16,22 @@ import { Child } from "../services/contract-service";
 import { ethers } from "ethers";
 import { ML } from "../i18n.config";
 import LanguageComponent from "./language.component";
-
+import Foot from "./foot";
+import ParentHead from "./parenthead";
 
 const { Header, Footer, Sider, Content } = Layout;
 
-function Cocuk() {
-  
-
+function MyChildren() {
   window.scrollTo(0, 0);
 
   const [childs, setChilds] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("");
 
- 
-  
   useEffect(() => {
     WalletService.connect().then(() => {
       WalletService.contract.getRole().then(async (role: string) => {
-        if (role == "Unregistered" || role== 'Child') {
-          
+        if (role == "Unregistered" || role == "Child") {
           console.log("kayıtlıdegil");
         } else if (role == "Parent") {
           const child = await WalletService.contract.getChildrenList();
@@ -45,36 +41,39 @@ function Cocuk() {
           setChilds(child);
           setLoading(false);
           setAmount(ethValue);
-          
-        
         }
       });
     });
   }, []);
 
 
-  
 
   const dataSource = [childs];
   const columns = [
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("AD")}</h2>,
+      title: (
+        <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("AD")}</h2>
+      ),
       dataIndex: "name",
       key: "name",
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("BAKIYE")}</h2>,
+      title: (
+        <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("BAKIYE")}</h2>
+      ),
       dataIndex: "amount",
       key: "amount",
-        render: (value : number,child:Child) =>{
-          const ethValue = ethers.utils.formatEther(child.amount.toString());
-          return <>
-          {ethValue +" ETH"}
-        </>
-      }
+      render: (value: number, child: Child) => {
+        const ethValue = ethers.utils.formatEther(child.amount.toString());
+        return <>{ethValue + " ETH"}</>;
+      },
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("METAMASK_ADRESI")}</h2>,
+      title: (
+        <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>
+          {ML("METAMASK_ADRESI")}
+        </h2>
+      ),
       dataIndex: "Address",
       key: "address",
     },
@@ -132,17 +131,18 @@ function Cocuk() {
         style={{ position: "absolute", marginTop: "6px", fontSize: "35px" }}
       />
     ),
-    getItem(<Link to="/signin">
-      <h2
-        style={{
-          fontSize: "28px",
-          color: "black",
-          textAlign: "center",
-          marginTop: "15px",
-        }}
-      >
-        {ML("OTURUM_DEGISTIRME")}
-      </h2>
+    getItem(
+      <Link to="/signin">
+        <h2
+          style={{
+            fontSize: "28px",
+            color: "black",
+            textAlign: "center",
+            marginTop: "15px",
+          }}
+        >
+          {ML("OTURUM_DEGISTIRME")}
+        </h2>
       </Link>,
       "3",
       <ExportOutlined
@@ -152,56 +152,8 @@ function Cocuk() {
   ];
 
   return (
-    <div>
       <Layout>
-        <Header
-          style={{
-            background: "white",
-            padding: 50,
-            position: "sticky",
-            top: 0,
-            zIndex: 100,
-            boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
-          }}
-        >
-
-
-          <Link to="/">
-            <Image
-              style={{ position: "absolute", left: 30, top: -65 }}
-              width={100}
-              src="./logo1.png"
-            />
-          </Link>
-
-          <Button
-            style={{
-              position: "absolute",
-              left: 190,
-              top: 15,
-              color: "#13C2C2",
-              fontWeight: "bold",
-              fontSize: "35px",
-            }}
-            type="link"
-            danger
-          >
-            <Link to="/">CryptoBox</Link>
-          </Button>
-
-
-          <TeamOutlined
-            style={{
-              position: "absolute",
-              right: 250,
-              top: 40,
-              color: "#13C2C2",
-              borderBlockColor: "#13C2C2",
-              fontSize: "30px",
-            }}
-          />
-           <LanguageComponent/>
-        </Header>
+        <ParentHead />
         <Layout>
           <Sider style={{ padding: 200, backgroundColor: "#13C2C2" }}>
             <Menu
@@ -217,7 +169,7 @@ function Cocuk() {
               items={items}
             />
           </Sider>
-            
+
           <Content
             style={{
               background: "white",
@@ -227,14 +179,43 @@ function Cocuk() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <h2 style={{fontWeight:'bold', position:'absolute', left:450,top:130,color:'#13C2C2',fontSize:'35px'}}>{ML("COCUKLARA_GONDERILEN_TOPLAM_MIKTAR")}</h2>
-            <h2 style={{fontWeight:'bold', position:'absolute', left:1290,top:300,color:'black',fontSize:'55px'}}>{amount} ETH </h2>
+            <h2
+              style={{
+                fontWeight: "bold",
+                position: "absolute",
+                left: 450,
+                top: 130,
+                color: "#13C2C2",
+                fontSize: "35px",
+              }}
+            >
+              {ML("COCUKLARA_GONDERILEN_TOPLAM_MIKTAR")}
+            </h2>
+            <h2
+              style={{
+                fontWeight: "bold",
+                position: "absolute",
+                left: 1290,
+                top: 300,
+                color: "black",
+                fontSize: "55px",
+              }}
+            >
+              {amount} ETH{" "}
+            </h2>
 
-            
-            
-            <Avatar style={{position:'absolute', left:1100, top:230,width:'136px',height:'252px'}} src= './ether1.png' />
+            <Avatar
+              style={{
+                position: "absolute",
+                left: 1100,
+                top: 230,
+                width: "136px",
+                height: "252px",
+              }}
+              src="./ether1.png"
+            />
 
-            
+
             <Table
               style={{
                 position: "absolute",
@@ -282,20 +263,8 @@ function Cocuk() {
             </Link>
           </Content>
         </Layout>
-        <Footer
-          style={{
-            background: "white",
-            padding: 60,
-            boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
-          }}
-        >
-          <h2 style={{ position: "absolute", right: 1000, top: 1300 }}>
-            {" "}
-            {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}
-          </h2>
-        </Footer>
+        <Foot />
       </Layout>
-    </div>
   );
 }
-export default Cocuk;
+export default MyChildren;

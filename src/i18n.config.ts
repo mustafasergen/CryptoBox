@@ -24,7 +24,7 @@ i18n
                     "TAKIM_UYELERI": "Team Members",
                     "TAKIM_2YIZ_VE_SIZINLE_DE_AYNI_TAKIMDAYIZ": "And we are on the same team with you",
                     "PRODUCT_OWNERIMIZ_BILAL_MURAT_NAZLI_VE_AGILE_KOCUMUZ_IPEK_AKYUZE": "To our Product Owner Bilal Murat Nazlı and Agile Coach İpek Akyüz",
-                    "DESTEKLERI_ICIN_COK_TESEKKUR_EDERIZ": "We thank them for their support",
+                    "DESTEKLERI_ICIN_COK_TESEKKUR_EDERIZ.": "We thank them for their support.",
                     "MISYONUMUZ": "Our mission",
                     "VIZYONUMUZ": "Our Vision",
                     "AILELER_ICIN": "For Families,",

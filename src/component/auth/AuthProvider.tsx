@@ -49,7 +49,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         signOut,
     }} >
         <>
-            {children}
+        {children}
         </>
     </AuthContext.Provider>;
 

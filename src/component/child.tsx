@@ -19,10 +19,11 @@ import { ML } from "../i18n.config";
 import LanguageComponent from "./language.component";
 import { Child } from "../services/contract-service";
 import axios from "axios";
+import Foot from "./foot";
 
 const { Header, Footer, Sider, Content } = Layout;
 
-function AfterSignupChild() {
+function Children() {
   window.scrollTo(0, 0);
 
   const [kullanıcıName, setName] = useState("");
@@ -31,18 +32,16 @@ function AfterSignupChild() {
   const navigate = useNavigate();
   const [translaction, setTrans] = useState<Child[]>([]);
 
-    const endpoint = "https://api-rinkeby.etherscan.io/api"
-  const ETHERSCAN_API_KEY = "FMS8JYNTIQF7HBFM6G34P6SK52W6JQZKSM"
+  const endpoint = "https://api-rinkeby.etherscan.io/api";
+  const ETHERSCAN_API_KEY = "FMS8JYNTIQF7HBFM6G34P6SK52W6JQZKSM";
   const CONTRACT_ADDRESS = "0xdA0ACe7006Ad5B36F2CdFF13276C95FBCB4D53C8";
-  const deneme = "0x302955b74C969aA09bb270DAa775B65Fc9b7Bc29"
-
+  const deneme = "0x302955b74C969aA09bb270DAa775B65Fc9b7Bc29";
 
   useEffect(() => {
     WalletService.connect().then(() => {
       WalletService.contract.getRole().then(async (role: string) => {
-        if (role == "Unregistered" ||role == "Parent") {
-          navigate('/signin')
-
+        if (role == "Unregistered" || role == "Parent") {
+          navigate("/signin");
         } else if (role == "Child") {
           const child = await WalletService.contract.getChild();
           setName(child.name);
@@ -74,11 +73,14 @@ function AfterSignupChild() {
           console.log(finalFormat);
           setTime(finalFormat);
 
-          const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${CONTRACT_ADDRESS}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${ETHERSCAN_API_KEY}`)
+          const etherscan = await axios.get(
+            endpoint +
+              `?module=account&action=txlist&address=${CONTRACT_ADDRESS}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${ETHERSCAN_API_KEY}`
+          );
           let context = etherscan.data.result;
           for (let i = 0; i < context.length; i++) {
             if (context[i].to === CONTRACT_ADDRESS) {
-              console.log(context[i].to)
+              console.log(context[i].to);
             }
           }
           setTrans(context);
@@ -86,10 +88,6 @@ function AfterSignupChild() {
       });
     });
   }, []);
-
-
-
-
 
   type MenuItem = Required<MenuProps>["items"][number];
   function getItem(
@@ -108,27 +106,30 @@ function AfterSignupChild() {
     } as MenuItem;
   }
 
-  
   const dataSource = [translaction];
   const columns = [
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("KIME")}</h2>,
+      title: (
+        <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("KIME")}</h2>
+      ),
       dataIndex: "to",
       key: "name",
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("TUTAR")}</h2>,
+      title: (
+        <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("TUTAR")}</h2>
+      ),
       dataIndex: "value",
       key: "amount",
-
     },
     {
-      title: <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("ISLEM")}</h2>,
+      title: (
+        <h2 style={{ color: "#13C2C2", fontWeight: "bold" }}>{ML("ISLEM")}</h2>
+      ),
       dataIndex: "functionName",
       key: "address",
     },
   ];
-
 
   return (
     <div>
@@ -251,7 +252,6 @@ function AfterSignupChild() {
               {time}!
             </h2>
 
-
             <h2
               style={{
                 fontWeight: "bold",
@@ -325,19 +325,9 @@ function AfterSignupChild() {
             />
           </Content>
         </Layout>
-        <Footer
-          style={{
-            background: "white",
-            padding: 60,
-            boxShadow: "0px 0px 6px 0px rgba(0, 0, 0, 0.7)",
-          }}
-        >
-          <h2 style={{ position: "absolute", right: 1000, top: 1520 }}>
-            {ML("2022_INTERTECH_INC_HER_HAKKI_SAKLIDIR")}
-          </h2>
-        </Footer>
+        <Foot />
       </Layout>
     </div>
   );
 }
-export default AfterSignupChild;
+export default Children;
